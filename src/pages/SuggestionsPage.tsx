@@ -11,24 +11,22 @@ export default function SuggestionsPage() {
   };
   return (
     <>
-      <header className="rainbow-card">
-        <div className="headline-subheadline">
-          <h1>Frontend Mentor</h1>
-          <h2>Feedback Board</h2>
+      <header className="header-suggestions-page">
+        <div className="rainbow-card">
+          <div className="headline-subheadline">
+            <h1>Frontend Mentor</h1>
+            <h2>Feedback Board</h2>
+          </div>
+          <button>
+            <img
+              src={!mobileSidebarIsActive ? HamburgerIcon : CloseIcon}
+              alt="hamburger-icon"
+              onClick={toggleMobileSidebar}
+            />
+          </button>
         </div>
-        <button>
-          <img
-            src={!mobileSidebarIsActive ? HamburgerIcon : CloseIcon}
-            alt="hamburger-icon"
-            onClick={toggleMobileSidebar}
-          />
-        </button>
+        {mobileSidebarIsActive && <MobileSidebar />}
       </header>
-      <MobileSidebar />
-      {/* <section className="sidebar-mobile">
-        <div className="tags">Tags</div>
-        <div className="roadmap">Roadmap</div>
-      </section> */}
     </>
   );
 }

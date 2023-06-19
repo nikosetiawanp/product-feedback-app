@@ -19,7 +19,6 @@ export default function MobileSidebar() {
           <a href="#">View</a>
 
           <span className="progress-name">
-            {" "}
             <div className="oval-purple"></div>Planned
           </span>
           <b className="progress-count">2</b>

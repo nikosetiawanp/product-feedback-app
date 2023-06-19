@@ -109,38 +109,44 @@ input {
   border-radius: 0;
 }
 
-header.rainbow-card {
+body {
+  background-color: #f7f8fd;
+}
+
+.header-suggestions-page .rainbow-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 72px;
-  background-image: url("./assets/suggestions/mobile/background-header.png");
   padding: 2rem;
+  background-image: url("./assets/suggestions/mobile/background-header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-header.rainbow-card .headline-subheadline {
+.header-suggestions-page .rainbow-card .headline-subheadline {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.4rem;
 }
-header.rainbow-card .headline-subheadline h1 {
-  font-weight: bold;
+.header-suggestions-page .rainbow-card .headline-subheadline h1 {
+  font-weight: 700;
   color: white;
   font-size: 1rem;
 }
-header.rainbow-card .headline-subheadline h2 {
-  font-weight: semibold;
+.header-suggestions-page .rainbow-card .headline-subheadline h2 {
+  font-weight: 600;
   color: white;
   font-size: 0.8rem;
 }
-header.rainbow-card button {
+.header-suggestions-page .rainbow-card button {
   width: 20px;
   height: 17px;
   background: none;
   border: none;
 }
-header.rainbow-card button:hover {
+.header-suggestions-page .rainbow-card button:hover {
   cursor: pointer;
 }
 
@@ -148,7 +154,7 @@ header.rainbow-card button:hover {
   width: 100%;
   height: 100%;
   position: fixed;
-  background: black;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .mobile-sidebar .mobile-sidebar-card {
   position: fixed;
@@ -204,7 +210,7 @@ header.rainbow-card button:hover {
 .mobile-sidebar .mobile-sidebar-card .roadmap h1 {
   color: #3a4374;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
 }
 .mobile-sidebar .mobile-sidebar-card .roadmap a {
   color: #4661e6;
@@ -215,7 +221,8 @@ header.rainbow-card button:hover {
 .mobile-sidebar .mobile-sidebar-card .roadmap .progress-name {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  font-weight: 400;
   color: #647196;
   /* Oval Orange */
 }
@@ -236,11 +243,11 @@ header.rainbow-card button:hover {
 }
 .mobile-sidebar .mobile-sidebar-card .roadmap .progress-count {
   color: #647196;
-  font-weight: bold;
+  font-weight: 700;
   text-align: end;
   display: flex;
   justify-content: end;
   align-items: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=index.css.map */

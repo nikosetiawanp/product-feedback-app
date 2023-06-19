@@ -1,0 +1,154 @@
+// SUGGESTIONS PAGE
+.header-suggestions-page {
+  .rainbow-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 72px;
+    padding: 2rem;
+
+    background-image: url("./assets/suggestions/mobile/background-header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .headline-subheadline {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.4rem;
+      h1 {
+        font-weight: $bold;
+        color: white;
+        font-size: 1rem;
+      }
+      h2 {
+        font-weight: $semibold;
+        color: white;
+        font-size: 0.8rem;
+      }
+    }
+    button {
+      width: 20px;
+      height: 17px;
+      background: none;
+      border: none;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  }
+}
+// MOBILE SIDEBAR
+.mobile-sidebar {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: $transparent-black;
+
+  .mobile-sidebar-card {
+    position: fixed;
+    gap: 1.5rem;
+    right: 0;
+    height: 100%;
+    width: 270px;
+    padding: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: $background-gray;
+
+    .category {
+      background: white;
+      min-height: 175px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1.5rem;
+      gap: 10px;
+      width: 100%;
+      border-radius: 10px;
+
+      button.active {
+        background: $button-blue;
+        color: white;
+
+        height: 30px;
+        border-radius: 10px;
+        padding: 0rem 1rem;
+        font-weight: $semibold;
+      }
+
+      button.inactive {
+        background: $button-gray;
+        color: $button-blue;
+
+        height: 30px;
+        border-radius: 10px;
+        padding: 0rem 1rem;
+        font-weight: $semibold;
+      }
+    }
+
+    .roadmap {
+      background: white;
+      min-height: 175px;
+      display: grid;
+      grid-template-columns: 2;
+      grid-template-rows: auto;
+      flex-direction: column;
+
+      padding: 1.5rem;
+      gap: 10px;
+      width: 100%;
+      border-radius: 10px;
+
+      h1 {
+        color: $text-navy;
+        font-size: $text-xl;
+        font-weight: $bold;
+      }
+      a {
+        color: $button-blue;
+        font-weight: $semibold;
+        grid-column: 2;
+        text-align: end;
+      }
+      .progress-name {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        font-weight: $regular;
+        color: $text-gray;
+
+        /* Oval Orange */
+        div {
+          width: 8px;
+          height: 8px;
+          border-radius: 100%;
+          background: #f49f85;
+        }
+        .oval-orange {
+          background: $progress-orange;
+        }
+        .oval-blue {
+          background: $progress-blue;
+        }
+        .oval-purple {
+          background: $progress-purple;
+        }
+      }
+
+      .progress-count {
+        color: $text-gray;
+        font-weight: $bold;
+        text-align: end;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
+    }
+  }
+}
