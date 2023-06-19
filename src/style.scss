@@ -1,0 +1,279 @@
+// npx sass --watch style.scss style.css
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,600&display=swap");
+$overlay-black: rgba(255, 255, 255, 0.5);
+
+$background-gray: #f7f8fd;
+$background-navy: #373f68;
+
+$text-navy: #3a4374;
+$text-gray: #647196;
+
+$button-gray: #f2f4ff;
+$button-blue: #4661e6;
+$button-purple: #ad1fea;
+
+$progress-blue: #62bcfa;
+$progress-orange: #f49f85;
+$progress-purple: #ad1fea;
+
+$semibold: 600;
+
+// RESET
+*,
+*:before,
+*:after {
+  font-family: "Jost";
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: "Jost";
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+// SUGGESTIONS PAGE
+header.rainbow-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  background-image: url("./assets/suggestions/mobile/background-header.png");
+  padding: 2rem;
+
+  .headline-subheadline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    h1 {
+      font-weight: bold;
+      color: white;
+      font-size: 1rem;
+    }
+    h2 {
+      font-weight: semibold;
+      color: white;
+      font-size: 0.8rem;
+    }
+  }
+  button {
+    width: 20px;
+    height: 17px;
+    background: none;
+    border: none;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+}
+
+// MOBILE SIDEBAR
+.mobile-sidebar {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: black;
+
+  .mobile-sidebar-card {
+    position: fixed;
+    gap: 1.5rem;
+    right: 0;
+    height: 100%;
+    width: 270px;
+    padding: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: $background-gray;
+
+    .category {
+      background: white;
+      min-height: 175px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1.5rem;
+      gap: 10px;
+      width: 100%;
+      border-radius: 10px;
+
+      button.active {
+        background: $button-blue;
+        color: white;
+
+        height: 30px;
+        border-radius: 10px;
+        padding: 0rem 1rem;
+        font-weight: $semibold;
+      }
+
+      button.inactive {
+        background: $button-gray;
+        color: $button-blue;
+
+        height: 30px;
+        border-radius: 10px;
+        padding: 0rem 1rem;
+        font-weight: $semibold;
+      }
+    }
+
+    .roadmap {
+      background: white;
+      min-height: 175px;
+      display: grid;
+      grid-template-columns: 2;
+      grid-template-rows: auto;
+      flex-direction: column;
+
+      padding: 1.5rem;
+      gap: 10px;
+      width: 100%;
+      border-radius: 10px;
+
+      h1 {
+        color: $text-navy;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      a {
+        color: $button-blue;
+        font-weight: $semibold;
+        grid-column: 2;
+        text-align: end;
+      }
+      .progress-name {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        color: $text-gray;
+
+        /* Oval Orange */
+        div {
+          width: 8px;
+          height: 8px;
+          border-radius: 100%;
+          background: #f49f85;
+        }
+        .oval-orange {
+          background: $progress-orange;
+        }
+        .oval-blue {
+          background: $progress-blue;
+        }
+        .oval-purple {
+          background: $progress-purple;
+        }
+      }
+      .progress-count {
+        color: $text-gray;
+        font-weight: bold;
+        text-align: end;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
+    }
+  }
+}

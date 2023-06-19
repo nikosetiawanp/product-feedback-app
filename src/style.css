@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,600&display=swap");
+*,
+*:before,
+*:after {
+  font-family: "Jost";
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: "Jost";
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+header.rainbow-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  background-image: url("./assets/suggestions/mobile/background-header.png");
+  padding: 2rem;
+}
+header.rainbow-card .headline-subheadline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+header.rainbow-card .headline-subheadline h1 {
+  font-weight: bold;
+  color: white;
+  font-size: 1rem;
+}
+header.rainbow-card .headline-subheadline h2 {
+  font-weight: semibold;
+  color: white;
+  font-size: 0.8rem;
+}
+header.rainbow-card button {
+  width: 20px;
+  height: 17px;
+  background: none;
+  border: none;
+}
+header.rainbow-card button:hover {
+  cursor: pointer;
+}
+
+.mobile-sidebar {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: black;
+}
+.mobile-sidebar .mobile-sidebar-card {
+  position: fixed;
+  gap: 1.5rem;
+  right: 0;
+  height: 100%;
+  width: 270px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background: #f7f8fd;
+}
+.mobile-sidebar .mobile-sidebar-card .category {
+  background: white;
+  min-height: 175px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  gap: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+.mobile-sidebar .mobile-sidebar-card .category button.active {
+  background: #4661e6;
+  color: white;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0rem 1rem;
+  font-weight: 600;
+}
+.mobile-sidebar .mobile-sidebar-card .category button.inactive {
+  background: #f2f4ff;
+  color: #4661e6;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0rem 1rem;
+  font-weight: 600;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap {
+  background: white;
+  min-height: 175px;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: auto;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap h1 {
+  color: #3a4374;
+  font-size: 18px;
+  font-weight: bold;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap a {
+  color: #4661e6;
+  font-weight: 600;
+  grid-column: 2;
+  text-align: end;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap .progress-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #647196;
+  /* Oval Orange */
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap .progress-name div {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #f49f85;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap .progress-name .oval-orange {
+  background: #f49f85;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap .progress-name .oval-blue {
+  background: #62bcfa;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap .progress-name .oval-purple {
+  background: #ad1fea;
+}
+.mobile-sidebar .mobile-sidebar-card .roadmap .progress-count {
+  color: #647196;
+  font-weight: bold;
+  text-align: end;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.css.map */
