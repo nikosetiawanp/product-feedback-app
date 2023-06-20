@@ -237,6 +237,10 @@ div.page-container header.suggestions-header .category button.inactive {
   padding: 0rem 1rem;
   font-weight: 600;
 }
+div.page-container header.suggestions-header .category button.inactive:hover {
+  background: #cfd7ff;
+  cursor: pointer;
+}
 div.page-container header.suggestions-header .roadmap {
   background: white;
   min-height: 175px;
@@ -259,11 +263,15 @@ div.page-container header.suggestions-header .roadmap h1 {
   font-size: 18px;
   font-weight: 700;
 }
-div.page-container header.suggestions-header .roadmap a {
+div.page-container header.suggestions-header .roadmap a.view-roadmap {
   color: #4661e6;
   font-weight: 600;
   grid-column: 2;
   text-align: end;
+}
+div.page-container header.suggestions-header .roadmap a.view-roadmap:hover {
+  cursor: pointer;
+  color: #8397f8;
 }
 div.page-container header.suggestions-header .roadmap .progress-name {
   display: flex;
@@ -355,11 +363,34 @@ div.page-container section.suggestions-container .suggestions-bar button.sort-by
   border: none;
   color: #f2f4fe;
   font-size: 14px;
+  position: relative;
+}
+div.page-container section.suggestions-container .suggestions-bar button.sort-by:hover {
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   div.page-container section.suggestions-container .suggestions-bar button.sort-by {
     color: #f2f4fe;
   }
+}
+div.page-container section.suggestions-container .suggestions-bar button.sort-by .sort-by-dropdown {
+  position: absolute;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+  width: 255px;
+}
+div.page-container section.suggestions-container .suggestions-bar button.sort-by .sort-by-dropdown span {
+  display: flex;
+  color: #647196;
+  font-size: 16px;
+  padding: 0.75rem 1rem;
+}
+div.page-container section.suggestions-container .suggestions-bar button.sort-by .sort-by-dropdown span:hover {
+  color: #ad1fea;
 }
 div.page-container section.suggestions-container .suggestions-bar button.add-feedback-button {
   background: #ad1fea;
@@ -368,6 +399,10 @@ div.page-container section.suggestions-container .suggestions-bar button.add-fee
   padding: 0.7rem 1rem;
   color: white;
   border-radius: 10px;
+}
+div.page-container section.suggestions-container .suggestions-bar button.add-feedback-button:hover {
+  cursor: pointer;
+  background: #c75af6;
 }
 @media (min-width: 768px) {
   div.page-container section.suggestions-container .suggestions-bar button.add-feedback-button {
@@ -393,6 +428,9 @@ div.page-container section.suggestions-container .suggestions-list .suggestion-c
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card:hover {
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   div.page-container section.suggestions-container .suggestions-list .suggestion-card {
@@ -453,6 +491,10 @@ div.page-container section.suggestions-container .suggestions-list .suggestion-c
 }
 div.page-container section.suggestions-container .suggestions-list .suggestion-card .upvote-count {
   grid-column: 1;
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .upvote-count:hover {
+  cursor: pointer;
+  background: #cfd7ff;
 }
 @media (min-width: 768px) {
   div.page-container section.suggestions-container .suggestions-list .suggestion-card .upvote-count {

@@ -113,6 +113,11 @@ div.page-container {
         border-radius: $radius-sm;
         padding: 0rem 1rem;
         font-weight: $semibold;
+
+        &:hover {
+          background: $button-gray-hover;
+          cursor: pointer;
+        }
       }
     }
 
@@ -137,11 +142,15 @@ div.page-container {
         font-size: $text-xl;
         font-weight: $bold;
       }
-      a {
+      a.view-roadmap {
         color: $button-blue;
         font-weight: $semibold;
         grid-column: 2;
         text-align: end;
+        &:hover {
+          cursor: pointer;
+          color: $button-blue-hover;
+        }
       }
       .progress-name {
         display: flex;
@@ -233,9 +242,34 @@ div.page-container {
         border: none;
         color: $text-almost-white;
         font-size: $text-sm;
-
+        position: relative;
+        &:hover {
+          cursor: pointer;
+        }
         @include md {
           color: $text-almost-white;
+        }
+
+        .sort-by-dropdown {
+          position: absolute;
+          margin-top: 50px;
+
+          display: flex;
+          flex-direction: column;
+          background: white;
+          border-radius: $radius-sm;
+          box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+          width: 255px;
+
+          span {
+            display: flex;
+            color: $text-gray;
+            font-size: $text-lg;
+            padding: 0.75rem 1rem;
+            &:hover {
+              color: $button-purple;
+            }
+          }
         }
       }
       button.add-feedback-button {
@@ -245,6 +279,12 @@ div.page-container {
         padding: 0.7rem 1rem;
         color: white;
         border-radius: $radius-sm;
+
+        &:hover {
+          cursor: pointer;
+          background: $button-purple-hover;
+        }
+
         @include md {
           margin-left: auto;
         }
@@ -270,6 +310,10 @@ div.page-container {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
         row-gap: 1.2rem;
+
+        &:hover {
+          cursor: pointer;
+        }
 
         @include md {
           display: flex;
@@ -330,6 +374,11 @@ div.page-container {
         }
         .upvote-count {
           grid-column: 1;
+          &:hover {
+            cursor: pointer;
+            background: $button-gray-hover;
+          }
+
           @include md {
             flex-direction: column;
             gap: 0.8rem;

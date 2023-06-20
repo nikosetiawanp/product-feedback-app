@@ -1,12 +1,15 @@
 import "./App.css";
 import SuggestionsPage from "./pages/SuggestionsPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <SuggestionsPage />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/suggestions" element={<SuggestionsPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
