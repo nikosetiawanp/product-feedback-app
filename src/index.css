@@ -109,56 +109,52 @@ input {
   border-radius: 0;
 }
 
-html {
+body {
+  background-color: #f7f8fd;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
-body {
-  background-color: #f7f8fd;
-}
-
-.page-container {
+div.page-container {
   left: 0px;
   right: 0px;
+  width: auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 @media (min-width: 768px) {
-  .page-container {
+  div.page-container {
     padding: 3rem 2rem;
     gap: 1.5rem;
   }
 }
 @media (min-width: 1024px) {
-  .page-container {
+  div.page-container {
     flex-direction: row;
-    width: fit-content;
   }
 }
-
 @media (min-width: 768px) {
-  .suggestions-header {
+  div.page-container header.suggestions-header {
     height: 180px;
     display: flex;
     gap: 0.5rem;
   }
 }
 @media (min-width: 1024px) {
-  .suggestions-header {
+  div.page-container header.suggestions-header {
     flex-direction: column;
-    min-width: 255px;
     max-width: 255px;
     gap: 1rem;
   }
 }
-.suggestions-header .rainbow-card {
+div.page-container header.suggestions-header .rainbow-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 72px;
   padding: 2rem;
   background-image: url("./assets/suggestions/mobile/background-header.png");
@@ -166,7 +162,8 @@ body {
   background-size: cover;
 }
 @media (min-width: 768px) {
-  .suggestions-header .rainbow-card {
+  div.page-container header.suggestions-header .rainbow-card {
+    width: 100%;
     height: 100%;
     border-radius: 10px;
     background-image: url("./assets/suggestions/tablet/background-header.png");
@@ -174,42 +171,42 @@ body {
   }
 }
 @media (min-width: 1024px) {
-  .suggestions-header .rainbow-card {
+  div.page-container header.suggestions-header .rainbow-card {
     background-image: url("./assets/suggestions/desktop/background-header.png");
     min-height: 135px;
   }
 }
-.suggestions-header .rainbow-card .headline-subheadline {
+div.page-container header.suggestions-header .rainbow-card .headline-subheadline {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.4rem;
 }
-.suggestions-header .rainbow-card .headline-subheadline h1 {
+div.page-container header.suggestions-header .rainbow-card .headline-subheadline h1 {
   font-weight: 700;
   color: white;
   font-size: 1rem;
 }
-.suggestions-header .rainbow-card .headline-subheadline h2 {
+div.page-container header.suggestions-header .rainbow-card .headline-subheadline h2 {
   font-weight: 600;
   color: rgba(242, 244, 254, 0.75);
   font-size: 0.8rem;
 }
-.suggestions-header .rainbow-card button {
+div.page-container header.suggestions-header .rainbow-card button {
   width: 20px;
   height: 17px;
   background: none;
   border: none;
 }
 @media (min-width: 768px) {
-  .suggestions-header .rainbow-card button {
+  div.page-container header.suggestions-header .rainbow-card button {
     display: none;
   }
 }
-.suggestions-header .rainbow-card button:hover {
+div.page-container header.suggestions-header .rainbow-card button:hover {
   cursor: pointer;
 }
-.suggestions-header .category {
+div.page-container header.suggestions-header .category {
   background: white;
   min-height: 175px;
   display: none;
@@ -220,11 +217,11 @@ body {
   border-radius: 10px;
 }
 @media (min-width: 768px) {
-  .suggestions-header .category {
+  div.page-container header.suggestions-header .category {
     display: flex;
   }
 }
-.suggestions-header .category button.active {
+div.page-container header.suggestions-header .category button.active {
   background: #4661e6;
   color: white;
   height: 30px;
@@ -232,7 +229,7 @@ body {
   padding: 0rem 1rem;
   font-weight: 600;
 }
-.suggestions-header .category button.inactive {
+div.page-container header.suggestions-header .category button.inactive {
   background: #f2f4ff;
   color: #4661e6;
   height: 30px;
@@ -240,7 +237,7 @@ body {
   padding: 0rem 1rem;
   font-weight: 600;
 }
-.suggestions-header .roadmap {
+div.page-container header.suggestions-header .roadmap {
   background: white;
   min-height: 175px;
   grid-template-columns: 2;
@@ -253,22 +250,22 @@ body {
   border-radius: 10px;
 }
 @media (min-width: 768px) {
-  .suggestions-header .roadmap {
+  div.page-container header.suggestions-header .roadmap {
     display: grid;
   }
 }
-.suggestions-header .roadmap h1 {
+div.page-container header.suggestions-header .roadmap h1 {
   color: #3a4374;
   font-size: 18px;
   font-weight: 700;
 }
-.suggestions-header .roadmap a {
+div.page-container header.suggestions-header .roadmap a {
   color: #4661e6;
   font-weight: 600;
   grid-column: 2;
   text-align: end;
 }
-.suggestions-header .roadmap .progress-name {
+div.page-container header.suggestions-header .roadmap .progress-name {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -276,22 +273,22 @@ body {
   color: #647196;
   /* Oval Orange */
 }
-.suggestions-header .roadmap .progress-name div {
+div.page-container header.suggestions-header .roadmap .progress-name div {
   width: 8px;
   height: 8px;
   border-radius: 100%;
   background: #f49f85;
 }
-.suggestions-header .roadmap .progress-name .oval-orange {
+div.page-container header.suggestions-header .roadmap .progress-name .oval-orange {
   background: #f49f85;
 }
-.suggestions-header .roadmap .progress-name .oval-blue {
+div.page-container header.suggestions-header .roadmap .progress-name .oval-blue {
   background: #62bcfa;
 }
-.suggestions-header .roadmap .progress-name .oval-purple {
+div.page-container header.suggestions-header .roadmap .progress-name .oval-purple {
   background: #ad1fea;
 }
-.suggestions-header .roadmap .progress-count {
+div.page-container header.suggestions-header .roadmap .progress-count {
   color: #647196;
   font-weight: 700;
   text-align: end;
@@ -299,73 +296,72 @@ body {
   justify-content: end;
   align-items: center;
 }
-
-.suggestions-container {
+div.page-container section.suggestions-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-}
-@media (min-width: 768px) {
-  .suggestions-container {
-    width: auto;
-  }
+  align-self: stretch;
 }
 @media (min-width: 1024px) {
-  .suggestions-container {
-    width: auto;
-    min-width: 576px;
+  div.page-container section.suggestions-container {
+    min-width: 580px;
     max-width: 825px;
   }
 }
-.suggestions-container .suggestions-bar {
+@media (min-width: 1280px) {
+  div.page-container section.suggestions-container {
+    width: 1280px;
+  }
+}
+div.page-container section.suggestions-container .suggestions-bar {
   background: #373f68;
   padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: auto;
+  margin-bottom: 1.5rem;
 }
 @media (min-width: 768px) {
-  .suggestions-container .suggestions-bar {
+  div.page-container section.suggestions-container .suggestions-bar {
     border-radius: 10px;
     padding: 1rem;
-    justify-content: flex-start;
     gap: 3rem;
+    justify-content: flex-start;
   }
 }
-.suggestions-container .suggestions-bar span.suggestions-count {
+div.page-container section.suggestions-container .suggestions-bar span.suggestions-count {
   font-weight: 700;
   font-size: 18px;
   color: white;
   display: none;
 }
-.suggestions-container .suggestions-bar span.suggestions-count img.suggestions-icon {
+div.page-container section.suggestions-container .suggestions-bar span.suggestions-count img.suggestions-icon {
   display: none;
 }
 @media (min-width: 768px) {
-  .suggestions-container .suggestions-bar span.suggestions-count img.suggestions-icon {
+  div.page-container section.suggestions-container .suggestions-bar span.suggestions-count img.suggestions-icon {
     display: block;
   }
 }
 @media (min-width: 768px) {
-  .suggestions-container .suggestions-bar span.suggestions-count {
+  div.page-container section.suggestions-container .suggestions-bar span.suggestions-count {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 }
-.suggestions-container .suggestions-bar button.sort-by {
+div.page-container section.suggestions-container .suggestions-bar button.sort-by {
   background: none;
   border: none;
   color: #f2f4fe;
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  .suggestions-container .suggestions-bar button.sort-by {
+  div.page-container section.suggestions-container .suggestions-bar button.sort-by {
     color: #f2f4fe;
   }
 }
-.suggestions-container .suggestions-bar button.add-feedback-button {
+div.page-container section.suggestions-container .suggestions-bar button.add-feedback-button {
   background: #ad1fea;
   font-weight: 600;
   font-size: 13px;
@@ -374,8 +370,105 @@ body {
   border-radius: 10px;
 }
 @media (min-width: 768px) {
-  .suggestions-container .suggestions-bar button.add-feedback-button {
+  div.page-container section.suggestions-container .suggestions-bar button.add-feedback-button {
     margin-left: auto;
+  }
+}
+div.page-container section.suggestions-container .suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0rem 2rem;
+}
+@media (min-width: 768px) {
+  div.page-container section.suggestions-container .suggestions-list {
+    padding: 0px;
+  }
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  row-gap: 1.2rem;
+}
+@media (min-width: 768px) {
+  div.page-container section.suggestions-container .suggestions-list .suggestion-card {
+    display: flex;
+    gap: 2rem;
+  }
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  width: 100%;
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview h3 {
+  font-weight: 700;
+  font-size: 13px;
+  color: #3a4374;
+}
+@media (min-width: 768px) {
+  div.page-container section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview h3 {
+    font-size: 18px;
+  }
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview p {
+  font-size: 13px;
+  color: #647196;
+  line-height: 1.2rem;
+}
+@media (min-width: 768px) {
+  div.page-container section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview p {
+    font-size: 16px;
+  }
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview .tag {
+  background: #f2f4ff;
+  color: #4661e6;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .upvote-count,
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .comment-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f2f4ff;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  width: fit-content;
+  padding: 0.6rem 1rem;
+  height: 30px;
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .upvote-count {
+  grid-column: 1;
+}
+@media (min-width: 768px) {
+  div.page-container section.suggestions-container .suggestions-list .suggestion-card .upvote-count {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.75rem 0.6rem;
+    height: fit-content;
+  }
+}
+div.page-container section.suggestions-container .suggestions-list .suggestion-card .comment-count {
+  justify-self: flex-end;
+  background: none;
+}
+@media (min-width: 768px) {
+  div.page-container section.suggestions-container .suggestions-list .suggestion-card .comment-count {
+    align-self: center;
   }
 }
 

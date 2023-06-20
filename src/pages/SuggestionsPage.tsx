@@ -3,6 +3,8 @@ import CloseIcon from "../assets/shared/mobile/icon-close.svg";
 import MobileSidebar from "../components/MobileSidebar";
 import IconSuggestions from "../assets/suggestions/icon-suggestions.svg";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
+import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
+import IconComments from "../assets/shared/icon-comments.svg";
 import { useState } from "react";
 
 export default function SuggestionsPage() {
@@ -61,7 +63,6 @@ export default function SuggestionsPage() {
       <section className="suggestions-container">
         <div className="suggestions-bar">
           <span className="suggestions-count">
-            {" "}
             <img
               className="suggestions-icon"
               src={IconSuggestions}
@@ -71,12 +72,28 @@ export default function SuggestionsPage() {
           </span>
           <button className="sort-by">
             Sort by : <b>Most Upvotes</b> &nbsp;
-            <img src={IconArrowDown} alt="" />
+            <img src={IconArrowDown} alt="icon-arrow-down" />
           </button>
           <button className="add-feedback-button">+ Add Feedback</button>
         </div>
 
-        <div className="suggestions-list"></div>
+        {/* SUGGESTION LIST */}
+        <div className="suggestions-list">
+          <div className="suggestion-card">
+            <span className="upvote-count">
+              <img src={IconArrowUp} alt="icon-arrow-up" />
+              112
+            </span>
+            <div className="suggestion-preview">
+              <h3>Add tags for solutions</h3>
+              <p>Easier to search for solutions based on a specific stack</p>
+              <span className="tag">Enhancement</span>
+            </div>
+            <span className="comment-count">
+              <img src={IconComments} alt="comment-icon" />2
+            </span>
+          </div>
+        </div>
       </section>
     </div>
   );
