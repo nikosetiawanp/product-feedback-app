@@ -1,5 +1,36 @@
 // SUGGESTIONS PAGE
-.header-suggestions-page {
+.page-container {
+  left: 0px;
+  right: 0px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // max-width: 1280px;
+  @include md {
+    padding: 3rem 2rem;
+    gap: 1.5rem;
+  }
+  @include lg {
+    flex-direction: row;
+    width: fit-content;
+  }
+}
+
+// HEADER
+.suggestions-header {
+  @include md {
+    height: 180px;
+    display: flex;
+    gap: 0.5rem;
+  }
+  @include lg {
+    flex-direction: column;
+    min-width: 255px;
+    max-width: 255px;
+    gap: 1rem;
+  }
+
   .rainbow-card {
     display: flex;
     justify-content: space-between;
@@ -12,6 +43,17 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    @include md {
+      height: 100%;
+      border-radius: $radius-sm;
+      background-image: url("./assets/suggestions/tablet/background-header.png");
+      align-items: flex-end;
+    }
+
+    @include lg {
+      background-image: url("./assets/suggestions/desktop/background-header.png");
+      min-height: 135px;
+    }
     .headline-subheadline {
       display: flex;
       flex-direction: column;
@@ -24,7 +66,7 @@
       }
       h2 {
         font-weight: $semibold;
-        color: white;
+        color: $text-almost-white-75;
         font-size: 0.8rem;
       }
     }
@@ -33,121 +75,181 @@
       height: 17px;
       background: none;
       border: none;
+      @include md {
+        display: none;
+      }
     }
     button:hover {
       cursor: pointer;
     }
   }
-}
-// MOBILE SIDEBAR
-.mobile-sidebar {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: $transparent-black;
-
-  .mobile-sidebar-card {
-    position: fixed;
-    gap: 1.5rem;
-    right: 0;
-    height: 100%;
-    width: 270px;
+  .category {
+    background: white;
+    min-height: 175px;
+    display: none;
+    flex-wrap: wrap;
     padding: 1.5rem;
+    gap: 8px;
+    width: 100%;
+    border-radius: $radius-sm;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    background: $background-gray;
-
-    .category {
-      background: white;
-      min-height: 175px;
+    @include md {
       display: flex;
-      flex-wrap: wrap;
-      padding: 1.5rem;
-      gap: 10px;
-      width: 100%;
-      border-radius: 10px;
+    }
 
-      button.active {
-        background: $button-blue;
-        color: white;
+    button.active {
+      background: $button-blue;
+      color: white;
 
-        height: 30px;
-        border-radius: 10px;
-        padding: 0rem 1rem;
-        font-weight: $semibold;
+      height: 30px;
+      border-radius: $radius-sm;
+      padding: 0rem 1rem;
+      font-weight: $semibold;
+    }
+
+    button.inactive {
+      background: $button-gray;
+      color: $button-blue;
+
+      height: 30px;
+      border-radius: $radius-sm;
+      padding: 0rem 1rem;
+      font-weight: $semibold;
+    }
+  }
+
+  .roadmap {
+    background: white;
+    min-height: 175px;
+    grid-template-columns: 2;
+    grid-template-rows: auto;
+    flex-direction: column;
+    display: none;
+
+    padding: 1.5rem;
+    gap: 10px;
+    width: 100%;
+    border-radius: $radius-sm;
+
+    @include md {
+      display: grid;
+    }
+    h1 {
+      color: $text-navy;
+      font-size: $text-xl;
+      font-weight: $bold;
+    }
+    a {
+      color: $button-blue;
+      font-weight: $semibold;
+      grid-column: 2;
+      text-align: end;
+    }
+    .progress-name {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      font-weight: $regular;
+      color: $text-gray;
+
+      /* Oval Orange */
+      div {
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        background: #f49f85;
       }
-
-      button.inactive {
-        background: $button-gray;
-        color: $button-blue;
-
-        height: 30px;
-        border-radius: 10px;
-        padding: 0rem 1rem;
-        font-weight: $semibold;
+      .oval-orange {
+        background: $progress-orange;
+      }
+      .oval-blue {
+        background: $progress-blue;
+      }
+      .oval-purple {
+        background: $progress-purple;
       }
     }
 
-    .roadmap {
-      background: white;
-      min-height: 175px;
-      display: grid;
-      grid-template-columns: 2;
-      grid-template-rows: auto;
-      flex-direction: column;
+    .progress-count {
+      color: $text-gray;
+      font-weight: $bold;
+      text-align: end;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+    }
+  }
+}
 
-      padding: 1.5rem;
-      gap: 10px;
-      width: 100%;
-      border-radius: 10px;
+// SUGGESTIONS
 
-      h1 {
-        color: $text-navy;
-        font-size: $text-xl;
-        font-weight: $bold;
+.suggestions-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  @include md {
+    width: auto;
+  }
+  @include lg {
+    width: auto;
+    min-width: 576px;
+    max-width: 825px;
+  }
+
+  .suggestions-bar {
+    background: $background-navy;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include md {
+      border-radius: $radius-sm;
+      padding: 1rem;
+      justify-content: flex-start;
+      gap: 3rem;
+    }
+
+    span.suggestions-count {
+      img.suggestions-icon {
+        display: none;
+        @include md {
+          display: block;
+        }
       }
-      a {
-        color: $button-blue;
-        font-weight: $semibold;
-        grid-column: 2;
-        text-align: end;
-      }
-      .progress-name {
+
+      font-weight: $bold;
+      font-size: $text-xl;
+      color: white;
+      display: none;
+      @include md {
         display: flex;
         align-items: center;
         gap: 1rem;
-
-        font-weight: $regular;
-        color: $text-gray;
-
-        /* Oval Orange */
-        div {
-          width: 8px;
-          height: 8px;
-          border-radius: 100%;
-          background: #f49f85;
-        }
-        .oval-orange {
-          background: $progress-orange;
-        }
-        .oval-blue {
-          background: $progress-blue;
-        }
-        .oval-purple {
-          background: $progress-purple;
-        }
       }
+    }
 
-      .progress-count {
-        color: $text-gray;
-        font-weight: $bold;
-        text-align: end;
-        display: flex;
-        justify-content: end;
-        align-items: center;
+    button.sort-by {
+      background: none;
+      border: none;
+      color: $text-almost-white;
+      font-size: $text-sm;
+
+      @include md {
+        color: $text-almost-white;
+      }
+    }
+
+    button.add-feedback-button {
+      background: $button-purple;
+      font-weight: $semibold;
+      font-size: $text-xs;
+      padding: 0.7rem 1rem;
+      color: white;
+      border-radius: $radius-sm;
+      @include md {
+        margin-left: auto;
       }
     }
   }

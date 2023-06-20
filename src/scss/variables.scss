@@ -5,9 +5,12 @@ $regular: 400;
 $semibold: 600;
 $bold: 700;
 
+//border radius
+$radius-sm: 10px;
+
 // text size
 $text-xs: 13px;
-$text-s: 14px;
+$text-sm: 14px;
 $text-md: 15px;
 $text-lg: 16px;
 $text-xl: 18px;
@@ -21,6 +24,8 @@ $background-navy: #373f68;
 // text color
 $text-navy: #3a4374;
 $text-gray: #647196;
+$text-almost-white: #f2f4fe;
+$text-almost-white-75: rgba(242, 244, 254, 0.75);
 
 // button color
 $button-gray: #f2f4ff;

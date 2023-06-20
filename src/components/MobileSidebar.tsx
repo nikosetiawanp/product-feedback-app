@@ -1,12 +1,8 @@
-import DotOrange from "../assets/suggestions/dot-orange.svg";
-import DotBlue from "../assets/suggestions/dot-blue.svg";
-import DotPurple from "../assets/suggestions/dot-purple.svg";
-
 export default function MobileSidebar() {
   return (
     <div className="mobile-sidebar">
       <div className="mobile-sidebar-card">
-        <div className="category">
+        <div className="category-mobile">
           <button className="active">All</button>
           <button className="inactive">UI</button>
           <button className="inactive">UX</button>
@@ -14,7 +10,7 @@ export default function MobileSidebar() {
           <button className="inactive">Bug</button>
           <button className="inactive">Feature</button>
         </div>
-        <div className="roadmap">
+        <div className="roadmap-mobile">
           <h1>Roadmap</h1>
           <a href="#">View</a>
 
