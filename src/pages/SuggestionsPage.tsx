@@ -1,12 +1,17 @@
 import HamburgerIcon from "../assets/shared/mobile/icon-hamburger.svg";
-import CloseIcon from "../assets/shared/mobile/icon-close.svg";
+// components
 import MobileSidebar from "../components/MobileSidebar";
+import SuggestionCard from "../components/SuggestionCard";
+import CategoryButton from "../components/CategoryButton";
+import SortByDropdown from "../components/SortByDropdown";
+
+// icons
+import CloseIcon from "../assets/shared/mobile/icon-close.svg";
 import IconSuggestions from "../assets/suggestions/icon-suggestions.svg";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconComments from "../assets/shared/icon-comments.svg";
-import SuggestionCard from "../components/SuggestionCard";
-import CategoryButton from "../components/CategoryButton";
+
 import { useState } from "react";
 
 export default function SuggestionsPage() {
@@ -112,21 +117,14 @@ export default function SuggestionsPage() {
             6 Suggestions
           </span>
           <button className="sort-by" onClick={toggleSortBy}>
-            Sort by : <b>Most Upvotes</b> &nbsp;
+            Sort by : <b>{sortBy}</b> &nbsp;
             <img
               src={!sortByIsActive ? IconArrowDown : IconArrowUp}
               alt="icon-arrow-down"
             />
-            {/* -------make component later----- */}
             {sortByIsActive && (
-              <div className="sort-by-dropdown">
-                <span>Most Upvotes</span>
-                <span>Least Upvotes</span>
-                <span>Most Comments</span>
-                <span>Most Comments</span>
-              </div>
+              <SortByDropdown sortBy={sortBy} setSortBy={setSortBy} />
             )}
-            {/* -------make component later----- */}
           </button>
           <button className="add-feedback-button">+ Add Feedback</button>
         </div>

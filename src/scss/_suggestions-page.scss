@@ -243,33 +243,13 @@ div.page-container {
         color: $text-almost-white;
         font-size: $text-sm;
         position: relative;
+        width: 200px;
+        text-align: start;
         &:hover {
           cursor: pointer;
         }
         @include md {
           color: $text-almost-white;
-        }
-
-        .sort-by-dropdown {
-          position: absolute;
-          margin-top: 50px;
-
-          display: flex;
-          flex-direction: column;
-          background: white;
-          border-radius: $radius-sm;
-          box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
-          width: 255px;
-
-          span {
-            display: flex;
-            color: $text-gray;
-            font-size: $text-lg;
-            padding: 0.75rem 1rem;
-            &:hover {
-              color: $button-purple;
-            }
-          }
         }
       }
       button.add-feedback-button {

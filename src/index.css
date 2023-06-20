@@ -364,6 +364,8 @@ div.page-container section.suggestions-container .suggestions-bar button.sort-by
   color: #f2f4fe;
   font-size: 14px;
   position: relative;
+  width: 200px;
+  text-align: start;
 }
 div.page-container section.suggestions-container .suggestions-bar button.sort-by:hover {
   cursor: pointer;
@@ -372,25 +374,6 @@ div.page-container section.suggestions-container .suggestions-bar button.sort-by
   div.page-container section.suggestions-container .suggestions-bar button.sort-by {
     color: #f2f4fe;
   }
-}
-div.page-container section.suggestions-container .suggestions-bar button.sort-by .sort-by-dropdown {
-  position: absolute;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
-  width: 255px;
-}
-div.page-container section.suggestions-container .suggestions-bar button.sort-by .sort-by-dropdown span {
-  display: flex;
-  color: #647196;
-  font-size: 16px;
-  padding: 0.75rem 1rem;
-}
-div.page-container section.suggestions-container .suggestions-bar button.sort-by .sort-by-dropdown span:hover {
-  color: #ad1fea;
 }
 div.page-container section.suggestions-container .suggestions-bar button.add-feedback-button {
   background: #ad1fea;
@@ -617,6 +600,35 @@ div.page-container section.suggestions-container .suggestions-list .suggestion-c
   display: flex;
   justify-content: end;
   align-items: center;
+}
+
+.sort-by-dropdown {
+  position: absolute;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+  width: 255px;
+}
+.sort-by-dropdown button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #647196;
+  font-size: 16px;
+  padding: 0.75rem 1rem;
+  background: white;
+}
+.sort-by-dropdown button:hover {
+  cursor: pointer;
+  color: #ad1fea;
+}
+.sort-by-dropdown hr {
+  border: 1px solid #f2f4fe;
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.css.map */
