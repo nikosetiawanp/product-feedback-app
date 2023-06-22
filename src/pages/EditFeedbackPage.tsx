@@ -23,7 +23,7 @@ export default function NewFeedbackPage() {
   };
 
   return (
-    <section className="feedback-page">
+    <section className="edit-feedback-page">
       <form className="feedback-form" action="submit">
         <button
           className="go-back"
@@ -111,7 +111,7 @@ export default function NewFeedbackPage() {
             Cancel
           </button>
           <button type="button" className="delete">
-            Delete
+            Cancel
           </button>
         </div>
       </form>

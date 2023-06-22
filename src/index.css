@@ -122,6 +122,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   width: 100vw;
 }
 
@@ -407,7 +408,8 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   }
 }
 
-.feedback-page {
+.new-feedback-page,
+.edit-feedback-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -420,7 +422,12 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   height: 100vh;
   padding: 1.5rem;
 }
-.feedback-page .feedback-form {
+
+.edit-feedback-page {
+  padding-top: 5rem;
+}
+
+.feedback-form {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -432,13 +439,13 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   border-radius: 10px;
 }
 @media (min-width: 768px) {
-  .feedback-page .feedback-form {
+  .feedback-form {
     max-width: 540px;
     padding: 2.5rem;
     padding-top: 4rem;
   }
 }
-.feedback-page .feedback-form button.go-back {
+.feedback-form button.go-back {
   align-self: flex-start;
   background: none;
   color: #647196;
@@ -448,43 +455,43 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   top: -75px;
   left: 0;
 }
-.feedback-page .feedback-form button.go-back:hover {
+.feedback-form button.go-back:hover {
   cursor: pointer;
 }
-.feedback-page .feedback-form img.icon-new-feedback,
-.feedback-page .feedback-form img.icon-edit-feedback {
+.feedback-form img.icon-new-feedback,
+.feedback-form img.icon-edit-feedback {
   width: 40px;
   position: absolute;
   top: -20px;
 }
 @media (min-width: 768px) {
-  .feedback-page .feedback-form img.icon-new-feedback,
-  .feedback-page .feedback-form img.icon-edit-feedback {
+  .feedback-form img.icon-new-feedback,
+  .feedback-form img.icon-edit-feedback {
     width: 56px;
     top: -28px;
   }
 }
-.feedback-page .feedback-form h1 {
+.feedback-form h1 {
   color: #3a4374;
   font-size: 18px;
   margin-bottom: 2.4rem;
 }
 @media (min-width: 768px) {
-  .feedback-page .feedback-form h1 {
+  .feedback-form h1 {
     font-size: 24px;
   }
 }
-.feedback-page .feedback-form h2 {
+.feedback-form h2 {
   color: #3a4374;
   font-size: 13px;
   margin-bottom: 0.5rem;
 }
-.feedback-page .feedback-form p {
+.feedback-form p {
   color: #647196;
   font-size: 13px;
   margin-bottom: 1.5rem;
 }
-.feedback-page .feedback-form input.title-input {
+.feedback-form input.title-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -498,19 +505,19 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   padding: 0rem 1.5rem;
   border: 1px solid #f7f8fd;
 }
-.feedback-page .feedback-form input.title-input:hover {
+.feedback-form input.title-input:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-.feedback-page .feedback-form input.title-input:focus {
+.feedback-form input.title-input:focus {
   border: 1px solid #4661e6;
 }
-.feedback-page .feedback-form .category-input-container {
+.feedback-form .category-input-container {
   width: 100%;
   position: relative;
   margin-bottom: 1.5rem;
 }
-.feedback-page .feedback-form .category-input-container button.category-input {
+.feedback-form .category-input-container button.category-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -525,14 +532,14 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   border: 1px solid #f7f8fd;
   color: #3a4374;
 }
-.feedback-page .feedback-form .category-input-container button.category-input:hover {
+.feedback-form .category-input-container button.category-input:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-.feedback-page .feedback-form .category-input-container button.category-input:focus {
+.feedback-form .category-input-container button.category-input:focus {
   border: 1px solid #4661e6;
 }
-.feedback-page .feedback-form textarea.feedback-detail {
+.feedback-form textarea.feedback-detail {
   min-height: 120px;
   resize: horizontal;
   overflow: hidden;
@@ -541,32 +548,32 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   outline: none;
   border: none;
   resize: none;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding: 1.5rem;
   border: 1px solid #f7f8fd;
 }
-.feedback-page .feedback-form textarea.feedback-detail:hover {
+.feedback-form textarea.feedback-detail:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-.feedback-page .feedback-form textarea.feedback-detail:focus {
+.feedback-form textarea.feedback-detail:focus {
   border: 1px solid #4661e6;
 }
-.feedback-page .feedback-form .buttons {
+.feedback-form .buttons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 768px) {
-  .feedback-page .feedback-form .buttons {
+  .feedback-form .buttons {
     flex-direction: row-reverse;
     justify-content: flex-start;
   }
 }
-.feedback-page .feedback-form .buttons button.add-feedback,
-.feedback-page .feedback-form .buttons button.save-changes,
-.feedback-page .feedback-form .buttons button.cancel,
-.feedback-page .feedback-form .buttons button.delete {
+.feedback-form .buttons button.add-feedback,
+.feedback-form .buttons button.save-changes,
+.feedback-form .buttons button.cancel,
+.feedback-form .buttons button.delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -578,36 +585,36 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   padding: 0.8rem;
   border-radius: 10px;
 }
-.feedback-page .feedback-form .buttons button.add-feedback:hover,
-.feedback-page .feedback-form .buttons button.save-changes:hover,
-.feedback-page .feedback-form .buttons button.cancel:hover,
-.feedback-page .feedback-form .buttons button.delete:hover {
+.feedback-form .buttons button.add-feedback:hover,
+.feedback-form .buttons button.save-changes:hover,
+.feedback-form .buttons button.cancel:hover,
+.feedback-form .buttons button.delete:hover {
   background: #c75af6;
   cursor: pointer;
 }
 @media (min-width: 768px) {
-  .feedback-page .feedback-form .buttons button.add-feedback,
-  .feedback-page .feedback-form .buttons button.save-changes,
-  .feedback-page .feedback-form .buttons button.cancel,
-  .feedback-page .feedback-form .buttons button.delete {
+  .feedback-form .buttons button.add-feedback,
+  .feedback-form .buttons button.save-changes,
+  .feedback-form .buttons button.cancel,
+  .feedback-form .buttons button.delete {
     width: 144px;
   }
 }
-.feedback-page .feedback-form .buttons button.cancel {
+.feedback-form .buttons button.cancel {
   background: #3a4374;
   margin-bottom: 0rem;
 }
-.feedback-page .feedback-form .buttons button.cancel:hover {
+.feedback-form .buttons button.cancel:hover {
   background: #656ea3;
 }
-.feedback-page .feedback-form .buttons button.delete {
+.feedback-form .buttons button.delete {
   background: #d73737;
 }
-.feedback-page .feedback-form .buttons button.delete:hover {
+.feedback-form .buttons button.delete:hover {
   background: #e98888;
 }
 @media (min-width: 768px) {
-  .feedback-page .feedback-form .buttons button.delete {
+  .feedback-form .buttons button.delete {
     width: 92px;
     margin-right: auto;
   }
