@@ -34,7 +34,7 @@ div.suggestions-page {
       align-items: center;
       width: 100vw;
       height: 72px;
-      padding: 2rem;
+      padding: 1.5rem;
 
       background-image: url("./assets/suggestions/mobile/background-header.png");
       background-repeat: no-repeat;
@@ -99,7 +99,7 @@ div.suggestions-page {
     // BAR
     .suggestions-bar {
       background: $background-navy;
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -136,7 +136,7 @@ div.suggestions-page {
         color: $text-almost-white;
         font-size: $text-sm;
         position: relative;
-        width: 200px;
+        width: 190px;
         text-align: start;
         &:hover {
           cursor: pointer;
@@ -152,6 +152,7 @@ div.suggestions-page {
         padding: 0.7rem 1rem;
         color: white;
         border-radius: $radius-sm;
+        height: 40px;
 
         &:hover {
           cursor: pointer;
@@ -168,7 +169,7 @@ div.suggestions-page {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      padding: 0rem 2rem;
+      padding: 0rem 1.5rem;
       margin-bottom: 4rem;
 
       @include md {

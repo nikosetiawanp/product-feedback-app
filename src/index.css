@@ -165,7 +165,7 @@ div.suggestions-page header.suggestions-header .rainbow-card {
   align-items: center;
   width: 100vw;
   height: 72px;
-  padding: 2rem;
+  padding: 1.5rem;
   background-image: url("./assets/suggestions/mobile/background-header.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -230,7 +230,7 @@ div.suggestions-page section.suggestions-container {
 }
 div.suggestions-page section.suggestions-container .suggestions-bar {
   background: #373f68;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -272,7 +272,7 @@ div.suggestions-page section.suggestions-container .suggestions-bar button.sort-
   color: #f2f4fe;
   font-size: 14px;
   position: relative;
-  width: 200px;
+  width: 190px;
   text-align: start;
 }
 div.suggestions-page section.suggestions-container .suggestions-bar button.sort-by:hover {
@@ -290,6 +290,7 @@ div.suggestions-page section.suggestions-container .suggestions-bar button.add-f
   padding: 0.7rem 1rem;
   color: white;
   border-radius: 10px;
+  height: 40px;
 }
 div.suggestions-page section.suggestions-container .suggestions-bar button.add-feedback-button:hover {
   cursor: pointer;
@@ -304,7 +305,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 0rem 2rem;
+  padding: 0rem 1.5rem;
   margin-bottom: 4rem;
 }
 @media (min-width: 768px) {
@@ -509,6 +510,7 @@ section.new-feedback-page form.new-feedback .category-input-container button.cat
   box-sizing: border-box;
   background: #f7f8fd;
   border: 1px solid #f7f8fd;
+  color: #3a4374;
 }
 section.new-feedback-page form.new-feedback .category-input-container button.category-input:hover {
   cursor: pointer;
@@ -756,7 +758,7 @@ section.new-feedback-page form.new-feedback .buttons button.cancel:hover {
 }
 .category-dropdown button:hover {
   color: #ad1fea;
-  border: 1px solid #4661e6;
+  cursor: pointer;
 }
 .category-dropdown hr {
   border: 1px solid #f2f4fe;

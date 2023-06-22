@@ -17,7 +17,8 @@
     color: $text-gray;
     &:hover {
       color: $button-purple;
-      border: 1px solid $button-blue;
+      cursor: pointer;
+      // border: 1px solid $button-blue;
     }
   }
 

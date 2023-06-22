@@ -1,20 +1,21 @@
 //  variables & functions
-@import "breakpoints";
-@import "variables";
+@import "./abstracts/breakpoints";
+@import "./abstracts/variables";
 
 // base & layout
-@import "reset";
-@import "general";
+@import "./base/reset";
+@import "./base/general";
 
 // pages
-@import "suggestions-page";
-@import "new-feedback-page";
+// @import "suggestions-page";
+@import "./pages/suggestions-page";
+@import "./pages/new-feedback-page";
 
 // components
-@import "category-filter";
-@import "roadmap-status";
-@import "mobile-sidebar";
-@import "sort-by-dropdown";
-@import "category-dropdown";
+@import "./components/category-filter";
+@import "./components/roadmap-status";
+@import "./components/mobile-sidebar";
+@import "./components/sort-by-dropdown";
+@import "./components/category-dropdown";
 
 // npx sass --watch ./src/scss/index.scss ./src/index.css
