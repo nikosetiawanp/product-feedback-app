@@ -544,8 +544,8 @@ section.new-feedback-page form.new-feedback .buttons {
 }
 @media (min-width: 768px) {
   section.new-feedback-page form.new-feedback .buttons {
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
   }
 }
 section.new-feedback-page form.new-feedback .buttons button.add-feedback,

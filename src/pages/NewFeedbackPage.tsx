@@ -19,7 +19,11 @@ export default function NewFeedbackPage() {
   return (
     <section className="new-feedback-page">
       <form className="new-feedback" action="submit">
-        <button className="go-back" type="button">
+        <button
+          className="go-back"
+          type="button"
+          onClick={() => history.back()}
+        >
           <img src={IconArrowLeft} alt="icon-arrow-left" /> &nbsp; Go back
         </button>
         <img
@@ -68,7 +72,13 @@ export default function NewFeedbackPage() {
         ></textarea>
         <div className="buttons">
           <button className="add-feedback">Add Feedback</button>
-          <button className="cancel">Cancel</button>
+          <button
+            type="button"
+            className="cancel"
+            onClick={() => history.back()}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </section>

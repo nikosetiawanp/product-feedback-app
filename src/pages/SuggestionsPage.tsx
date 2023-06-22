@@ -79,7 +79,12 @@ export default function SuggestionsPage() {
               <SortByDropdown sortBy={sortBy} setSortBy={setSortBy} />
             )}
           </button>
-          <button className="add-feedback-button">+ Add Feedback</button>
+          <button
+            className="add-feedback-button"
+            onClick={() => (window.location.href = "new-feedback")}
+          >
+            + Add Feedback
+          </button>
         </div>
 
         {/* SUGGESTION LIST */}
