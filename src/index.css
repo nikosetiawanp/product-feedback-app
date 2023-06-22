@@ -407,7 +407,7 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   }
 }
 
-section.new-feedback-page {
+.feedback-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -420,7 +420,7 @@ section.new-feedback-page {
   height: 100vh;
   padding: 1.5rem;
 }
-section.new-feedback-page form.new-feedback {
+.feedback-page .feedback-form {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -432,13 +432,13 @@ section.new-feedback-page form.new-feedback {
   border-radius: 10px;
 }
 @media (min-width: 768px) {
-  section.new-feedback-page form.new-feedback {
+  .feedback-page .feedback-form {
     max-width: 540px;
-    padding-top: 3rem;
     padding: 2.5rem;
+    padding-top: 4rem;
   }
 }
-section.new-feedback-page form.new-feedback button.go-back {
+.feedback-page .feedback-form button.go-back {
   align-self: flex-start;
   background: none;
   color: #647196;
@@ -448,30 +448,43 @@ section.new-feedback-page form.new-feedback button.go-back {
   top: -75px;
   left: 0;
 }
-section.new-feedback-page form.new-feedback button.go-back:hover {
+.feedback-page .feedback-form button.go-back:hover {
   cursor: pointer;
 }
-section.new-feedback-page form.new-feedback img.icon-new-feedback {
+.feedback-page .feedback-form img.icon-new-feedback,
+.feedback-page .feedback-form img.icon-edit-feedback {
   width: 40px;
   position: absolute;
   top: -20px;
 }
-section.new-feedback-page form.new-feedback h1 {
+@media (min-width: 768px) {
+  .feedback-page .feedback-form img.icon-new-feedback,
+  .feedback-page .feedback-form img.icon-edit-feedback {
+    width: 56px;
+    top: -28px;
+  }
+}
+.feedback-page .feedback-form h1 {
   color: #3a4374;
   font-size: 18px;
   margin-bottom: 2.4rem;
 }
-section.new-feedback-page form.new-feedback h2 {
+@media (min-width: 768px) {
+  .feedback-page .feedback-form h1 {
+    font-size: 24px;
+  }
+}
+.feedback-page .feedback-form h2 {
   color: #3a4374;
   font-size: 13px;
   margin-bottom: 0.5rem;
 }
-section.new-feedback-page form.new-feedback p {
+.feedback-page .feedback-form p {
   color: #647196;
   font-size: 13px;
   margin-bottom: 1.5rem;
 }
-section.new-feedback-page form.new-feedback input.title-input {
+.feedback-page .feedback-form input.title-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -485,19 +498,19 @@ section.new-feedback-page form.new-feedback input.title-input {
   padding: 0rem 1.5rem;
   border: 1px solid #f7f8fd;
 }
-section.new-feedback-page form.new-feedback input.title-input:hover {
+.feedback-page .feedback-form input.title-input:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-section.new-feedback-page form.new-feedback input.title-input:focus {
+.feedback-page .feedback-form input.title-input:focus {
   border: 1px solid #4661e6;
 }
-section.new-feedback-page form.new-feedback .category-input-container {
+.feedback-page .feedback-form .category-input-container {
   width: 100%;
   position: relative;
   margin-bottom: 1.5rem;
 }
-section.new-feedback-page form.new-feedback .category-input-container button.category-input {
+.feedback-page .feedback-form .category-input-container button.category-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -512,14 +525,14 @@ section.new-feedback-page form.new-feedback .category-input-container button.cat
   border: 1px solid #f7f8fd;
   color: #3a4374;
 }
-section.new-feedback-page form.new-feedback .category-input-container button.category-input:hover {
+.feedback-page .feedback-form .category-input-container button.category-input:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-section.new-feedback-page form.new-feedback .category-input-container button.category-input:focus {
+.feedback-page .feedback-form .category-input-container button.category-input:focus {
   border: 1px solid #4661e6;
 }
-section.new-feedback-page form.new-feedback textarea.feedback-detail {
+.feedback-page .feedback-form textarea.feedback-detail {
   min-height: 120px;
   resize: horizontal;
   overflow: hidden;
@@ -532,26 +545,28 @@ section.new-feedback-page form.new-feedback textarea.feedback-detail {
   padding: 1.5rem;
   border: 1px solid #f7f8fd;
 }
-section.new-feedback-page form.new-feedback textarea.feedback-detail:hover {
+.feedback-page .feedback-form textarea.feedback-detail:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-section.new-feedback-page form.new-feedback textarea.feedback-detail:focus {
+.feedback-page .feedback-form textarea.feedback-detail:focus {
   border: 1px solid #4661e6;
 }
-section.new-feedback-page form.new-feedback .buttons {
+.feedback-page .feedback-form .buttons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 768px) {
-  section.new-feedback-page form.new-feedback .buttons {
+  .feedback-page .feedback-form .buttons {
     flex-direction: row-reverse;
     justify-content: flex-start;
   }
 }
-section.new-feedback-page form.new-feedback .buttons button.add-feedback,
-section.new-feedback-page form.new-feedback .buttons button.cancel {
+.feedback-page .feedback-form .buttons button.add-feedback,
+.feedback-page .feedback-form .buttons button.save-changes,
+.feedback-page .feedback-form .buttons button.cancel,
+.feedback-page .feedback-form .buttons button.delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -563,17 +578,39 @@ section.new-feedback-page form.new-feedback .buttons button.cancel {
   padding: 0.8rem;
   border-radius: 10px;
 }
-section.new-feedback-page form.new-feedback .buttons button.add-feedback:hover,
-section.new-feedback-page form.new-feedback .buttons button.cancel:hover {
+.feedback-page .feedback-form .buttons button.add-feedback:hover,
+.feedback-page .feedback-form .buttons button.save-changes:hover,
+.feedback-page .feedback-form .buttons button.cancel:hover,
+.feedback-page .feedback-form .buttons button.delete:hover {
   background: #c75af6;
   cursor: pointer;
 }
-section.new-feedback-page form.new-feedback .buttons button.cancel {
+@media (min-width: 768px) {
+  .feedback-page .feedback-form .buttons button.add-feedback,
+  .feedback-page .feedback-form .buttons button.save-changes,
+  .feedback-page .feedback-form .buttons button.cancel,
+  .feedback-page .feedback-form .buttons button.delete {
+    width: 144px;
+  }
+}
+.feedback-page .feedback-form .buttons button.cancel {
   background: #3a4374;
   margin-bottom: 0rem;
 }
-section.new-feedback-page form.new-feedback .buttons button.cancel:hover {
+.feedback-page .feedback-form .buttons button.cancel:hover {
   background: #656ea3;
+}
+.feedback-page .feedback-form .buttons button.delete {
+  background: #d73737;
+}
+.feedback-page .feedback-form .buttons button.delete:hover {
+  background: #e98888;
+}
+@media (min-width: 768px) {
+  .feedback-page .feedback-form .buttons button.delete {
+    width: 92px;
+    margin-right: auto;
+  }
 }
 
 .category {
@@ -738,7 +775,8 @@ section.new-feedback-page form.new-feedback .buttons button.cancel:hover {
   margin: 0;
 }
 
-.category-dropdown {
+.category-dropdown,
+.status-dropdown {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -747,8 +785,10 @@ section.new-feedback-page form.new-feedback .buttons button.cancel:hover {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
   position: absolute;
   margin-top: 1rem;
+  z-index: 50;
 }
-.category-dropdown button {
+.category-dropdown button,
+.status-dropdown button {
   background: white;
   display: flex;
   justify-content: space-between;
@@ -756,11 +796,13 @@ section.new-feedback-page form.new-feedback .buttons button.cancel:hover {
   padding: 1rem 1.5rem;
   color: #647196;
 }
-.category-dropdown button:hover {
+.category-dropdown button:hover,
+.status-dropdown button:hover {
   color: #ad1fea;
   cursor: pointer;
 }
-.category-dropdown hr {
+.category-dropdown hr,
+.status-dropdown hr {
   border: 1px solid #f2f4fe;
   margin: 0;
 }

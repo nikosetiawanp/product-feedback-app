@@ -17,8 +17,8 @@ export default function NewFeedbackPage() {
   };
 
   return (
-    <section className="new-feedback-page">
-      <form className="new-feedback" action="submit">
+    <section className="feedback-page">
+      <form className="feedback-form" action="submit">
         <button
           className="go-back"
           type="button"

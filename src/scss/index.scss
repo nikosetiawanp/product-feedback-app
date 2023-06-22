@@ -9,13 +9,13 @@
 // pages
 // @import "suggestions-page";
 @import "./pages/suggestions-page";
-@import "./pages/new-feedback-page";
+@import "./pages/feedback-page";
 
 // components
 @import "./components/category-filter";
 @import "./components/roadmap-status";
 @import "./components/mobile-sidebar";
 @import "./components/sort-by-dropdown";
-@import "./components/category-dropdown";
+@import "./components/category-status-dropdown";
 
 // npx sass --watch ./src/scss/index.scss ./src/index.css

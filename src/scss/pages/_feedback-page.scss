@@ -1,4 +1,4 @@
-section.new-feedback-page {
+.feedback-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@ section.new-feedback-page {
   height: 100vh;
   padding: 1.5rem;
 
-  form.new-feedback {
+  .feedback-form {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -24,8 +24,8 @@ section.new-feedback-page {
     border-radius: $radius-sm;
     @include md {
       max-width: 540px;
-      padding-top: 3rem;
       padding: 2.5rem;
+      padding-top: 4rem;
     }
 
     button.go-back {
@@ -43,16 +43,25 @@ section.new-feedback-page {
       }
     }
 
-    img.icon-new-feedback {
+    img.icon-new-feedback,
+    img.icon-edit-feedback {
       width: 40px;
       position: absolute;
       top: -20px;
+
+      @include md {
+        width: 56px;
+        top: -28px;
+      }
     }
 
     h1 {
       color: $text-navy;
       font-size: $text-xl;
       margin-bottom: 2.4rem;
+      @include md {
+        font-size: $text-2xl;
+      }
     }
 
     h2 {
@@ -152,7 +161,9 @@ section.new-feedback-page {
       }
 
       button.add-feedback,
-      button.cancel {
+      button.save-changes,
+      button.cancel,
+      button.delete {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -167,12 +178,25 @@ section.new-feedback-page {
           background: $button-purple-hover;
           cursor: pointer;
         }
+        @include md {
+          width: 144px;
+        }
       }
       button.cancel {
         background: $text-navy;
         margin-bottom: 0rem;
         &:hover {
           background: $text-navy-hover;
+        }
+      }
+      button.delete {
+        background: $button-red;
+        &:hover {
+          background: $button-red-hover;
+        }
+        @include md {
+          width: 92px;
+          margin-right: auto;
         }
       }
     }
