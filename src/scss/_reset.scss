@@ -2,7 +2,7 @@
 *,
 *:before,
 *:after {
-  font-family: "Jost";
+  font-family: "Jost", sans-serif;
   box-sizing: border-box;
 }
 
@@ -62,7 +62,7 @@ button {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: "Jost";
+  font-family: "Jost", sans-serif;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -107,4 +107,12 @@ table {
 input {
   -webkit-appearance: none;
   border-radius: 0;
+}
+
+select {
+  -o-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }

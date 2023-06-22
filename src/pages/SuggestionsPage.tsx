@@ -2,8 +2,9 @@ import HamburgerIcon from "../assets/shared/mobile/icon-hamburger.svg";
 // components
 import MobileSidebar from "../components/MobileSidebar";
 import SuggestionCard from "../components/SuggestionCard";
-import CategoryButton from "../components/CategoryButton";
 import SortByDropdown from "../components/SortByDropdown";
+import CategoryFilter from "../components/CategoryFilter";
+import RoadmapStatus from "../components/RoadmapStatus";
 
 // icons
 import CloseIcon from "../assets/shared/mobile/icon-close.svg";
@@ -28,7 +29,7 @@ export default function SuggestionsPage() {
   };
 
   return (
-    <div className="page-container">
+    <div className="suggestions-page">
       {/* HEADER */}
       <header className="suggestions-header">
         <div className="rainbow-card">
@@ -44,65 +45,17 @@ export default function SuggestionsPage() {
             />
           </button>
         </div>
-        <div className="category">
-          {/* <button className="inactive">UI</button>
-          <button className="inactive">UX</button>
-          <button className="inactive">Enhancement</button>
-          <button className="inactive">Bug</button>
-        <button className="inactive">Feature</button> */}
-          <CategoryButton
-            categoryName={"All"}
+        <CategoryFilter
+          categoryFilter={categoryFilter}
+          setCategoryFilter={setCategoryFilter}
+        />
+        <RoadmapStatus />
+        {mobileSidebarIsActive && (
+          <MobileSidebar
             categoryFilter={categoryFilter}
             setCategoryFilter={setCategoryFilter}
           />
-          <CategoryButton
-            categoryName={"UI"}
-            categoryFilter={categoryFilter}
-            setCategoryFilter={setCategoryFilter}
-          />
-          <CategoryButton
-            categoryName={"UX"}
-            categoryFilter={categoryFilter}
-            setCategoryFilter={setCategoryFilter}
-          />
-          <CategoryButton
-            categoryName={"Enhancement"}
-            categoryFilter={categoryFilter}
-            setCategoryFilter={setCategoryFilter}
-          />
-          <CategoryButton
-            categoryName={"Bug"}
-            categoryFilter={categoryFilter}
-            setCategoryFilter={setCategoryFilter}
-          />
-          <CategoryButton
-            categoryName={"Feature"}
-            categoryFilter={categoryFilter}
-            setCategoryFilter={setCategoryFilter}
-          />
-        </div>
-        <div className="roadmap">
-          <h1>Roadmap</h1>
-          <a className="view-roadmap" href="#">
-            View
-          </a>
-
-          <span className="progress-name">
-            <div className="oval-purple"></div>Planned
-          </span>
-          <b className="progress-count">2</b>
-
-          <span className="progress-name">
-            <div className="oval-orange"></div> In-Progress
-          </span>
-          <b className="progress-count">2</b>
-
-          <span className="progress-name">
-            <div className="oval-blue"></div>Live
-          </span>
-          <b className="progress-count">2</b>
-        </div>
-        {mobileSidebarIsActive && <MobileSidebar />}
+        )}
       </header>
 
       {/* CONTENT */}

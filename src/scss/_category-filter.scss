@@ -1,0 +1,39 @@
+.category {
+  background: white;
+  min-height: 175px;
+  display: none;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  gap: 8px;
+  width: 100%;
+  border-radius: $radius-sm;
+
+  @include md {
+    display: flex;
+  }
+
+  button.active {
+    background: $button-blue;
+    color: white;
+
+    height: 30px;
+    border-radius: $radius-sm;
+    padding: 0rem 1rem;
+    font-weight: $semibold;
+  }
+
+  button.inactive {
+    background: $button-gray;
+    color: $button-blue;
+
+    height: 30px;
+    border-radius: $radius-sm;
+    padding: 0rem 1rem;
+    font-weight: $semibold;
+
+    &:hover {
+      background: $button-gray-hover;
+      cursor: pointer;
+    }
+  }
+}

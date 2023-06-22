@@ -1,28 +1,26 @@
-.sort-by-dropdown {
-  position: absolute;
-  margin-top: 30px;
-
+.category-dropdown {
   display: flex;
   flex-direction: column;
-  background: white;
+  width: 100%;
   border-radius: $radius-sm;
   overflow: hidden;
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
-  width: 255px;
+  position: absolute;
+  margin-top: 1rem;
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: $text-gray;
-    font-size: $text-lg;
-    padding: 0.75rem 1rem;
     background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: $text-gray;
     &:hover {
-      cursor: pointer;
       color: $button-purple;
+      border: 1px solid $button-blue;
     }
   }
+
   hr {
     border: 1px solid $text-almost-white;
     margin: 0;

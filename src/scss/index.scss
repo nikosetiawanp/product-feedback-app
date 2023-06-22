@@ -8,5 +8,13 @@
 
 // pages
 @import "suggestions-page";
+@import "new-feedback-page";
+
+// components
+@import "category-filter";
+@import "roadmap-status";
 @import "mobile-sidebar";
 @import "sort-by-dropdown";
+@import "category-dropdown";
+
+// npx sass --watch ./src/scss/index.scss ./src/index.css
