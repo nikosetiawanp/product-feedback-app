@@ -9,40 +9,40 @@ export default function CategoryFilter(props: {
   return (
     <div className="category">
       <button
-        onClick={() => setCategory("All")}
-        className={props.categoryFilter === "All" ? "active" : "inactive"}
+        onClick={() => setCategory("")}
+        className={props.categoryFilter === "" ? "active" : "inactive"}
       >
         All
       </button>
       <button
-        onClick={() => setCategory("UI")}
-        className={props.categoryFilter === "UI" ? "active" : "inactive"}
+        onClick={() => setCategory("ui")}
+        className={props.categoryFilter === "ui" ? "active" : "inactive"}
       >
         UI
       </button>
       <button
-        onClick={() => setCategory("UX")}
-        className={props.categoryFilter === "UX" ? "active" : "inactive"}
+        onClick={() => setCategory("ux")}
+        className={props.categoryFilter === "ux" ? "active" : "inactive"}
       >
         UX
       </button>
       <button
-        onClick={() => setCategory("Enhancement")}
+        onClick={() => setCategory("enhancement")}
         className={
-          props.categoryFilter === "Enhancement" ? "active" : "inactive"
+          props.categoryFilter === "enhancement" ? "active" : "inactive"
         }
       >
         Enhancement
       </button>
       <button
-        onClick={() => setCategory("Bug")}
-        className={props.categoryFilter === "Bug" ? "active" : "inactive"}
+        onClick={() => setCategory("bug")}
+        className={props.categoryFilter === "bug" ? "active" : "inactive"}
       >
         Bug
       </button>
       <button
-        onClick={() => setCategory("Feature")}
-        className={props.categoryFilter === "Feature" ? "active" : "inactive"}
+        onClick={() => setCategory("feature")}
+        className={props.categoryFilter === "feature" ? "active" : "inactive"}
       >
         Feature
       </button>

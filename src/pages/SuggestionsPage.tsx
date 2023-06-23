@@ -13,13 +13,92 @@ import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconComments from "../assets/shared/icon-comments.svg";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SuggestionsPage() {
   const [mobileSidebarIsActive, setMobileSidebarIsActive] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [categoryFilter, setCategoryFilter] = useState("");
   const [sortByIsActive, setSortByIsActive] = useState(false);
   const [sortBy, setSortBy] = useState("Most Upvotes");
+
+  const [currentUser, setCurrentUser] = useState({});
+  const [productRequests, setProductRequests] = useState([
+    {
+      id: 0,
+      title: "title",
+      category: "enhancement",
+      upvotes: 0,
+      status: "suggestion",
+      comments: [
+        {
+          id: 0,
+          content: "content",
+          user: {
+            image: "image",
+            name: "name",
+            username: "username",
+          },
+        },
+      ],
+    },
+  ]);
+  useEffect(() => {
+    const url = "../../data.json";
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setCurrentUser(json.currentUser);
+        setProductRequests(json.productRequests);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const suggestion = productRequests.filter(
+    (productRequest) => productRequest.status === "suggestion"
+  );
+  const filteredSuggestion = suggestion.filter(
+    (productRequest) => productRequest.category === `${categoryFilter}`
+  );
+  console.log(filteredSuggestion);
+
+  const planned = productRequests.filter(
+    (productRequest) => productRequest.status === "planned"
+  );
+  const inProgress = productRequests.filter(
+    (productRequest) => productRequest.status === "in-progress"
+  );
+  const live = productRequests.filter(
+    (productRequest) => productRequest.status === "live"
+  );
+  const listSuggestion = suggestion.map((obj) => (
+    <SuggestionCard
+      id={obj.id}
+      key={obj.id}
+      title={obj.title}
+      category={obj.category}
+      upvotes={obj.upvotes}
+      status={obj.status}
+      description={obj.description}
+      comments={obj.comments}
+    />
+  ));
+  const listFilteredSuggestion = filteredSuggestion.map((obj) => (
+    <SuggestionCard
+      id={obj.id}
+      key={obj.id}
+      title={obj.title}
+      category={obj.category}
+      upvotes={obj.upvotes}
+      status={obj.status}
+      description={obj.description}
+      comments={obj.comments}
+    />
+  ));
 
   const toggleMobileSidebar = () => {
     setMobileSidebarIsActive(!mobileSidebarIsActive);
@@ -49,7 +128,11 @@ export default function SuggestionsPage() {
           categoryFilter={categoryFilter}
           setCategoryFilter={setCategoryFilter}
         />
-        <RoadmapStatus />
+        <RoadmapStatus
+          plannedCount={planned.length}
+          inProgressCount={inProgress.length}
+          liveCount={live.length}
+        />
         {mobileSidebarIsActive && (
           <MobileSidebar
             categoryFilter={categoryFilter}
@@ -67,7 +150,7 @@ export default function SuggestionsPage() {
               src={IconSuggestions}
               alt="icon-suggestions"
             />
-            6 Suggestions
+            {suggestion.length} Suggestions
           </span>
           <button className="sort-by" onClick={toggleSortBy}>
             Sort by : <b>{sortBy}</b> &nbsp;
@@ -89,24 +172,7 @@ export default function SuggestionsPage() {
 
         {/* SUGGESTION LIST */}
         <div className="suggestions-list">
-          <div className="suggestion-card">
-            <button className="upvote-count">
-              <img src={IconArrowUp} alt="icon-arrow-up" />
-              112
-            </button>
-            <div className="suggestion-preview">
-              <h3>Add tags for solutions</h3>
-              <p>Easier to search for solutions based on a specific stack</p>
-              <span className="tag">Enhancement</span>
-            </div>
-            <span className="comment-count">
-              <img src={IconComments} alt="comment-icon" />2
-            </span>
-          </div>
-          <SuggestionCard />
-          <SuggestionCard />
-          <SuggestionCard />
-          <SuggestionCard />
+          {!categoryFilter ? listSuggestion : listFilteredSuggestion}
         </div>
       </section>
     </div>
