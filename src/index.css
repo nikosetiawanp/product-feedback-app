@@ -686,6 +686,7 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   height: 60px;
   min-height: 60px;
   width: 100%;
+  margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
   .roadmap-page .progress-container-mobile {
@@ -726,7 +727,7 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
 }
 .roadmap-page .title-and-description-mobile {
   width: 100%;
-  padding: 1.5rem 1rem;
+  padding: 0rem 1rem;
 }
 @media (min-width: 768px) {
   .roadmap-page .title-and-description-mobile {

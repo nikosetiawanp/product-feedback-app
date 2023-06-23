@@ -150,8 +150,20 @@ export default function RoadmapPage() {
         </button>
       </div>
       <div className="title-and-description-mobile">
-        <h2>Planned ({planned.length})</h2>
-        <p>Ideas prioritized for research</p>{" "}
+        <h2>
+          {selectedProgress === "planned"
+            ? `Planned (${planned.length})`
+            : selectedProgress === "in-progress"
+            ? `In Progress (${inProgress.length})`
+            : `Live (${live.length})`}
+        </h2>
+        <p>
+          {selectedProgress === "planned"
+            ? "Ideas prioritized for research"
+            : selectedProgress === "in-progress"
+            ? "Currently being developed"
+            : "Released features"}
+        </p>
       </div>
       {/* ROADMAP CONTAINER MOBILE */}
       <section className="roadmap-container-mobile">
