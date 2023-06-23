@@ -2,7 +2,7 @@ export default function RoadmapStatus() {
   return (
     <div className="roadmap">
       <h1>Roadmap</h1>
-      <a className="view-roadmap" href="#">
+      <a className="view-roadmap" href="http://localhost:5173/roadmap">
         View
       </a>
 

@@ -1,0 +1,109 @@
+.roadmap-card {
+  background: white;
+  border-radius: $radius-xs;
+  overflow: hidden;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: relative;
+  width: auto;
+
+  .accent-orange,
+  .accent-purple,
+  .accent-blue {
+    height: 6px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .accent-orange {
+    background: $progress-orange;
+  }
+  .accent-purple {
+    background: $progress-purple;
+  }
+  .accent-blue {
+    background: $progress-blue;
+  }
+
+  .progress-name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    font-weight: $regular;
+    color: $text-gray;
+
+    /* Oval Orange */
+    div {
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+    }
+    .oval-orange {
+      background: $progress-orange;
+    }
+    .oval-blue {
+      background: $progress-blue;
+    }
+    .oval-purple {
+      background: $progress-purple;
+    }
+  }
+
+  h2.title {
+    font-size: $text-xs;
+    font-weight: $bold;
+    color: $text-navy;
+  }
+  p.description {
+    font-size: $text-xs;
+    color: $text-gray;
+  }
+  span.roadmap-category {
+    background: $button-gray;
+    color: $button-blue;
+    border-radius: $radius-sm;
+    font-size: $text-xs;
+    font-weight: $semibold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0rem 0.5rem;
+    width: fit-content;
+    height: 30px;
+  }
+
+  .upvotes-and-comments {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .upvotes {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: $bold;
+      background: $button-gray;
+      color: $text-navy;
+      font-size: $text-xs;
+      border-radius: $radius-sm;
+
+      width: 70px;
+      height: 32px;
+      &:hover {
+        background: $button-gray-hover;
+        cursor: pointer;
+      }
+    }
+    .comments {
+      font-weight: $bold;
+      font-size: $text-xs;
+      display: flex;
+      //   justify-content: center;
+      align-items: center;
+    }
+  }
+}

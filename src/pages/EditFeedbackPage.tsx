@@ -12,7 +12,7 @@ export default function NewFeedbackPage() {
   const [categoryInput, setCategoryInput] = useState("Feature");
   const [categoryDropdownIsActive, setCategoryDropdownIsActive] =
     useState(false);
-  const [statusInput, setStatusInput] = useState("Planned");
+  const [statusInput, setStatusInput] = useState("Suggested");
   const [statusDropdownIsActive, setStatusDropdownIsActive] = useState(false);
 
   const toggleCategoryDropdown = () => {
@@ -111,7 +111,7 @@ export default function NewFeedbackPage() {
             Cancel
           </button>
           <button type="button" className="delete">
-            Cancel
+            Delete
           </button>
         </div>
       </form>

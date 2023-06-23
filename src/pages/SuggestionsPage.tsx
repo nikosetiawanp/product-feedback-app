@@ -60,7 +60,7 @@ export default function SuggestionsPage() {
 
       {/* CONTENT */}
       <section className="suggestions-container">
-        <div className="suggestions-bar">
+        <nav className="suggestions-bar">
           <span className="suggestions-count">
             <img
               className="suggestions-icon"
@@ -85,7 +85,7 @@ export default function SuggestionsPage() {
           >
             + Add Feedback
           </button>
-        </div>
+        </nav>
 
         {/* SUGGESTION LIST */}
         <div className="suggestions-list">

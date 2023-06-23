@@ -1,0 +1,108 @@
+.roadmap-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  @include md {
+    padding: 2.5rem;
+  }
+
+  //   NAVIGATION
+  nav.roadmap-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $background-navy;
+    color: white;
+    width: 100%;
+    height: 100px;
+    padding: 1.5rem;
+    @include md {
+      border-radius: $radius-sm;
+      max-width: 1110px;
+    }
+
+    .title-and-button {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      button {
+        color: white;
+        background: none;
+        font-size: $text-xs;
+        font-weight: $bold;
+        margin-bottom: 0.5rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      h1 {
+        font-size: $text-xl;
+      }
+    }
+
+    button.add-feedback-button {
+      background: $button-purple;
+      font-weight: $semibold;
+      font-size: $text-xs;
+      padding: 0.7rem 1rem;
+      color: white;
+      border-radius: $radius-sm;
+      height: 40px;
+
+      &:hover {
+        cursor: pointer;
+        background: $button-purple-hover;
+      }
+    }
+  }
+
+  .roadmap-container {
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1rem;
+    width: 100%;
+    margin-top: 2rem;
+    max-width: 1110px;
+    @include md {
+      display: grid;
+    }
+
+    // SHARED
+    .planned-container,
+    .in-progress-container,
+    .live-container {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      width: auto;
+      gap: 1rem;
+      // TITLE AND DESCRIPTION
+      .title-and-description {
+        h2 {
+          font-weight: $bold;
+          font-size: $text-sm;
+          color: $text-navy;
+          margin-bottom: 0.8rem;
+        }
+        p {
+          font-size: $text-sm;
+          color: $text-gray;
+        }
+      }
+    }
+
+    // INDIVIDUAL CONTAINER
+    .planned-container {
+      grid-column: 1/2;
+    }
+    .in-progress-container {
+      grid-column: 2/3;
+    }
+    .live-container {
+      grid-column: 3/4;
+    }
+  }
+}

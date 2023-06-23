@@ -10,6 +10,7 @@
 // @import "suggestions-page";
 @import "./pages/suggestions-page";
 @import "./pages/feedback-page";
+@import "./pages/roadmap-page.scss";
 
 // components
 @import "./components/category-filter";
@@ -17,5 +18,4 @@
 @import "./components/mobile-sidebar";
 @import "./components/sort-by-dropdown";
 @import "./components/category-status-dropdown";
-
-// npx sass --watch ./src/scss/index.scss ./src/index.css
+@import "./components/roadmap-card"; // npx sass --watch ./src/scss/index.scss ./src/index.css
