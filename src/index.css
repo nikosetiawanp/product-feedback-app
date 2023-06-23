@@ -639,6 +639,7 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   background: #373f68;
   color: white;
   width: 100%;
+  min-height: 100px;
   height: 100px;
   padding: 1.5rem;
 }
@@ -678,6 +679,81 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
 .roadmap-page nav.roadmap-navigation button.add-feedback-button:hover {
   cursor: pointer;
   background: #c75af6;
+}
+.roadmap-page .progress-container-mobile {
+  background: #f7f8fd;
+  display: flex;
+  height: 60px;
+  min-height: 60px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .roadmap-page .progress-container-mobile {
+    display: none;
+  }
+}
+.roadmap-page .progress-container-mobile .progress-button-active,
+.roadmap-page .progress-container-mobile .progress-button-inactive {
+  width: 100%;
+  background: none;
+  font-size: 13px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(58, 67, 116, 0.4);
+}
+.roadmap-page .progress-container-mobile .progress-button-active {
+  color: #3a4374;
+  position: relative;
+  border-bottom: 1px solid #ad1fea;
+}
+.roadmap-page .progress-container-mobile .progress-button-active .progress-button-accent {
+  position: absolute;
+  bottom: 0;
+  background: #ad1fea;
+  height: 5px;
+  width: 100%;
+}
+.roadmap-page .progress-container-mobile .progress-button-inactive {
+  color: rgba(58, 67, 116, 0.4);
+  position: relative;
+}
+.roadmap-page .progress-container-mobile .progress-button-inactive .progress-button-accent {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  background: #ad1fea;
+  height: 5px;
+  width: 100%;
+}
+.roadmap-page .title-and-description-mobile {
+  width: 100%;
+  padding: 1.5rem 1rem;
+}
+@media (min-width: 768px) {
+  .roadmap-page .title-and-description-mobile {
+    display: none;
+  }
+}
+.roadmap-page .title-and-description-mobile h2 {
+  font-weight: 700;
+  color: #3a4374;
+  font-size: 18px;
+  margin-bottom: 0.8rem;
+}
+.roadmap-page .title-and-description-mobile p {
+  color: #647196;
+  font-size: 13px;
+}
+.roadmap-page .roadmap-container-mobile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .roadmap-page .roadmap-container-mobile {
+    display: none;
+  }
 }
 .roadmap-page .roadmap-container {
   display: none;
@@ -922,13 +998,13 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
 .roadmap-card {
   background: white;
   border-radius: 5px;
-  overflow: hidden;
-  padding: 1.2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   position: relative;
   width: auto;
+  overflow: hidden;
 }
 .roadmap-card .accent-orange,
 .roadmap-card .accent-purple,

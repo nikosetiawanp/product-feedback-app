@@ -17,6 +17,7 @@
     background: $background-navy;
     color: white;
     width: 100%;
+    min-height: 100px;
     height: 100px;
     padding: 1.5rem;
     @include md {
@@ -59,6 +60,85 @@
     }
   }
 
+  .progress-container-mobile {
+    background: $background-gray;
+    display: flex;
+    height: 60px;
+    min-height: 60px;
+    width: 100%;
+
+    // border-bottom: 1px solid $text-navy-inactive;
+
+    @include md {
+      display: none;
+    }
+
+    .progress-button-active,
+    .progress-button-inactive {
+      width: 100%;
+      background: none;
+      font-size: $text-xs;
+      font-weight: $bold;
+      border-bottom: 1px solid $text-navy-inactive;
+    }
+
+    .progress-button-active {
+      color: $text-navy;
+      position: relative;
+      border-bottom: 1px solid $button-purple;
+      .progress-button-accent {
+        position: absolute;
+        bottom: 0;
+        background: $button-purple;
+        height: 5px;
+        width: 100%;
+      }
+    }
+    .progress-button-inactive {
+      color: $text-navy-inactive;
+      position: relative;
+      .progress-button-accent {
+        position: absolute;
+        opacity: 0;
+        bottom: 0;
+        background: $button-purple;
+        height: 5px;
+        width: 100%;
+      }
+    }
+  }
+
+  // TITLE AND DESCRIPTION MOBILE
+  .title-and-description-mobile {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    @include md {
+      display: none;
+    }
+    h2 {
+      font-weight: $bold;
+      color: $text-navy;
+      font-size: $text-xl;
+      margin-bottom: 0.8rem;
+    }
+    p {
+      color: $text-gray;
+      font-size: $text-xs;
+    }
+  }
+
+  .roadmap-container-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // height: auto;
+    gap: 1rem;
+    padding: 1rem;
+
+    @include md {
+      display: none;
+    }
+  }
   .roadmap-container {
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
@@ -79,6 +159,7 @@
       height: auto;
       width: auto;
       gap: 1rem;
+
       // TITLE AND DESCRIPTION
       .title-and-description {
         h2 {

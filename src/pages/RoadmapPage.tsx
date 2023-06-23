@@ -3,6 +3,7 @@ import RoadmapCard from "../components/RoadmapCard";
 import { useState, useEffect } from "react";
 
 export default function RoadmapPage() {
+  const [selectedProgress, setSelectedProgress] = useState("planned");
   const [currentUser, setCurrentUser] = useState({});
   const [productRequests, setProductRequests] = useState([
     {
@@ -112,7 +113,54 @@ export default function RoadmapPage() {
         </button>
       </nav>
       {/* ROADMAP */}
-      <section className="roadmap-container-mobile"></section>
+
+      {/* NAVBAR MOBILE */}
+      <div className="progress-container-mobile">
+        <button
+          onClick={() => setSelectedProgress("planned")}
+          className={
+            selectedProgress === "planned"
+              ? "progress-button-active"
+              : "progress-button-inactive"
+          }
+        >
+          Planned ({planned.length})
+          <div className="progress-button-accent"></div>
+        </button>
+        <button
+          onClick={() => setSelectedProgress("in-progress")}
+          className={
+            selectedProgress === "in-progress"
+              ? "progress-button-active"
+              : "progress-button-inactive"
+          }
+        >
+          In-Progress ({inProgress.length})
+          <div className="progress-button-accent"></div>
+        </button>
+        <button
+          onClick={() => setSelectedProgress("live")}
+          className={
+            selectedProgress === "live"
+              ? "progress-button-active"
+              : "progress-button-inactive"
+          }
+        >
+          Live ({live.length})<div className="progress-button-accent"></div>
+        </button>
+      </div>
+      <div className="title-and-description-mobile">
+        <h2>Planned ({planned.length})</h2>
+        <p>Ideas prioritized for research</p>{" "}
+      </div>
+      {/* ROADMAP CONTAINER MOBILE */}
+      <section className="roadmap-container-mobile">
+        {selectedProgress === "planned"
+          ? listPlanned
+          : selectedProgress === "in-progress"
+          ? listInProgress
+          : listLive}
+      </section>
 
       {/*ROADMAP TABLET & DESKTOP */}
       <section className="roadmap-container">

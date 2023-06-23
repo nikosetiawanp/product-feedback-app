@@ -11,8 +11,6 @@ import CloseIcon from "../assets/shared/mobile/icon-close.svg";
 import IconSuggestions from "../assets/suggestions/icon-suggestions.svg";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
-import IconComments from "../assets/shared/icon-comments.svg";
-
 import { useState, useEffect } from "react";
 
 export default function SuggestionsPage() {
@@ -20,7 +18,6 @@ export default function SuggestionsPage() {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortByIsActive, setSortByIsActive] = useState(false);
   const [sortBy, setSortBy] = useState("Most Upvotes");
-
   const [currentUser, setCurrentUser] = useState({});
   const [productRequests, setProductRequests] = useState([
     {
@@ -144,16 +141,23 @@ export default function SuggestionsPage() {
             />
             {suggestion.length} Suggestions
           </span>
-          <button className="sort-by" onClick={toggleSortBy}>
-            Sort by : <b>{sortBy}</b> &nbsp;
-            <img
-              src={!sortByIsActive ? IconArrowDown : IconArrowUp}
-              alt="icon-arrow-down"
-            />
+          <div className="sort-by-container">
+            <button className="sort-by" onClick={toggleSortBy}>
+              Sort by : <b>{sortBy}</b> &nbsp;
+              <img
+                src={!sortByIsActive ? IconArrowDown : IconArrowUp}
+                alt="icon-arrow-down"
+              />
+            </button>
             {sortByIsActive && (
-              <SortByDropdown sortBy={sortBy} setSortBy={setSortBy} />
+              <SortByDropdown
+                sortBy={sortBy}
+                setSortBy={setSortBy}
+                sortByIsActive={sortByIsActive}
+                setSortByIsActive={setSortByIsActive}
+              />
             )}
-          </button>
+          </div>
           <button
             className="add-feedback-button"
             onClick={() => (window.location.href = "new-feedback")}
