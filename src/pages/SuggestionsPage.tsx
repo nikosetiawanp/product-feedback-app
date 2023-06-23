@@ -61,10 +61,14 @@ export default function SuggestionsPage() {
   const suggestion = productRequests.filter(
     (productRequest) => productRequest.status === "suggestion"
   );
-  const filteredSuggestion = suggestion.filter(
-    (productRequest) => productRequest.category === `${categoryFilter}`
+  const filteredSuggestion = categoryFilter
+    ? suggestion.filter(
+        (productRequest) => productRequest.category === `${categoryFilter}`
+      )
+    : suggestion;
+  const sortedSuggestion = filteredSuggestion.sort((a, b) =>
+    sortBy === "Most Upvotes" ? b.upvotes - a.upvotes : a.upvotes - b.upvotes
   );
-  console.log(filteredSuggestion);
 
   const planned = productRequests.filter(
     (productRequest) => productRequest.status === "planned"
@@ -75,19 +79,7 @@ export default function SuggestionsPage() {
   const live = productRequests.filter(
     (productRequest) => productRequest.status === "live"
   );
-  const listSuggestion = suggestion.map((obj) => (
-    <SuggestionCard
-      id={obj.id}
-      key={obj.id}
-      title={obj.title}
-      category={obj.category}
-      upvotes={obj.upvotes}
-      status={obj.status}
-      description={obj.description}
-      comments={obj.comments}
-    />
-  ));
-  const listFilteredSuggestion = filteredSuggestion.map((obj) => (
+  const listSuggestion = sortedSuggestion.map((obj) => (
     <SuggestionCard
       id={obj.id}
       key={obj.id}
@@ -172,7 +164,8 @@ export default function SuggestionsPage() {
 
         {/* SUGGESTION LIST */}
         <div className="suggestions-list">
-          {!categoryFilter ? listSuggestion : listFilteredSuggestion}
+          {listSuggestion}
+          {/* {!categoryFilter ? listSuggestion : listFilteredSuggestion} */}
         </div>
       </section>
     </div>
