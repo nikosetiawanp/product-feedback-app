@@ -1256,6 +1256,11 @@ button.button-add-feedback:hover {
   font-size: 13px;
   color: #4661e6;
 }
+.comment .user-info-and-reply-button .reply-button:hover,
+.comment-nested .user-info-and-reply-button .reply-button:hover {
+  color: #8397f8;
+  cursor: pointer;
+}
 .comment p,
 .comment-nested p {
   font-size: 15px;

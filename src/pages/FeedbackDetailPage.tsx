@@ -4,21 +4,45 @@ import { useState, useEffect } from "react";
 import ButtonGoBack from "../components/ButtonGoBack";
 import Comment from "../components/Comment";
 export default function FeedbackDetailPage() {
-  //   useEffect(() => {
-  //     const url = "../../data.json";
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch(url);
-  //         const json = await response.json();
-  //         setCurrentUser(json.currentUser);
-  //         setProductRequests(json.productRequests);
-  //       } catch (error) {
-  //         console.log("error", error);
-  //       }
-  //     };
+  const [productRequests, setProductRequests] = useState([
+    {
+      id: 0,
+      title: "title",
+      category: "enhancement",
+      upvotes: 0,
+      status: "suggestion",
+      comments: [
+        {
+          id: 0,
+          content: "content",
+          user: {
+            image: "image",
+            name: "name",
+            username: "username",
+          },
+        },
+      ],
+    },
+  ]);
+  const [commentList, setCommentList] = useState([]);
 
-  //     fetchData();
-  //   }, []);
+  // FETCH DATA FROM JSON
+  useEffect(() => {
+    const url = "../../data.json";
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setProductRequests(json.productRequests);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  //   console.log(productRequests[3].comments);
 
   return (
     <div className="feedback-detail-page">
