@@ -44,20 +44,20 @@
       }
     }
 
-    button.add-feedback-button {
-      background: $button-purple;
-      font-weight: $semibold;
-      font-size: $text-xs;
-      padding: 0.7rem 1rem;
-      color: white;
-      border-radius: $radius-sm;
-      height: 40px;
+    // button.button-add-feedback {
+    //   background: $button-purple;
+    //   font-weight: $semibold;
+    //   font-size: $text-xs;
+    //   padding: 0.7rem 1rem;
+    //   color: white;
+    //   border-radius: $radius-sm;
+    //   height: 40px;
 
-      &:hover {
-        cursor: pointer;
-        background: $button-purple-hover;
-      }
-    }
+    //   &:hover {
+    //     cursor: pointer;
+    //     background: $button-purple-hover;
+    //   }
+    // }
   }
 
   .progress-container-mobile {
@@ -147,6 +147,7 @@
     width: 100%;
     margin-top: 2rem;
     max-width: 1110px;
+    padding-bottom: 2rem;
     @include md {
       display: grid;
     }

@@ -1,0 +1,21 @@
+button.go-back,
+button.go-back-roadmap {
+  background: none;
+  color: $text-gray;
+  font-weight: $bold;
+  font-size: $text-xs;
+
+  &:hover {
+    cursor: pointer;
+  }
+  @include md {
+    font-size: $text-sm;
+  }
+}
+
+button.go-back-roadmap {
+  color: white;
+  @include md {
+    font-size: $text-sm;
+  }
+}

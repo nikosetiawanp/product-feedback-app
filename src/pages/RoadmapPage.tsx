@@ -1,6 +1,8 @@
-import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
 import RoadmapCard from "../components/RoadmapCard";
 import { useState, useEffect } from "react";
+import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
+import ButtonGoBack from "../components/ButtonGoBack";
+import ButtonAddFeedback from "../components/ButtonAddFeedback";
 
 export default function RoadmapPage() {
   const [selectedProgress, setSelectedProgress] = useState("planned");
@@ -96,8 +98,9 @@ export default function RoadmapPage() {
       {/* NAVBAR */}
       <nav className="roadmap-navigation">
         <div className="title-and-button">
+          {/* <Button Go Back /> */}
           <button
-            className="go-back"
+            className="go-back-roadmap"
             type="button"
             onClick={() => history.back()}
           >
@@ -105,12 +108,7 @@ export default function RoadmapPage() {
           </button>
           <h1>Roadmap</h1>
         </div>
-        <button
-          className="add-feedback-button"
-          onClick={() => (window.location.href = "new-feedback")}
-        >
-          + Add Feedback
-        </button>
+        <ButtonAddFeedback />
       </nav>
       {/* ROADMAP */}
 

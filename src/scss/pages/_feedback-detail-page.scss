@@ -1,0 +1,51 @@
+.feedback-detail-page {
+  display: flex;
+  flex-direction: column;
+  // background: red;
+  height: auto;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  max-width: 730px;
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button.button-edit-feedback {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+
+      background: $button-blue;
+      font-weight: $semibold;
+      font-size: $text-xs;
+      padding: 0.7rem 1rem;
+      color: white;
+      border-radius: $radius-sm;
+      height: 40px;
+
+      &:hover {
+        cursor: pointer;
+        background: $button-blue-hover;
+      }
+    }
+  }
+
+  .comment-section {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 2rem;
+    border-radius: $radius-sm;
+    gap: 1.5rem;
+
+    h2 {
+      color: $text-navy;
+      font-size: $text-xl;
+      font-weight: $bold;
+    }
+  }
+}

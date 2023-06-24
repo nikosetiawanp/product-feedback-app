@@ -6,6 +6,7 @@ import IconEditFeedback from "../assets/shared/icon-edit-feedback.svg";
 import { useState } from "react";
 import CategoryDropdown from "../components/CategoryDropdown";
 import StatusDropdown from "../components/StatusDropdown";
+import ButtonGoBack from "../components/ButtonGoBack";
 
 export default function NewFeedbackPage() {
   const [titleInput, setTitleInput] = useState("");
@@ -25,13 +26,15 @@ export default function NewFeedbackPage() {
   return (
     <section className="edit-feedback-page">
       <form className="feedback-form" action="submit">
-        <button
+        <ButtonGoBack />
+        {/* <button
           className="go-back"
           type="button"
           onClick={() => history.back()}
         >
           <img src={IconArrowLeft} alt="icon-arrow-left" /> &nbsp; Go back
-        </button>
+        </button> */}
+
         <img
           className="icon-new-feedback"
           src={IconEditFeedback}

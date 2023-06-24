@@ -1,0 +1,45 @@
+.no-feedback-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: white;
+  border-radius: $radius-sm;
+  height: 80vh;
+
+  img {
+    align-self: center;
+    margin-bottom: 2rem;
+  }
+  h2 {
+    text-align: center;
+    font-size: $text-xl;
+    font-weight: $bold;
+    color: $text-navy;
+  }
+  p {
+    text-align: center;
+    font-size: $text-xs;
+    color: $text-gray;
+    line-height: 1.2rem;
+    max-width: 400px;
+  }
+  button.button-add-feedback {
+    background: $button-purple;
+    font-weight: $semibold;
+    font-size: $text-xs;
+    padding: 0.7rem 1rem;
+    color: white;
+    border-radius: $radius-sm;
+    width: 135px;
+    height: 40px;
+    align-self: center;
+
+    &:hover {
+      cursor: pointer;
+      background: $button-purple-hover;
+    }
+  }
+}

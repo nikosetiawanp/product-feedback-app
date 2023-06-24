@@ -5,6 +5,8 @@ import SuggestionCard from "../components/SuggestionCard";
 import SortByDropdown from "../components/SortByDropdown";
 import CategoryFilter from "../components/CategoryFilter";
 import RoadmapStatus from "../components/RoadmapStatus";
+import ButtonAddFeedback from "../components/ButtonAddFeedback";
+import NoFeedback from "../components/NoFeedback";
 
 // icons
 import CloseIcon from "../assets/shared/mobile/icon-close.svg";
@@ -67,15 +69,6 @@ export default function SuggestionsPage() {
     sortBy === "Most Upvotes" ? b.upvotes - a.upvotes : a.upvotes - b.upvotes
   );
 
-  const planned = productRequests.filter(
-    (productRequest) => productRequest.status === "planned"
-  );
-  const inProgress = productRequests.filter(
-    (productRequest) => productRequest.status === "in-progress"
-  );
-  const live = productRequests.filter(
-    (productRequest) => productRequest.status === "live"
-  );
   const listSuggestion = sortedSuggestion.map((obj) => (
     <SuggestionCard
       id={obj.id}
@@ -88,6 +81,16 @@ export default function SuggestionsPage() {
       comments={obj.comments}
     />
   ));
+
+  const planned = productRequests.filter(
+    (productRequest) => productRequest.status === "planned"
+  );
+  const inProgress = productRequests.filter(
+    (productRequest) => productRequest.status === "in-progress"
+  );
+  const live = productRequests.filter(
+    (productRequest) => productRequest.status === "live"
+  );
 
   const toggleMobileSidebar = () => {
     setMobileSidebarIsActive(!mobileSidebarIsActive);
@@ -158,18 +161,12 @@ export default function SuggestionsPage() {
               />
             )}
           </div>
-          <button
-            className="add-feedback-button"
-            onClick={() => (window.location.href = "new-feedback")}
-          >
-            + Add Feedback
-          </button>
+          <ButtonAddFeedback />
         </nav>
 
         {/* SUGGESTION LIST */}
         <div className="suggestions-list">
-          {listSuggestion}
-          {/* {!categoryFilter ? listSuggestion : listFilteredSuggestion} */}
+          {sortedSuggestion.length > 0 ? listSuggestion : <NoFeedback />}
         </div>
       </section>
     </div>

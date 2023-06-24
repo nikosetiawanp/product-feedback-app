@@ -5,6 +5,7 @@ import IconNewFeedback from "../assets/shared/icon-new-feedback.svg";
 
 import { useState } from "react";
 import CategoryDropdown from "../components/CategoryDropdown";
+import ButtonGoBack from "../components/ButtonGoBack";
 
 export default function NewFeedbackPage() {
   const [titleInput, setTitleInput] = useState("");
@@ -19,13 +20,14 @@ export default function NewFeedbackPage() {
   return (
     <section className="new-feedback-page">
       <form className="feedback-form" action="submit">
-        <button
+        <ButtonGoBack />
+        {/* <button
           className="go-back"
           type="button"
           onClick={() => history.back()}
         >
           <img src={IconArrowLeft} alt="icon-arrow-left" /> &nbsp; Go back
-        </button>
+        </button> */}
         <img
           className="icon-new-feedback"
           src={IconNewFeedback}

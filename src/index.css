@@ -144,6 +144,7 @@ div.suggestions-page {
   div.suggestions-page {
     justify-content: center;
     flex-direction: row;
+    padding-bottom: 5rem;
   }
 }
 @media (min-width: 768px) {
@@ -227,6 +228,7 @@ div.suggestions-page section.suggestions-container {
     width: 100%;
     min-width: 580px;
     max-width: 825px;
+    padding-bottom: 5rem;
   }
 }
 div.suggestions-page section.suggestions-container .suggestions-bar {
@@ -284,21 +286,8 @@ div.suggestions-page section.suggestions-container .suggestions-bar button.sort-
     color: #f2f4fe;
   }
 }
-div.suggestions-page section.suggestions-container .suggestions-bar button.add-feedback-button {
-  background: #ad1fea;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 0.7rem 1rem;
-  color: white;
-  border-radius: 10px;
-  height: 40px;
-}
-div.suggestions-page section.suggestions-container .suggestions-bar button.add-feedback-button:hover {
-  cursor: pointer;
-  background: #c75af6;
-}
 @media (min-width: 768px) {
-  div.suggestions-page section.suggestions-container .suggestions-bar button.add-feedback-button {
+  div.suggestions-page section.suggestions-container .suggestions-bar button.button-add-feedback {
     margin-left: auto;
   }
 }
@@ -307,104 +296,13 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   flex-direction: column;
   gap: 1rem;
   padding: 0rem 1.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
+  height: auto;
 }
 @media (min-width: 768px) {
   div.suggestions-page section.suggestions-container .suggestions-list {
     padding: 0px;
-  }
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card {
-  background: white;
-  border-radius: 10px;
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  row-gap: 1.2rem;
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card:hover {
-  cursor: pointer;
-}
-@media (min-width: 768px) {
-  div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card {
-    display: flex;
-    gap: 2rem;
-  }
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  grid-column: 1/3;
-  grid-row: 1/2;
-  width: 100%;
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview h3 {
-  font-weight: 700;
-  font-size: 13px;
-  color: #3a4374;
-}
-@media (min-width: 768px) {
-  div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview h3 {
-    font-size: 18px;
-  }
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview p {
-  font-size: 13px;
-  color: #647196;
-  line-height: 1.2rem;
-}
-@media (min-width: 768px) {
-  div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview p {
-    font-size: 16px;
-  }
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .suggestion-preview .tag {
-  background: #f2f4ff;
-  color: #4661e6;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 13px;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .upvote-count,
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .comment-count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  background: #f2f4ff;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 13px;
-  width: fit-content;
-  padding: 0.6rem 1rem;
-  height: 30px;
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .upvote-count {
-  grid-column: 1;
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .upvote-count:hover {
-  cursor: pointer;
-  background: #cfd7ff;
-}
-@media (min-width: 768px) {
-  div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .upvote-count {
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 0.75rem 0.6rem;
-    height: fit-content;
-  }
-}
-div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .comment-count {
-  justify-self: flex-end;
-  background: none;
-}
-@media (min-width: 768px) {
-  div.suggestions-page section.suggestions-container .suggestions-list .suggestion-card .comment-count {
-    align-self: center;
+    padding-bottom: 5rem;
   }
 }
 
@@ -667,19 +565,6 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
 .roadmap-page nav.roadmap-navigation .title-and-button h1 {
   font-size: 18px;
 }
-.roadmap-page nav.roadmap-navigation button.add-feedback-button {
-  background: #ad1fea;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 0.7rem 1rem;
-  color: white;
-  border-radius: 10px;
-  height: 40px;
-}
-.roadmap-page nav.roadmap-navigation button.add-feedback-button:hover {
-  cursor: pointer;
-  background: #c75af6;
-}
 .roadmap-page .progress-container-mobile {
   background: #f7f8fd;
   display: flex;
@@ -763,6 +648,7 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   width: 100%;
   margin-top: 2rem;
   max-width: 1110px;
+  padding-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .roadmap-page .roadmap-container {
@@ -800,6 +686,51 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
 }
 .roadmap-page .roadmap-container .live-container {
   grid-column: 3/4;
+}
+
+.feedback-detail-page {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  max-width: 730px;
+}
+.feedback-detail-page .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.feedback-detail-page .buttons button.button-edit-feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  background: #4661e6;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 0.7rem 1rem;
+  color: white;
+  border-radius: 10px;
+  height: 40px;
+}
+.feedback-detail-page .buttons button.button-edit-feedback:hover {
+  cursor: pointer;
+  background: #8397f8;
+}
+.feedback-detail-page .comment-section {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  gap: 1.5rem;
+}
+.feedback-detail-page .comment-section h2 {
+  color: #3a4374;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .category {
@@ -1095,6 +1026,251 @@ div.suggestions-page section.suggestions-container .suggestions-list .suggestion
   font-size: 13px;
   display: flex;
   align-items: center;
+}
+
+.no-feedback-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  height: 80vh;
+}
+.no-feedback-container img {
+  align-self: center;
+  margin-bottom: 2rem;
+}
+.no-feedback-container h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3a4374;
+}
+.no-feedback-container p {
+  text-align: center;
+  font-size: 13px;
+  color: #647196;
+  line-height: 1.2rem;
+  max-width: 400px;
+}
+.no-feedback-container button.button-add-feedback {
+  background: #ad1fea;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 0.7rem 1rem;
+  color: white;
+  border-radius: 10px;
+  width: 135px;
+  height: 40px;
+  align-self: center;
+}
+.no-feedback-container button.button-add-feedback:hover {
+  cursor: pointer;
+  background: #c75af6;
+}
+
+.suggestion-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  row-gap: 1.2rem;
+}
+.suggestion-card:hover {
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .suggestion-card {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+  }
+}
+.suggestion-card .suggestion-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  width: 100%;
+}
+.suggestion-card .suggestion-preview h3 {
+  font-weight: 700;
+  font-size: 13px;
+  color: #3a4374;
+}
+@media (min-width: 768px) {
+  .suggestion-card .suggestion-preview h3 {
+    font-size: 18px;
+  }
+}
+.suggestion-card .suggestion-preview p {
+  font-size: 13px;
+  color: #647196;
+  line-height: 1.2rem;
+}
+@media (min-width: 768px) {
+  .suggestion-card .suggestion-preview p {
+    font-size: 16px;
+  }
+}
+.suggestion-card .suggestion-preview .tag {
+  background: #f2f4ff;
+  color: #4661e6;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+}
+.suggestion-card .upvote-count,
+.suggestion-card .comment-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f2f4ff;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  width: fit-content;
+  padding: 0.6rem 1rem;
+  height: 30px;
+}
+.suggestion-card .upvote-count {
+  grid-column: 1;
+}
+.suggestion-card .upvote-count:hover {
+  cursor: pointer;
+  background: #cfd7ff;
+}
+@media (min-width: 768px) {
+  .suggestion-card .upvote-count {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.75rem 0.6rem;
+    height: fit-content;
+  }
+}
+.suggestion-card .comment-count {
+  justify-self: flex-end;
+  background: none;
+}
+@media (min-width: 768px) {
+  .suggestion-card .comment-count {
+    align-self: center;
+  }
+}
+
+button.go-back,
+button.go-back-roadmap {
+  background: none;
+  color: #647196;
+  font-weight: 700;
+  font-size: 13px;
+}
+button.go-back:hover,
+button.go-back-roadmap:hover {
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  button.go-back,
+  button.go-back-roadmap {
+    font-size: 14px;
+  }
+}
+
+button.go-back-roadmap {
+  color: white;
+}
+@media (min-width: 768px) {
+  button.go-back-roadmap {
+    font-size: 14px;
+  }
+}
+
+button.button-add-feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  background: #ad1fea;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 0.7rem 1rem;
+  color: white;
+  border-radius: 10px;
+  height: 40px;
+}
+button.button-add-feedback:hover {
+  cursor: pointer;
+  background: #c75af6;
+}
+
+.comment {
+  margin-bottom: 3rem;
+}
+
+.comment,
+.comment-nested {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.comment img,
+.comment-nested img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.comment .user-info-and-reply-button,
+.comment-nested .user-info-and-reply-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.comment .user-info-and-reply-button .user-info h3,
+.comment-nested .user-info-and-reply-button .user-info h3 {
+  color: #3a4374;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 0.6rem;
+}
+.comment .user-info-and-reply-button .user-info h4,
+.comment-nested .user-info-and-reply-button .user-info h4 {
+  color: #647196;
+  font-weight: 400;
+  font-size: 14px;
+}
+.comment .user-info-and-reply-button .reply-button,
+.comment-nested .user-info-and-reply-button .reply-button {
+  background: none;
+  font-weight: 600;
+  font-size: 13px;
+  color: #4661e6;
+}
+.comment p,
+.comment-nested p {
+  font-size: 15px;
+  color: #647196;
+  line-height: 1.2rem;
+}
+
+.comment-nested-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comment-nested {
+  padding-left: 3rem;
 }
 
 /*# sourceMappingURL=index.css.map */

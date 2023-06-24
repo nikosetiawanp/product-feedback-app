@@ -11,6 +11,7 @@
 @import "./pages/suggestions-page";
 @import "./pages/feedback-page";
 @import "./pages/roadmap-page.scss";
+@import "./pages/feedback-detail-page";
 
 // components
 @import "./components/category-filter";
@@ -18,4 +19,9 @@
 @import "./components/mobile-sidebar";
 @import "./components/sort-by-dropdown";
 @import "./components/category-status-dropdown";
-@import "./components/roadmap-card"; // npx sass --watch ./src/scss/index.scss ./src/index.css
+@import "./components/roadmap-card";
+@import "./components/no-feedback";
+@import "./components/suggestion-card";
+@import "./components/button-go-back";
+@import "./components/button-add-feedback";
+@import "./components/comment"; // npx sass --watch ./src/scss/index.scss ./src/index.css
