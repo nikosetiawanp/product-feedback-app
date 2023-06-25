@@ -67,6 +67,7 @@ export default function FeedbackDetailPage() {
         <h2>4 Comments</h2>
         {/* COMMENTS */}
         <Comment />
+        <Comment />
       </div>
     </div>
   );

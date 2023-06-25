@@ -1,11 +1,12 @@
 .comment {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .comment,
 .comment-nested {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  // flex-direction: column;
   gap: 1.5rem;
   img {
     width: 40px;
@@ -49,6 +50,49 @@
     font-size: $text-md;
     color: $text-gray;
     line-height: 1.2rem;
+  }
+}
+
+form.reply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  @include md {
+    flex-direction: row;
+  }
+
+  textarea.reply-input {
+    background: $background-gray;
+    border-radius: $radius-xs;
+    outline: none;
+    border: none;
+    width: 100%;
+    max-width: 650px;
+    min-height: 160px;
+    resize: none;
+    padding: 1rem;
+    color: $text-navy;
+    border: 1px solid rgba(0, 0, 0, 0);
+    &:focus {
+      border: 1px solid $button-blue;
+    }
+  }
+  button.textarea-submit-button {
+    background: $button-purple;
+    color: white;
+    font-weight: $bold;
+    font-size: $text-sm;
+    border-radius: $radius-sm;
+    height: 45px;
+    &:hover {
+      cursor: pointer;
+      background: $button-purple-hover;
+    }
+
+    @include md {
+      width: 120px;
+    }
   }
 }
 

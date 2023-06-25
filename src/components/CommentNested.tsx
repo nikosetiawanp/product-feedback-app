@@ -1,6 +1,8 @@
+import { useState } from "react";
 import UserImage from "../assets/user-images/image-elijah.jpg";
 
 export default function CommentNested() {
+  const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   return (
     <div className="comment-nested">
       <img src={UserImage} alt="user-image" />
@@ -10,7 +12,14 @@ export default function CommentNested() {
             <h3>Elijah Moss</h3>
             <h4>@hexagon.bestagon</h4>
           </div>
-          <button className="reply-button">Reply</button>
+          <button
+            className="reply-button"
+            onClick={() => {
+              setReplyFormIsActive(!replyFormIsActive);
+            }}
+          >
+            Reply
+          </button>
         </div>
         <p>
           Also, please allow styles to be applied based on system preferences. I
@@ -18,8 +27,22 @@ export default function CommentNested() {
           my device’s dark mode turns on without the bright background it
           currently has.
         </p>
+        {replyFormIsActive && (
+          <form className="reply-form" action="submit">
+            <textarea
+              name="reply-input"
+              id="reply-input"
+              className="reply-input"
+              cols={30}
+              rows={10}
+            ></textarea>
+            <button className="textarea-submit-button" type="button">
+              Post Reply
+            </button>
+          </form>
+        )}
       </div>
-      <div className="comment-nested-container"></div>
+      {/* <div className="comment-nested-container"></div> */}
     </div>
   );
 }
