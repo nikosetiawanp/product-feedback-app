@@ -48,4 +48,58 @@
       font-weight: $bold;
     }
   }
+
+  .reply-comment-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    background: white;
+    border-radius: $radius-sm;
+
+    h2 {
+      font-size: $text-xl;
+      color: $text-navy;
+    }
+    .comment-input {
+      background: $background-gray;
+      border-radius: $radius-xs;
+      outline: none;
+      border: none;
+      width: 100%;
+      max-width: 650px;
+      resize: none;
+      padding: 1rem;
+      color: $text-navy;
+      border: 1px solid rgba(0, 0, 0, 0);
+      &:focus {
+        border: 1px solid $button-blue;
+      }
+    }
+    .characters-and-button {
+      display: flex;
+      justify-content: space-between;
+      p.characters-count {
+        color: $text-gray;
+        font-size: $text-md;
+      }
+
+      button.post-comment-button {
+        background: $button-purple;
+        color: white;
+        font-weight: $bold;
+        font-size: $text-sm;
+        border-radius: $radius-sm;
+        height: 45px;
+        &:hover {
+          cursor: pointer;
+          background: $button-purple-hover;
+          color: $text-almost-white;
+        }
+        @include md {
+          width: 120px;
+        }
+      }
+    }
+  }
 }

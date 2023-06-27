@@ -60,8 +60,10 @@ export default function Comment() {
                 name="reply-input"
                 id="reply-input"
                 className="reply-input"
+                maxLength={250}
                 cols={30}
-                rows={10}
+                rows={5}
+                contentEditable
               ></textarea>
               <button className="textarea-submit-button">Post Reply</button>
             </form>

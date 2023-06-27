@@ -14,6 +14,7 @@ import IconSuggestions from "../assets/suggestions/icon-suggestions.svg";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import { useState, useEffect } from "react";
+import { supabase } from "../client";
 
 export default function SuggestionsPage() {
   const [mobileSidebarIsActive, setMobileSidebarIsActive] = useState(false);
@@ -24,10 +25,10 @@ export default function SuggestionsPage() {
   const [productRequests, setProductRequests] = useState([
     {
       id: 0,
-      title: "title",
-      category: "enhancement",
+      title: "",
+      category: "",
       upvotes: 0,
-      status: "suggestion",
+      status: "",
       comments: [
         {
           id: 0,
@@ -41,24 +42,20 @@ export default function SuggestionsPage() {
       ],
     },
   ]);
-  useEffect(() => {
-    const url = "../../data.json";
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setCurrentUser(json.currentUser);
-        setProductRequests(json.productRequests);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
 
-    fetchData();
+  // FETCH
+  async function fetchProductRequest() {
+    let { data, error } = await supabase.from("product_requests").select("*");
+    console.log(data);
+
+    setProductRequests(data);
+  }
+  useEffect(() => {
+    fetchProductRequest();
   }, []);
 
   const suggestion = productRequests.filter(
-    (productRequest) => productRequest.status === "suggestion"
+    (productRequest) => productRequest.status === "Suggestion"
   );
   const filteredSuggestion = categoryFilter
     ? suggestion.filter(
@@ -83,13 +80,13 @@ export default function SuggestionsPage() {
   ));
 
   const planned = productRequests.filter(
-    (productRequest) => productRequest.status === "planned"
+    (productRequest) => productRequest.status === "Planned"
   );
   const inProgress = productRequests.filter(
-    (productRequest) => productRequest.status === "in-progress"
+    (productRequest) => productRequest.status === "In-Progress"
   );
   const live = productRequests.filter(
-    (productRequest) => productRequest.status === "live"
+    (productRequest) => productRequest.status === "Live"
   );
 
   const toggleMobileSidebar = () => {

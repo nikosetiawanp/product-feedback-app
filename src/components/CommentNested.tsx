@@ -33,8 +33,9 @@ export default function CommentNested() {
               name="reply-input"
               id="reply-input"
               className="reply-input"
+              maxLength={50}
               cols={30}
-              rows={10}
+              rows={5}
             ></textarea>
             <button className="textarea-submit-button" type="button">
               Post Reply

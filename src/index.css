@@ -126,6 +126,13 @@ body {
   width: 100vw;
 }
 
+a,
+a:-webkit-any-link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
 div.suggestions-page {
   left: 0px;
   right: 0px;
@@ -400,11 +407,12 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   border-radius: 5px;
   width: 100%;
   margin-bottom: 1.5rem;
-  padding: 0rem 1.5rem;
+  padding: 0rem 1rem;
   border: 1px solid #f7f8fd;
+  font-size: 15px;
+  color: #3a4374;
 }
 .feedback-form input.title-input:hover {
-  cursor: pointer;
   border: 1px solid #4661e6;
 }
 .feedback-form input.title-input:focus {
@@ -415,13 +423,14 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   position: relative;
   margin-bottom: 1.5rem;
 }
-.feedback-form .category-input-container button.category-input {
+.feedback-form .category-input-container button.category-input,
+.feedback-form .category-input-container button.status-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 48px;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 5px;
   position: relative;
   outline: none;
@@ -430,11 +439,13 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   border: 1px solid #f7f8fd;
   color: #3a4374;
 }
-.feedback-form .category-input-container button.category-input:hover {
+.feedback-form .category-input-container button.category-input:hover,
+.feedback-form .category-input-container button.status-input:hover {
   cursor: pointer;
   border: 1px solid #4661e6;
 }
-.feedback-form .category-input-container button.category-input:focus {
+.feedback-form .category-input-container button.category-input:focus,
+.feedback-form .category-input-container button.status-input:focus {
   border: 1px solid #4661e6;
 }
 .feedback-form textarea.feedback-detail {
@@ -447,11 +458,10 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   border: none;
   resize: none;
   margin-bottom: 2rem;
-  padding: 1.5rem;
+  padding: 1rem;
   border: 1px solid #f7f8fd;
 }
 .feedback-form textarea.feedback-detail:hover {
-  cursor: pointer;
   border: 1px solid #4661e6;
 }
 .feedback-form textarea.feedback-detail:focus {
@@ -731,6 +741,59 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   color: #3a4374;
   font-size: 18px;
   font-weight: 700;
+}
+.feedback-detail-page .reply-comment-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+  background: white;
+  border-radius: 10px;
+}
+.feedback-detail-page .reply-comment-form h2 {
+  font-size: 18px;
+  color: #3a4374;
+}
+.feedback-detail-page .reply-comment-form .comment-input {
+  background: #f7f8fd;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 100%;
+  max-width: 650px;
+  resize: none;
+  padding: 1rem;
+  color: #3a4374;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+.feedback-detail-page .reply-comment-form .comment-input:focus {
+  border: 1px solid #4661e6;
+}
+.feedback-detail-page .reply-comment-form .characters-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+.feedback-detail-page .reply-comment-form .characters-and-button p.characters-count {
+  color: #647196;
+  font-size: 15px;
+}
+.feedback-detail-page .reply-comment-form .characters-and-button button.post-comment-button {
+  background: #ad1fea;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 10px;
+  height: 45px;
+}
+.feedback-detail-page .reply-comment-form .characters-and-button button.post-comment-button:hover {
+  cursor: pointer;
+  background: #c75af6;
+  color: #f2f4fe;
+}
+@media (min-width: 768px) {
+  .feedback-detail-page .reply-comment-form .characters-and-button button.post-comment-button {
+    width: 120px;
+  }
 }
 
 .category {
@@ -1128,7 +1191,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   width: fit-content;
   padding: 0.5rem 1rem;
 }
-.suggestion-card .upvote-count,
+.suggestion-card .upvote-button,
 .suggestion-card .comment-count {
   display: flex;
   justify-content: center;
@@ -1142,16 +1205,18 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   padding: 0.6rem 1rem;
   height: 30px;
 }
-.suggestion-card .upvote-count {
+.suggestion-card .upvote-button {
   grid-column: 1;
+  width: 70px;
 }
-.suggestion-card .upvote-count:hover {
+.suggestion-card .upvote-button:hover {
   cursor: pointer;
   background: #cfd7ff;
 }
 @media (min-width: 768px) {
-  .suggestion-card .upvote-count {
+  .suggestion-card .upvote-button {
     flex-direction: column;
+    width: 40px;
     gap: 0.8rem;
     padding: 0.75rem 0.6rem;
     height: fit-content;
@@ -1260,6 +1325,7 @@ button.button-add-feedback:hover {
 .comment-nested .user-info-and-reply-button .reply-button:hover {
   color: #8397f8;
   cursor: pointer;
+  text-decoration: underline;
 }
 .comment p,
 .comment-nested p {
@@ -1279,20 +1345,20 @@ form.reply-form {
     flex-direction: row;
   }
 }
-form.reply-form textarea.reply-input {
+form.reply-form .reply-input {
   background: #f7f8fd;
   border-radius: 5px;
   outline: none;
   border: none;
   width: 100%;
   max-width: 650px;
-  min-height: 160px;
+  height: auto;
   resize: none;
   padding: 1rem;
   color: #3a4374;
   border: 1px solid rgba(0, 0, 0, 0);
 }
-form.reply-form textarea.reply-input:focus {
+form.reply-form .reply-input:focus {
   border: 1px solid #4661e6;
 }
 form.reply-form button.textarea-submit-button {
@@ -1306,6 +1372,7 @@ form.reply-form button.textarea-submit-button {
 form.reply-form button.textarea-submit-button:hover {
   cursor: pointer;
   background: #c75af6;
+  color: #f2f4fe;
 }
 @media (min-width: 768px) {
   form.reply-form button.textarea-submit-button {

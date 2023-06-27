@@ -1,25 +1,58 @@
+import { useState, useCallback } from "react";
+import { supabase } from "../client";
+
 import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconNewFeedback from "../assets/shared/icon-new-feedback.svg";
 
-import { useState } from "react";
 import CategoryDropdown from "../components/CategoryDropdown";
 import ButtonGoBack from "../components/ButtonGoBack";
 
 export default function NewFeedbackPage() {
-  const [titleInput, setTitleInput] = useState("");
-  const [categoryInput, setCategoryInput] = useState("Feature");
   const [categoryDropdownIsActive, setCategoryDropdownIsActive] =
     useState(false);
-
+  const [titleInput, setTitleInput] = useState("");
+  const [categoryInput, setCategoryInput] = useState("Feature");
+  const [feedbackDetailInput, setFeedbackDetailInput] = useState("");
+  const handleTitleInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setTitleInput(event.target.value);
+    },
+    []
+  );
+  const handleFeedbackDetailInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setFeedbackDetailInput(event.target.value);
+    },
+    []
+  );
   const toggleCategoryDropdown = () => {
     return setCategoryDropdownIsActive(!categoryDropdownIsActive);
   };
 
+  const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    const { data, error } = await supabase.from("product_requests").insert([
+      {
+        title: `${titleInput}`,
+        category: `${categoryInput}`,
+        upvotes: 0,
+        status: "suggestion",
+        description: `${feedbackDetailInput}`,
+        comments: null,
+      },
+    ]);
+    history.back();
+  };
+
   return (
     <section className="new-feedback-page">
-      <form className="feedback-form" action="submit">
+      <form
+        className="feedback-form"
+        action="submit"
+        onSubmit={handleFormSubmit}
+      >
         <ButtonGoBack />
         {/* <button
           className="go-back"
@@ -37,11 +70,14 @@ export default function NewFeedbackPage() {
         {/* title input */}
         <h2>Feedback Title</h2>
         <p>Add a short, descriptive headline</p>
-        <input type="text" className="title-input" />
+        <input
+          type="text"
+          className="title-input"
+          onChange={handleTitleInputChange}
+        />
         {/* category input */}
         <h2>Category</h2>
         <p>Choose a category for your feedback</p>
-
         <div className="category-input-container">
           <button
             type="button"
@@ -71,6 +107,8 @@ export default function NewFeedbackPage() {
           className="feedback-detail"
           name="feedback-detail"
           maxLength={50}
+          rows={5}
+          onChange={handleFeedbackDetailInputChange}
         ></textarea>
         <div className="buttons">
           <button className="add-feedback">Add Feedback</button>

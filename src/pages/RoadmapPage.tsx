@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
 import ButtonGoBack from "../components/ButtonGoBack";
 import ButtonAddFeedback from "../components/ButtonAddFeedback";
+import { supabase } from "../client";
 
 export default function RoadmapPage() {
   const [selectedProgress, setSelectedProgress] = useState("planned");
@@ -27,33 +28,26 @@ export default function RoadmapPage() {
       ],
     },
   ]);
-  useEffect(() => {
-    const url = "../../data.json";
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setCurrentUser(json.currentUser);
-        setProductRequests(json.productRequests);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
 
-    fetchData();
+  // FETCH
+  async function fetchProductRequest() {
+    let { data, error } = await supabase.from("product_requests").select("*");
+    setProductRequests(data);
+  }
+  useEffect(() => {
+    fetchProductRequest();
   }, []);
+  console.log(productRequests);
 
   const planned = productRequests.filter(
-    (productRequest) => productRequest.status === "planned"
+    (productRequest) => productRequest.status === "Planned"
   );
   const inProgress = productRequests.filter(
-    (productRequest) => productRequest.status === "in-progress"
+    (productRequest) => productRequest.status === "In-Progress"
   );
   const live = productRequests.filter(
-    (productRequest) => productRequest.status === "live"
+    (productRequest) => productRequest.status === "Live"
   );
-
-  // console.log(live[0].comments);
 
   const listPlanned = planned.map((obj) => (
     <RoadmapCard

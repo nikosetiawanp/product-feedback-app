@@ -12,9 +12,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/suggestions" element={<SuggestionsPage />} />
         <Route path="/new-feedback" element={<NewFeedbackPage />} />
-        <Route path="/edit-feedback" element={<EditFeedbackPage />} />
+        <Route path="/edit-feedback/:id" element={<EditFeedbackPage />} />
         <Route path="/roadmap" element={<RoadmapPage />} />
-        <Route path="/feedback-detail" element={<FeedbackDetailPage />} />
+        <Route path="/feedback-detail/:id" element={<FeedbackDetailPage />} />
       </Routes>
     </Router>
   );
