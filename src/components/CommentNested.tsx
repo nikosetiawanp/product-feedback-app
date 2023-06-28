@@ -1,8 +1,9 @@
 import { useState } from "react";
 import UserImage from "../assets/user-images/image-elijah.jpg";
 
-export default function CommentNested() {
+export default function CommentNested(props: { content: string }) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
+
   return (
     <div className="comment-nested">
       <img src={UserImage} alt="user-image" />
@@ -22,10 +23,11 @@ export default function CommentNested() {
           </button>
         </div>
         <p>
-          Also, please allow styles to be applied based on system preferences. I
+          {props.content}
+          {/* Also, please allow styles to be applied based on system preferences. I
           would love to be able to browse Frontend Mentor in the evening after
           my device’s dark mode turns on without the bright background it
-          currently has.
+          currently has. */}
         </p>
         {replyFormIsActive && (
           <form className="reply-form" action="submit">

@@ -1299,7 +1299,7 @@ button.button-add-feedback:hover {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .comment .user-info-and-reply-button .user-info h3,
 .comment-nested .user-info-and-reply-button .user-info h3 {
@@ -1332,6 +1332,10 @@ button.button-add-feedback:hover {
   font-size: 15px;
   color: #647196;
   line-height: 1.2rem;
+}
+.comment .contents,
+.comment-nested .contents {
+  width: 100%;
 }
 
 form.reply-form {

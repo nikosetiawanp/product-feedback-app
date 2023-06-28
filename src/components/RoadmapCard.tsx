@@ -28,16 +28,16 @@ export default function RoadmapCard(props: {
           {/* OVAL */}
           <div
             className={
-              props.status === "planned"
+              props.status === "Planned"
                 ? "oval-orange"
-                : props.status === "in-progress"
+                : props.status === "In-Progress"
                 ? "oval-purple"
                 : "oval-blue"
             }
           ></div>
-          {props.status === "planned"
+          {props.status === "Planned"
             ? "Planned"
-            : props.status === "in-progress"
+            : props.status === "In-Progress"
             ? "In Progress"
             : "Live"}
         </span>

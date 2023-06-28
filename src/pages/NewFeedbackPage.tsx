@@ -38,12 +38,13 @@ export default function NewFeedbackPage() {
         title: `${titleInput}`,
         category: `${categoryInput}`,
         upvotes: 0,
-        status: "suggestion",
+        status: "Suggestion",
         description: `${feedbackDetailInput}`,
         comments: null,
       },
     ]);
-    history.back();
+    alert("Successfully created data");
+    window.location.href = "../suggestions";
   };
 
   return (

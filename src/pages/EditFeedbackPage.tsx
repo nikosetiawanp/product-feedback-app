@@ -84,8 +84,24 @@ export default function NewFeedbackPage() {
       })
       .eq("id", feedbackDetail.id);
     console.log(data, error);
-    alert("Data has been changed");
-    // history.back();
+
+    alert("Update successful");
+    statusInput == "Suggestion"
+      ? (window.location.href = "suggeestions")
+      : (window.location.href = "roadmap");
+  };
+  const deleteFeedback = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    const { data, error } = await supabase
+      .from("product_requests")
+      .delete()
+      .eq("id", feedbackDetail.id);
+    console.log(data, error);
+
+    alert("Delete successful");
+    statusInput == "Suggestion"
+      ? (window.location.href = "../suggestions")
+      : (window.location.href = "../roadmap");
   };
 
   return (
@@ -182,7 +198,7 @@ export default function NewFeedbackPage() {
           >
             Cancel
           </button>
-          <button type="button" className="delete">
+          <button type="button" className="delete" onClick={deleteFeedback}>
             Delete
           </button>
         </div>

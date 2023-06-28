@@ -9,45 +9,9 @@ import { Link } from "react-router-dom";
 export default function FeedbackDetailPage() {
   const { id } = useParams();
 
+  const [feedbackDetail, setFeedbackDetail] = useState([]);
   const [comments, setComments] = useState([]);
-  const [commentList, setCommentList] = useState([]);
-  const [feedbackDetail, setFeedbackDetail] = useState([
-    {
-      id: 0,
-      title: "title",
-      category: "category",
-      upvotes: 0,
-      status: "status",
-      comments: [],
-    },
-  ]);
-
-  // FETCH DATA FROM JSON
-  async function fetchFeedbackDetail() {
-    const { data, error } = await supabase
-      .from("product_requests")
-      .select("*, comments->content")
-      .eq("id", `${id}`);
-
-    setFeedbackDetail(data[0]);
-    setComments(Object.keys(data[0].comments));
-    console.log(data);
-  }
-  useEffect(() => {
-    fetchFeedbackDetail();
-  }, []);
-
-  // async function fetchComments() {
-  //   const { data, error } = await supabase
-  //     .from("comments")
-  //     .select("*")
-  //     .contains("id", "comments");
-  //   console.log(data);
-  // }
-
-  // useEffect(() => {
-  //   fetchComments();
-  // }, []);
+  const [replies, setReplies] = useState([]);
 
   const [commentInput, setCommentInput] = useState("");
   const handleCommentInputChange = useCallback(
@@ -56,6 +20,41 @@ export default function FeedbackDetailPage() {
     },
     []
   );
+
+  async function fetchFeedbackDetail() {
+    const { data, error } = await supabase
+      .from("product_requests")
+      .select(`*, comments (*, replies (*))`)
+      .eq("id", id);
+
+    console.log(data[0].comments);
+
+    setFeedbackDetail(data[0]);
+    setComments(data[0].comments);
+  }
+  useEffect(() => {
+    fetchFeedbackDetail();
+  }, []);
+
+  const renderedComments = comments.map((comment) => (
+    <Comment
+      key={comment.id}
+      id={comment.id}
+      content={comment.content}
+      replies={comment.replies}
+    />
+  ));
+
+  const handleCommentSubmit = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    const { data, error } = await supabase.from("comments").insert([
+      {
+        content: `${commentInput}`,
+        product_request_id: `${id}`,
+      },
+    ]);
+    location.reload();
+  };
 
   return (
     <div className="feedback-detail-page">
@@ -78,14 +77,20 @@ export default function FeedbackDetailPage() {
         comments={[]}
       />
 
-      <div className="comment-section">
-        <h2>4 Comments</h2>
-        {/* COMMENTS */}
-        <Comment />
-        <Comment />
-      </div>
-
-      <form action="submit" className="reply-comment-form">
+      {comments.length > 0 && (
+        <div className="comment-section">
+          <h2>{comments.length} Comments</h2>
+          {renderedComments}
+          {/* COMMENTS */}
+          {/* <Comment />
+        <Comment /> */}
+        </div>
+      )}
+      <form
+        action="submit"
+        className="reply-comment-form"
+        onSubmit={handleCommentSubmit}
+      >
         <h2>Add Comment</h2>
         <textarea
           name="comment-input"
