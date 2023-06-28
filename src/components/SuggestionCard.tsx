@@ -11,10 +11,15 @@ export default function SuggestionCard(props: {
   description: string;
   comments: [object];
 }) {
+  const handleButton = (e) => {
+    e.preventDefault();
+    alert(`Upvoted "${props.title}"`);
+  };
+
   return (
     <Link to={`/feedback-detail/${props.id}`}>
       <div className="suggestion-card">
-        <button className="upvote-button" type="button">
+        <button className="upvote-button" type="button" onClick={handleButton}>
           <img src={IconArrowUp} alt="icon-arrow-up" />
           {props.upvotes}
         </button>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UserImage from "../assets/user-images/image-elijah.jpg";
 
-export default function CommentNested(props: { content: string }) {
+export default function Reply(props: { content: string; commentId: string }) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
 
   return (
