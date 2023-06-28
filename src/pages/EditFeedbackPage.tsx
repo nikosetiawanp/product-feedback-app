@@ -13,8 +13,8 @@ import { supabase } from "../client";
 export default function NewFeedbackPage() {
   const { id } = useParams();
   const [titleInput, setTitleInput] = useState("");
-  const [categoryInput, setCategoryInput] = useState("Feature");
-  const [statusInput, setStatusInput] = useState("Suggestion");
+  const [categoryInput, setCategoryInput] = useState("");
+  const [statusInput, setStatusInput] = useState("");
   const [feedbackDetailInput, setFeedbackDetailInput] = useState("");
   const [feedbackDetail, setFeedbackDetail] = useState([
     {
@@ -52,7 +52,7 @@ export default function NewFeedbackPage() {
   };
 
   async function fetchFeedbackDetail() {
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from("product_requests")
       .select()
       .eq("id", `${id}`);
@@ -73,22 +73,28 @@ export default function NewFeedbackPage() {
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    const { data, error } = await supabase.from("product_requests").update([
-      {
+    const { data, error } = await supabase
+      .from("product_requests")
+      .update({
         title: `${titleInput}`,
         category: `${categoryInput}`,
-        upvotes: 0,
+        upvotes: `${feedbackDetail.upvotes}`,
         status: `${statusInput}`,
         description: `${feedbackDetailInput}`,
-        // comments: null,
-      },
-    ]);
-    history.back();
+      })
+      .eq("id", feedbackDetail.id);
+    console.log(data, error);
+    alert("Data has been changed");
+    // history.back();
   };
 
   return (
     <section className="edit-feedback-page">
-      <form className="feedback-form" action="submit">
+      <form
+        className="feedback-form"
+        action="submit"
+        onSubmit={handleFormSubmit}
+      >
         <ButtonGoBack />
         <img
           className="icon-new-feedback"
@@ -103,7 +109,6 @@ export default function NewFeedbackPage() {
           type="text"
           className="title-input"
           value={titleInput}
-          // placeholder={feedbackDetail.title}
           onChange={handleTitleInputChange}
         />
         {/* category input */}
