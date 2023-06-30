@@ -42,7 +42,6 @@ export default function SuggestionsPage() {
 
   // FETCH
   async function fetchProductRequest() {
-    // const { data, error } = await supabase.from("product_requests").select("*");
     const { data, error } = await supabase
       .from("product_requests")
       .select(`*, comments (*, replies (*))`);
@@ -66,32 +65,6 @@ export default function SuggestionsPage() {
     sortBy === "Most Upvotes" ? b.upvotes - a.upvotes : a.upvotes - b.upvotes
   );
 
-  // const renderListSuggestion = () => {
-  //   sortedSuggestion.map((suggestion) => {
-  //     const commentsLength = suggestion.comments.length;
-  //     suggestion.comments.map((comment) => {
-  //       const repliesLength = comment.replies.length;
-  //       const listSuggestion = sortedSuggestion.map((obj) => (
-  //         <SuggestionCard
-  //           id={obj.id}
-  //           key={obj.id}
-  //           title={obj.title}
-  //           category={obj.category}
-  //           upvotes={obj.upvotes}
-  //           status={obj.status}
-  //           description={obj.description}
-  //           totalComments={commentsLength + repliesLength}
-  //           comments={obj.comments}
-  //         />
-  //       ));
-  //     });
-  //   });
-  // };
-
-  // console.log(renderListSuggestion());
-
-  // renderListSuggestion();
-
   const listSuggestion = sortedSuggestion.map((obj) => (
     <SuggestionCard
       id={obj.id}
@@ -101,26 +74,9 @@ export default function SuggestionsPage() {
       upvotes={obj.upvotes}
       status={obj.status}
       description={obj.description}
-      totalComments={obj.comments.length}
-      comments={obj.comments}
+      commentsLength={obj.comments.length}
     />
   ));
-
-  // const renderListSuggestion = () => {
-  //   const listSuggestion = sortedSuggestion.map((obj) => (
-  //     <SuggestionCard
-  //       id={obj.id}
-  //       key={obj.id}
-  //       title={obj.title}
-  //       category={obj.category}
-  //       upvotes={obj.upvotes}
-  //       status={obj.status}
-  //       description={obj.description}
-  //       totalComments={obj.comments.length}
-  //       comments={obj.comments}
-  //     />
-  //   ));
-  // };
 
   const planned = productRequests.filter(
     (productRequest) => productRequest.status === "Planned"

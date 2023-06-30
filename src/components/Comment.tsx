@@ -6,10 +6,11 @@ import { supabase } from "../client";
 export default function Comment(props: {
   id: string;
   content: string;
-  replies: { content: string; id: string }[];
+  productRequestId: string;
 }) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
+  const [replies, setReplies] = useState([]);
   const handleReplyInputChange = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setReplyInput(event.target.value);
@@ -17,21 +18,40 @@ export default function Comment(props: {
     []
   );
 
+  async function fetchReplies() {
+    const { data, error } = await supabase
+      .from("comments")
+      .select(`*`)
+      .eq("parent_id", props.id);
+    if (data !== null) {
+      setReplies(data);
+    } else console.log(error);
+  }
+  useEffect(() => {
+    fetchReplies();
+  }, []);
+
+  const renderedReplies = replies.map((reply) => (
+    <Reply
+      content={reply.content}
+      parentId={props.id}
+      productRequestId={props.productRequestId}
+      key={reply.id}
+    />
+  ));
+
   const handleReplySubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    const { data, error } = await supabase.from("replies").insert([
+    const { data, error } = await supabase.from("comments").insert([
       {
+        product_request_id: `${props.productRequestId}`,
         content: `${replyInput}`,
-        comment_id: `${props.id}`,
+        parent_id: `${props.id}`,
       },
     ]);
     console.log(data, error);
     location.reload();
   };
-
-  const renderedReplies = props.replies.map((reply) => (
-    <Reply content={reply.content} commentId={props.id} key={reply.id} />
-  ));
 
   return (
     <div className="comment-container">
@@ -75,7 +95,9 @@ export default function Comment(props: {
           )}
         </div>
       </div>
-      <div className="comment-nested-container">{renderedReplies}</div>
+      <div className="comment-nested-container">
+        {replies.length !== 0 && renderedReplies}
+      </div>
     </div>
   );
 }

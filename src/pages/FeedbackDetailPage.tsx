@@ -33,28 +33,46 @@ export default function FeedbackDetailPage() {
     []
   );
 
+  // FETCH COMMENTS
+  // async function fetchFeedbackDetail() {
+  //   const { data, error } = await supabase
+  //     .from("product_requests")
+  //     .select(`*, comments (*, replies (*))`)
+  //     .eq("id", id);
+  //   if (data !== null) {
+  //     setFeedbackDetail(data[0]);
+  //     setComments(data[0].comments);
+  //   } else console.log(error);
+  // }
+  // useEffect(() => {
+  //   fetchFeedbackDetail();
+  // }, []);
+
+  // FETCH COMMENTS
   async function fetchFeedbackDetail() {
     const { data, error } = await supabase
       .from("product_requests")
       .select(`*, comments (*, replies (*))`)
-      .eq("id", id);
+      .eq("id,", id);
     if (data !== null) {
       setFeedbackDetail(data[0]);
-      await setComments(data[0].comments);
+      setComments(data[0].comments);
     } else console.log(error);
   }
   useEffect(() => {
     fetchFeedbackDetail();
   }, []);
 
-  const renderedComments = comments.map((comment) => (
-    <Comment
-      key={comment.id}
-      id={comment.id}
-      content={comment.content}
-      replies={comment.replies}
-    />
-  ));
+  const renderedComments = comments
+    .filter((comment) => comment.parent_id == null)
+    .map((comment) => (
+      <Comment
+        key={comment.id}
+        id={comment.id}
+        content={comment.content}
+        productRequestId={id}
+      />
+    ));
 
   const handleCommentSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
@@ -65,7 +83,6 @@ export default function FeedbackDetailPage() {
       },
     ]);
     console.log(data, error);
-
     location.reload();
   };
 
@@ -94,13 +111,12 @@ export default function FeedbackDetailPage() {
         upvotes={feedbackDetail.upvotes}
         status={feedbackDetail.status}
         description={feedbackDetail.description}
-        totalComments={comments.length + allRepliesSum}
-        comments={[]}
+        commentsLength={comments.length}
       />
 
       {comments.length > 0 && (
         <div className="comment-section">
-          <h2>{comments.length + allRepliesSum} Comments</h2>
+          <h2>{comments.length} Comments</h2>
           {renderedComments}
           {/* COMMENTS */}
           {/* <Comment />

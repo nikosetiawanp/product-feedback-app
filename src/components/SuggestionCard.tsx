@@ -11,18 +11,17 @@ export default function SuggestionCard(props: {
   upvotes: number;
   status: string;
   description: string;
-  totalComments: number;
-  comments: object[];
+  commentsLength: number;
 }) {
   const id = props.id;
-  const [feedbackDetail, setFeedbackDetail] = useState({
-    id: "",
-    title: "",
-    category: "",
-    description: "",
-    status: "",
-    upvotes: 0,
-  });
+  // const [feedbackDetail, setFeedbackDetail] = useState({
+  //   id: "",
+  //   title: "",
+  //   category: "",
+  //   description: "",
+  //   status: "",
+  //   upvotes: 0,
+  // });
   const [comments, setComments] = useState([
     {
       content: "",
@@ -36,25 +35,25 @@ export default function SuggestionCard(props: {
     alert(`Upvoted "${props.title}"`);
   };
 
-  const allReplies = comments.map((comment) => comment.replies);
-  const allRepliesLength = allReplies.map((replies) => replies.length);
-  let allRepliesSum = 0;
-  for (let i = 0; i < allRepliesLength.length; i++) {
-    allRepliesSum += allRepliesLength[i];
-  }
-  async function fetchFeedbackDetail() {
-    const { data, error } = await supabase
-      .from("product_requests")
-      .select(`*, comments (*, replies (*))`)
-      .eq("id", id);
-    if (data !== null) {
-      setFeedbackDetail(data[0]);
-      await setComments(data[0].comments);
-    } else console.log(error);
-  }
-  useEffect(() => {
-    fetchFeedbackDetail();
-  }, []);
+  // const allReplies = comments.map((comment) => comment.replies);
+  // const allRepliesLength = allReplies.map((replies) => replies.length);
+  // let allRepliesSum = 0;
+  // for (let i = 0; i < allRepliesLength.length; i++) {
+  //   allRepliesSum += allRepliesLength[i];
+  // }
+  // async function fetchFeedbackDetail() {
+  //   const { data, error } = await supabase
+  //     .from("product_requests")
+  //     .select(`*, comments (*, replies (*))`)
+  //     .eq("id", id);
+  //   if (data !== null) {
+  //     setFeedbackDetail(data[0]);
+  //     await setComments(data[0].comments);
+  //   } else console.log(error);
+  // }
+  // useEffect(() => {
+  //   fetchFeedbackDetail();
+  // }, []);
 
   return (
     <Link to={`/feedback-detail/${props.id}`}>
@@ -70,7 +69,8 @@ export default function SuggestionCard(props: {
         </div>
         <span className="comment-count">
           <img src={IconComments} alt="comment-icon" />
-          {comments.length + allRepliesSum}
+          {props.commentsLength}
+          {/* {comments.length + allRepliesSum} */}
         </span>
       </div>
     </Link>

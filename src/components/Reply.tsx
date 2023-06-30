@@ -1,7 +1,11 @@
 import { useState, useCallback } from "react";
 import { supabase } from "../client";
 import UserImage from "../assets/user-images/image-elijah.jpg";
-export default function Reply(props: { content: string; commentId: string }) {
+export default function Reply(props: {
+  content: string;
+  parentId: string;
+  productRequestId: string;
+}) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
   const handleReplyInputChange = useCallback(
@@ -12,10 +16,11 @@ export default function Reply(props: { content: string; commentId: string }) {
   );
   const handleReplySubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    const { data, error } = await supabase.from("replies").insert([
+    const { data, error } = await supabase.from("comments").insert([
       {
+        product_request_id: `${props.productRequestId}`,
         content: `${replyInput}`,
-        comment_id: `${props.commentId}`,
+        parent_id: `${props.parentId}`,
       },
     ]);
     console.log(data, error);
@@ -43,7 +48,6 @@ export default function Reply(props: { content: string; commentId: string }) {
         <p>{props.content}</p>
         {replyFormIsActive && (
           <form className="reply-form" action="submit">
-            <p>{replyInput}</p>
             <textarea
               name="reply-input"
               id="reply-input"
