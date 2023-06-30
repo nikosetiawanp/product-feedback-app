@@ -62,7 +62,13 @@ export default function SuggestionsPage() {
       )
     : suggestion;
   const sortedSuggestion = filteredSuggestion.sort((a, b) =>
-    sortBy === "Most Upvotes" ? b.upvotes - a.upvotes : a.upvotes - b.upvotes
+    sortBy === "Most Upvotes"
+      ? b.upvotes - a.upvotes
+      : sortBy === "Least Upvotes"
+      ? a.upvotes - b.upvotes
+      : sortBy === "Most Comments"
+      ? b.comments.length - a.comments.length
+      : a.comments.length - b.comments.length
   );
 
   const listSuggestion = sortedSuggestion.map((obj) => (
