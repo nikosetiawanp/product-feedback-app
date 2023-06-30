@@ -69,15 +69,12 @@ export default function FeedbackDetailPage() {
     location.reload();
   };
 
-  // count replies
   const allReplies = comments.map((comment) => comment.replies);
   const allRepliesLength = allReplies.map((replies) => replies.length);
   let allRepliesSum = 0;
   for (let i = 0; i < allRepliesLength.length; i++) {
     allRepliesSum += allRepliesLength[i];
   }
-
-  console.log(allRepliesSum);
 
   return (
     <div className="feedback-detail-page">
