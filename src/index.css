@@ -1197,6 +1197,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  color: #3a4374;
   background: #f2f4ff;
   border-radius: 10px;
   font-weight: 600;

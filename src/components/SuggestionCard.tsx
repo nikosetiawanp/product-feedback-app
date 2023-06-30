@@ -9,6 +9,7 @@ export default function SuggestionCard(props: {
   upvotes: number;
   status: string;
   description: string;
+  totalComments: number;
   comments: object[];
 }) {
   const handleButton = (e: React.ChangeEvent<unknown>) => {
@@ -29,7 +30,8 @@ export default function SuggestionCard(props: {
           <span className="tag">{props.category}</span>
         </div>
         <span className="comment-count">
-          <img src={IconComments} alt="comment-icon" />2
+          <img src={IconComments} alt="comment-icon" />
+          {props.totalComments}
         </span>
       </div>
     </Link>

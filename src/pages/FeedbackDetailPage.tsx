@@ -13,6 +13,8 @@ export default function FeedbackDetailPage() {
     id: "",
     title: "",
     category: "",
+    description: "",
+    status: "",
     upvotes: 0,
   });
   const [comments, setComments] = useState([
@@ -23,8 +25,6 @@ export default function FeedbackDetailPage() {
       replies: [],
     },
   ]);
-  const [replies, setReplies] = useState([]);
-
   const [commentInput, setCommentInput] = useState("");
   const handleCommentInputChange = useCallback(
     (event: React.ChangeEvent<any>) => {
@@ -40,7 +40,7 @@ export default function FeedbackDetailPage() {
       .eq("id", id);
     if (data !== null) {
       setFeedbackDetail(data[0]);
-      setComments(data[0].comments);
+      await setComments(data[0].comments);
     } else console.log(error);
   }
   useEffect(() => {
@@ -69,7 +69,15 @@ export default function FeedbackDetailPage() {
     location.reload();
   };
 
-  console.log(feedbackDetail);
+  // count replies
+  const allReplies = comments.map((comment) => comment.replies);
+  const allRepliesLength = allReplies.map((replies) => replies.length);
+  let allRepliesSum = 0;
+  for (let i = 0; i < allRepliesLength.length; i++) {
+    allRepliesSum += allRepliesLength[i];
+  }
+
+  console.log(allRepliesSum);
 
   return (
     <div className="feedback-detail-page">
@@ -87,14 +95,15 @@ export default function FeedbackDetailPage() {
         title={feedbackDetail.title}
         category={feedbackDetail.category}
         upvotes={feedbackDetail.upvotes}
-        status="suggestion"
-        description="It would help people with light sensitivities and who prefer dark mode."
+        status={feedbackDetail.status}
+        description={feedbackDetail.description}
+        totalComments={comments.length + allRepliesSum}
         comments={[]}
       />
 
       {comments.length > 0 && (
         <div className="comment-section">
-          <h2>{comments.length} Comments</h2>
+          <h2>{comments.length + allRepliesSum} Comments</h2>
           {renderedComments}
           {/* COMMENTS */}
           {/* <Comment />
