@@ -4,6 +4,9 @@ import RoadmapStatus from "./RoadmapStatus";
 export default function MobileSidebar(props: {
   categoryFilter: string;
   setCategoryFilter: React.Dispatch<React.SetStateAction<string>>;
+  plannedLength: number;
+  inProgressLength: number;
+  liveLength: number;
 }) {
   return (
     <div className="mobile-sidebar">
@@ -13,7 +16,11 @@ export default function MobileSidebar(props: {
           setCategoryFilter={props.setCategoryFilter}
         />
 
-        <RoadmapStatus />
+        <RoadmapStatus
+          plannedLength={props.plannedLength}
+          inProgressLength={props.inProgressLength}
+          liveLength={props.liveLength}
+        />
       </div>
     </div>
   );

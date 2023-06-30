@@ -21,23 +21,19 @@ export default function SuggestionsPage() {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortByIsActive, setSortByIsActive] = useState(false);
   const [sortBy, setSortBy] = useState("Most Upvotes");
-  const [currentUser, setCurrentUser] = useState({});
   const [productRequests, setProductRequests] = useState([
     {
-      id: 0,
+      id: "",
       title: "",
       category: "",
       upvotes: 0,
       status: "",
+      description: "",
       comments: [
         {
-          id: 0,
-          content: "content",
-          user: {
-            image: "image",
-            name: "name",
-            username: "username",
-          },
+          id: "",
+          content: "",
+          product_request_id: "",
         },
       ],
     },
@@ -45,10 +41,10 @@ export default function SuggestionsPage() {
 
   // FETCH
   async function fetchProductRequest() {
-    let { data, error } = await supabase.from("product_requests").select("*");
-    console.log(data);
-
-    setProductRequests(data);
+    const { data, error } = await supabase.from("product_requests").select("*");
+    if (data !== null) {
+      setProductRequests(data);
+    } else console.log(error);
   }
   useEffect(() => {
     fetchProductRequest();
@@ -118,14 +114,17 @@ export default function SuggestionsPage() {
           setCategoryFilter={setCategoryFilter}
         />
         <RoadmapStatus
-          plannedCount={planned.length}
-          inProgressCount={inProgress.length}
-          liveCount={live.length}
+          plannedLength={planned.length}
+          inProgressLength={inProgress.length}
+          liveLength={live.length}
         />
         {mobileSidebarIsActive && (
           <MobileSidebar
             categoryFilter={categoryFilter}
             setCategoryFilter={setCategoryFilter}
+            plannedLength={planned.length}
+            inProgressLength={inProgress.length}
+            liveLength={live.length}
           />
         )}
       </header>

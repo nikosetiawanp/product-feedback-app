@@ -7,23 +7,19 @@ import { supabase } from "../client";
 
 export default function RoadmapPage() {
   const [selectedProgress, setSelectedProgress] = useState("planned");
-  const [currentUser, setCurrentUser] = useState({});
   const [productRequests, setProductRequests] = useState([
     {
-      id: 0,
-      title: "title",
-      category: "enhancement",
+      id: "",
+      title: "",
+      category: "",
       upvotes: 0,
-      status: "suggestion",
+      status: "",
+      description: "",
       comments: [
         {
-          id: 0,
-          content: "content",
-          user: {
-            image: "image",
-            name: "name",
-            username: "username",
-          },
+          id: "",
+          content: "",
+          product_request_id: "",
         },
       ],
     },
@@ -31,13 +27,14 @@ export default function RoadmapPage() {
 
   // FETCH
   async function fetchProductRequest() {
-    let { data, error } = await supabase.from("product_requests").select("*");
-    setProductRequests(data);
+    const { data, error } = await supabase.from("product_requests").select("*");
+    if (data) {
+      setProductRequests(data);
+    } else console.log(error);
   }
   useEffect(() => {
     fetchProductRequest();
   }, []);
-  console.log(productRequests);
 
   const planned = productRequests.filter(
     (productRequest) => productRequest.status === "Planned"

@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import { supabase } from "../client";
 
-import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconNewFeedback from "../assets/shared/icon-new-feedback.svg";
@@ -16,13 +15,13 @@ export default function NewFeedbackPage() {
   const [categoryInput, setCategoryInput] = useState("Feature");
   const [feedbackDetailInput, setFeedbackDetailInput] = useState("");
   const handleTitleInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<any>) => {
       setTitleInput(event.target.value);
     },
     []
   );
   const handleFeedbackDetailInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<any>) => {
       setFeedbackDetailInput(event.target.value);
     },
     []
@@ -43,8 +42,11 @@ export default function NewFeedbackPage() {
         comments: null,
       },
     ]);
-    alert("Successfully created data");
-    window.location.href = "../suggestions";
+    if (!error) {
+      console.log(data);
+      alert("Successfully created data");
+      window.location.href = "../suggestions";
+    } else console.log(error);
   };
 
   return (
@@ -55,13 +57,7 @@ export default function NewFeedbackPage() {
         onSubmit={handleFormSubmit}
       >
         <ButtonGoBack />
-        {/* <button
-          className="go-back"
-          type="button"
-          onClick={() => history.back()}
-        >
-          <img src={IconArrowLeft} alt="icon-arrow-left" /> &nbsp; Go back
-        </button> */}
+
         <img
           className="icon-new-feedback"
           src={IconNewFeedback}

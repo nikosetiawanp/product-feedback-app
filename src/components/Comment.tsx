@@ -6,13 +6,12 @@ import { supabase } from "../client";
 export default function Comment(props: {
   id: string;
   content: string;
-  replies: [string];
+  replies: { content: string; id: string }[];
 }) {
-  // const [replies, setReplies] = useState([]);
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
   const handleReplyInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setReplyInput(event.target.value);
     },
     []
@@ -31,7 +30,7 @@ export default function Comment(props: {
   };
 
   const renderedReplies = props.replies.map((reply) => (
-    <Reply content={reply.content} key={reply.id} commentId={props.id} />
+    <Reply content={reply.content} commentId={props.id} key={reply.id} />
   ));
 
   return (

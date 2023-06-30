@@ -1,10 +1,9 @@
-import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
+import { useState, useEffect, useCallback, createContext } from "react";
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconEditFeedback from "../assets/shared/icon-edit-feedback.svg";
 import { useParams } from "react-router-dom";
 
-import { useState, useEffect, useCallback } from "react";
 import CategoryDropdown from "../components/CategoryDropdown";
 import StatusDropdown from "../components/StatusDropdown";
 import ButtonGoBack from "../components/ButtonGoBack";
@@ -16,25 +15,23 @@ export default function NewFeedbackPage() {
   const [categoryInput, setCategoryInput] = useState("");
   const [statusInput, setStatusInput] = useState("");
   const [feedbackDetailInput, setFeedbackDetailInput] = useState("");
-  const [feedbackDetail, setFeedbackDetail] = useState([
-    {
-      id: 0,
-      title: "title",
-      category: "category",
-      upvotes: 0,
-      status: "status",
-      comments: [],
-    },
-  ]);
+  const [feedbackDetail, setFeedbackDetail] = useState({
+    title: "",
+    category: "",
+    status: "",
+    description: "",
+    upvotes: 0,
+    id: "",
+  });
 
   const handleTitleInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<any>) => {
       setTitleInput(event.target.value);
     },
     []
   );
   const handleFeedbackDetailInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<any>) => {
       setFeedbackDetailInput(event.target.value);
     },
     []
@@ -56,14 +53,18 @@ export default function NewFeedbackPage() {
       .from("product_requests")
       .select()
       .eq("id", `${id}`);
-    setFeedbackDetail(data[0]);
+    console.log(error);
+
+    setFeedbackDetail(data?.[0]);
   }
   useEffect(() => {
     fetchFeedbackDetail();
+
     setTitleInput(feedbackDetail.title);
     setCategoryInput(feedbackDetail.category);
     setStatusInput(feedbackDetail.status);
     setFeedbackDetailInput(feedbackDetail.description);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     feedbackDetail.category,
     feedbackDetail.description,

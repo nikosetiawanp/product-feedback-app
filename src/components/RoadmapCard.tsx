@@ -3,13 +3,13 @@ import IconComments from "../assets/shared/icon-comments.svg";
 import { Link } from "react-router-dom";
 
 export default function RoadmapCard(props: {
-  id: number;
+  id: string;
   title: string;
   category: string;
   upvotes: number;
   status: string;
   description: string;
-  comments: [object];
+  comments: { id: string; content: string; product_request_id: string }[];
 }) {
   return (
     <Link to={`/feedback-detail/${props.id}`}>

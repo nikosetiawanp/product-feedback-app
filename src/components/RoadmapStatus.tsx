@@ -1,7 +1,7 @@
 export default function RoadmapStatus(props: {
-  plannedCount: number;
-  inProgressCount: number;
-  liveCount: number;
+  plannedLength: number;
+  inProgressLength: number;
+  liveLength: number;
 }) {
   return (
     <div className="roadmap">
@@ -13,17 +13,17 @@ export default function RoadmapStatus(props: {
       <span className="progress-name">
         <div className="oval-purple"></div>Planned
       </span>
-      <b className="progress-count">{props.plannedCount}</b>
+      <b className="progress-count">{props.plannedLength}</b>
 
       <span className="progress-name">
         <div className="oval-orange"></div> In-Progress
       </span>
-      <b className="progress-count">{props.inProgressCount}</b>
+      <b className="progress-count">{props.inProgressLength}</b>
 
       <span className="progress-name">
         <div className="oval-blue"></div>Live
       </span>
-      <b className="progress-count">{props.liveCount}</b>
+      <b className="progress-count">{props.liveLength}</b>
     </div>
   );
 }

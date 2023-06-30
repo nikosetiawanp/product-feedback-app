@@ -3,15 +3,15 @@ import IconComments from "../assets/shared/icon-comments.svg";
 import { Link } from "react-router-dom";
 
 export default function SuggestionCard(props: {
-  id: number;
+  id: string;
   title: string;
   category: string;
   upvotes: number;
   status: string;
   description: string;
-  comments: [object];
+  comments: object[];
 }) {
-  const handleButton = (e) => {
+  const handleButton = (e: React.ChangeEvent<unknown>) => {
     e.preventDefault();
     alert(`Upvoted "${props.title}"`);
   };

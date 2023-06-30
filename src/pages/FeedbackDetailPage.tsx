@@ -9,13 +9,25 @@ import { Link } from "react-router-dom";
 export default function FeedbackDetailPage() {
   const { id } = useParams();
 
-  const [feedbackDetail, setFeedbackDetail] = useState([]);
-  const [comments, setComments] = useState([]);
+  const [feedbackDetail, setFeedbackDetail] = useState({
+    id: "",
+    title: "",
+    category: "",
+    upvotes: 0,
+  });
+  const [comments, setComments] = useState([
+    {
+      content: "",
+      id: "",
+      product_request_id: "",
+      replies: [],
+    },
+  ]);
   const [replies, setReplies] = useState([]);
 
   const [commentInput, setCommentInput] = useState("");
   const handleCommentInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<any>) => {
       setCommentInput(event.target.value);
     },
     []
@@ -26,11 +38,10 @@ export default function FeedbackDetailPage() {
       .from("product_requests")
       .select(`*, comments (*, replies (*))`)
       .eq("id", id);
-
-    console.log(data[0].comments);
-
-    setFeedbackDetail(data[0]);
-    setComments(data[0].comments);
+    if (data !== null) {
+      setFeedbackDetail(data[0]);
+      setComments(data[0].comments);
+    } else console.log(error);
   }
   useEffect(() => {
     fetchFeedbackDetail();
@@ -53,8 +64,12 @@ export default function FeedbackDetailPage() {
         product_request_id: `${id}`,
       },
     ]);
+    console.log(data, error);
+
     location.reload();
   };
+
+  console.log(feedbackDetail);
 
   return (
     <div className="feedback-detail-page">
