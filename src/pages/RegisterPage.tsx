@@ -1,26 +1,105 @@
+import { supabase } from "../client";
+import { useState, useCallback } from "react";
+
 export default function RegisterPage() {
+  const [emailInput, setEmailInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
+  const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    // SAVE DATA TO AUTH
+    const { data, error } = await supabase.auth.signUp({
+      email: emailInput,
+      password: passwordInput,
+    });
+    if (!error) {
+      console.log(data);
+      alert("Register Successful! Redirecting soon...");
+      window.location.href = "./login";
+    } else console.log(error);
+
+    // SAVE DATA TO PROFILE
+    const { profileData, profileError } = await supabase
+      .from("profile")
+      .insert([{ some_column: "someValue", other_column: "otherValue" }])
+      .select();
+  };
+
+  const handleEmailInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEmailInput(event.target.value);
+    },
+    []
+  );
+  const handleNameInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setNameInput(event.target.value);
+    },
+    []
+  );
+  const handleUsernameInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setUsernameInput(event.target.value);
+    },
+    []
+  );
+
+  const handlePasswordInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPasswordInput(event.target.value);
+    },
+    []
+  );
+
   return (
     <div className="login-register-page">
-      <form className="login-register-container">
+      <form className="login-register-container" onSubmit={handleFormSubmit}>
         <h1>Register</h1>
         {/* EMAIL */}
         <label htmlFor="email">Email</label>
         <p>Please enter your email</p>
-        <input type="email" id="email" name="email" />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          onChange={handleEmailInputChange}
+        />
         {/* NAME */}
         <label htmlFor="name">Name</label>
         <p>Please enter your full name</p>
-        <input type="text" id="name" name="name" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={handleNameInputChange}
+        />
         {/* USERNAME */}
         <label htmlFor="username">Username</label>
         <p>Please enter your username</p>
-        <input type="text" id="username" name="username" />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          onChange={handleUsernameInputChange}
+        />
         {/* PASSWORD */}
-        <label htmlFor="username">Password</label>
+        <label htmlFor="password">Password</label>
         <p>Please enter your password</p>
-        <input type="text" id="username" name="username" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          onChange={handlePasswordInputChange}
+        />
+
+        {/* PROFILE PICTURE */}
+        <label htmlFor="profile-picture">Profile Picture</label>
+        <p>Please enter your profile picture url</p>
+
         {/* BUTTONS */}
-        <button>Register</button>
+        <button onClick={handleFormSubmit}>Register</button>
         <span>
           Already have an account? <a href="./login">Login</a>
         </span>
