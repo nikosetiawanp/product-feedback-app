@@ -9,22 +9,27 @@ export default function RegisterPage() {
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    // SAVE DATA TO AUTH
     const { data, error } = await supabase.auth.signUp({
       email: emailInput,
       password: passwordInput,
     });
-    if (!error) {
-      console.log(data);
-      alert("Register Successful! Redirecting soon...");
-      window.location.href = "./login";
-    } else console.log(error);
-
-    // SAVE DATA TO PROFILE
-    const { profileData, profileError } = await supabase
+    const { data: profileData, error: profileError } = await supabase
       .from("profile")
-      .insert([{ some_column: "someValue", other_column: "otherValue" }])
-      .select();
+      .insert([
+        {
+          email: emailInput,
+          image: null,
+          name: nameInput,
+          username: usernameInput,
+        },
+      ]);
+    if (error || profileError) {
+      console.log(error, profileError);
+      return;
+    }
+    console.log(data, profileData);
+    alert("Register Successful! Redirecting soon...");
+    window.location.href = "./login";
   };
 
   const handleEmailInputChange = useCallback(
@@ -93,10 +98,6 @@ export default function RegisterPage() {
           name="password"
           onChange={handlePasswordInputChange}
         />
-
-        {/* PROFILE PICTURE */}
-        <label htmlFor="profile-picture">Profile Picture</label>
-        <p>Please enter your profile picture url</p>
 
         {/* BUTTONS */}
         <button onClick={handleFormSubmit}>Register</button>

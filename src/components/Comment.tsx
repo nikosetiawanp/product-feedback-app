@@ -1,5 +1,4 @@
 import Reply from "./Reply";
-import UserImage from "../assets/user-images/image-elijah.jpg";
 import { useState, useCallback, useEffect } from "react";
 import { supabase } from "../client";
 
@@ -7,6 +6,9 @@ export default function Comment(props: {
   id: string;
   content: string;
   productRequestId: string;
+  name: string;
+  username: string;
+  image: string;
 }) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
@@ -15,6 +17,11 @@ export default function Comment(props: {
       content: "",
       id: "",
       product_request_id: "",
+      user: {
+        name: "",
+        username: "",
+        image: "",
+      },
     },
   ]);
   const handleReplyInputChange = useCallback(
@@ -27,7 +34,7 @@ export default function Comment(props: {
   async function fetchReplies() {
     const { data, error } = await supabase
       .from("comments")
-      .select(`*`)
+      .select(`*,  user ( * ))`)
       .eq("parent_id", props.id);
     if (data !== null) {
       setReplies(data);
@@ -43,8 +50,13 @@ export default function Comment(props: {
       parentId={props.id}
       productRequestId={props.productRequestId}
       key={reply.id}
+      name={reply.user.name}
+      username={reply.user.username}
+      image={reply.user.image}
     />
   ));
+
+  console.log(replies);
 
   const handleReplySubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
@@ -62,12 +74,12 @@ export default function Comment(props: {
   return (
     <div className="comment-container">
       <div className="comment">
-        <img src={UserImage} alt="user-image" />
+        <img src={props.image} alt="user-image" />
         <div className="contents">
           <div className="user-info-and-reply-button">
             <div className="user-info">
-              <h3>Elijah Moss</h3>
-              <h4>@hexagon.bestagon</h4>
+              <h3>{props.name}</h3>
+              <h4>@{props.username}</h4>
             </div>
             <button
               className="reply-button"

@@ -1,10 +1,12 @@
 import { useState, useCallback } from "react";
 import { supabase } from "../client";
-import UserImage from "../assets/user-images/image-elijah.jpg";
 export default function Reply(props: {
   content: string;
   parentId: string;
   productRequestId: string;
+  name: string;
+  username: string;
+  image: string;
 }) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
@@ -29,12 +31,12 @@ export default function Reply(props: {
 
   return (
     <div className="comment-nested">
-      <img src={UserImage} alt="user-image" />
+      <img src={props.image} alt="user-image" />
       <div className="contents">
         <div className="user-info-and-reply-button">
           <div className="user-info">
-            <h3>Elijah Moss</h3>
-            <h4>@hexagon.bestagon</h4>
+            <h3>{props.name}</h3>
+            <h4>@{props.username}</h4>
           </div>
           <button
             className="reply-button"

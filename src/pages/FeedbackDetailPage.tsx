@@ -23,6 +23,11 @@ export default function FeedbackDetailPage() {
       id: "",
       product_request_id: "",
       parent_id: null,
+      user: {
+        name: "",
+        username: "",
+        image: "",
+      },
     },
   ]);
   const [commentInput, setCommentInput] = useState("");
@@ -37,7 +42,7 @@ export default function FeedbackDetailPage() {
   async function fetchFeedbackDetail() {
     const { data, error } = await supabase
       .from("product_requests")
-      .select(`*, comments (*)`)
+      .select(`*, comments (*, user ( * ))`)
       .eq("id,", id);
     if (data !== null) {
       setFeedbackDetail(data[0]);
@@ -48,6 +53,8 @@ export default function FeedbackDetailPage() {
     fetchFeedbackDetail();
   }, []);
 
+  // console.log(comments);
+
   const renderedComments = comments
     .filter((comment) => comment.parent_id == null)
     .map((comment) => (
@@ -56,6 +63,9 @@ export default function FeedbackDetailPage() {
         id={comment.id}
         content={comment.content}
         productRequestId={id!}
+        name={comment.user.name}
+        username={comment.user.username}
+        image={comment.user.image}
       />
     ));
 
