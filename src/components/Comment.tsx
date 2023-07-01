@@ -10,7 +10,13 @@ export default function Comment(props: {
 }) {
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
-  const [replies, setReplies] = useState([]);
+  const [replies, setReplies] = useState([
+    {
+      content: "",
+      id: "",
+      product_request_id: "",
+    },
+  ]);
   const handleReplyInputChange = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setReplyInput(event.target.value);

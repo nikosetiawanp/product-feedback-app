@@ -9,8 +9,12 @@ export default function RoadmapCard(props: {
   upvotes: number;
   status: string;
   description: string;
-  comments: { id: string; content: string; product_request_id: string }[];
+  commentsLength: number;
 }) {
+  const handleButton = (e: React.ChangeEvent<unknown>) => {
+    e.preventDefault();
+    alert(`Upvoted "${props.title}"`);
+  };
   return (
     <Link to={`/feedback-detail/${props.id}`}>
       <div className="roadmap-card">
@@ -48,12 +52,12 @@ export default function RoadmapCard(props: {
           {props.category[0].toUpperCase() + props.category.slice(1)}
         </span>
         <div className="upvotes-and-comments">
-          <span className="upvotes">
+          <button className="upvotes" onClick={handleButton}>
             <img src={IconArrowUp} alt="icon-arrow-up" /> &nbsp; {props.upvotes}
-          </span>
+          </button>
           <span className="comments">
             <img src={IconComments} alt="icon-comments" /> &nbsp;
-            {/* {props.comments.length > 0 ? props.comments.length : 0} */}
+            {props.commentsLength}
           </span>
         </div>
       </div>

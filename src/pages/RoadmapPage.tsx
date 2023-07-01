@@ -1,7 +1,6 @@
 import RoadmapCard from "../components/RoadmapCard";
 import { useState, useEffect } from "react";
 import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
-import ButtonGoBack from "../components/ButtonGoBack";
 import ButtonAddFeedback from "../components/ButtonAddFeedback";
 import { supabase } from "../client";
 
@@ -27,8 +26,10 @@ export default function RoadmapPage() {
 
   // FETCH
   async function fetchProductRequest() {
-    const { data, error } = await supabase.from("product_requests").select("*");
-    if (data) {
+    const { data, error } = await supabase
+      .from("product_requests")
+      .select(`*, comments (*)`);
+    if (data !== null) {
       setProductRequests(data);
     } else console.log(error);
   }
@@ -46,6 +47,8 @@ export default function RoadmapPage() {
     (productRequest) => productRequest.status === "Live"
   );
 
+  console.log(productRequests);
+
   const listPlanned = planned.map((obj) => (
     <RoadmapCard
       id={obj.id}
@@ -55,7 +58,7 @@ export default function RoadmapPage() {
       upvotes={obj.upvotes}
       status={obj.status}
       description={obj.description}
-      comments={obj.comments}
+      commentsLength={obj.comments.length}
     />
   ));
   const listInProgress = inProgress.map((obj) => (
@@ -67,7 +70,7 @@ export default function RoadmapPage() {
       upvotes={obj.upvotes}
       status={obj.status}
       description={obj.description}
-      comments={obj.comments}
+      commentsLength={obj.comments.length}
     />
   ));
 
@@ -80,7 +83,7 @@ export default function RoadmapPage() {
       upvotes={obj.upvotes}
       status={obj.status}
       description={obj.description}
-      comments={obj.comments}
+      commentsLength={obj.comments.length}
     />
   ));
 

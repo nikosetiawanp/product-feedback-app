@@ -27,6 +27,7 @@
     &:hover {
       cursor: pointer;
       color: $button-blue-hover;
+      text-decoration: underline;
     }
   }
   .progress-name {

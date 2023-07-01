@@ -79,6 +79,7 @@
     .characters-and-button {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       p.characters-count {
         color: $text-gray;
         font-size: $text-md;
@@ -90,6 +91,7 @@
         font-weight: $bold;
         font-size: $text-sm;
         border-radius: $radius-sm;
+        min-width: 120px;
         height: 45px;
         &:hover {
           cursor: pointer;

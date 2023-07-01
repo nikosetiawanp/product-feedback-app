@@ -22,7 +22,7 @@ export default function FeedbackDetailPage() {
       content: "",
       id: "",
       product_request_id: "",
-      replies: [],
+      parent_id: null,
     },
   ]);
   const [commentInput, setCommentInput] = useState("");
@@ -34,25 +34,10 @@ export default function FeedbackDetailPage() {
   );
 
   // FETCH COMMENTS
-  // async function fetchFeedbackDetail() {
-  //   const { data, error } = await supabase
-  //     .from("product_requests")
-  //     .select(`*, comments (*, replies (*))`)
-  //     .eq("id", id);
-  //   if (data !== null) {
-  //     setFeedbackDetail(data[0]);
-  //     setComments(data[0].comments);
-  //   } else console.log(error);
-  // }
-  // useEffect(() => {
-  //   fetchFeedbackDetail();
-  // }, []);
-
-  // FETCH COMMENTS
   async function fetchFeedbackDetail() {
     const { data, error } = await supabase
       .from("product_requests")
-      .select(`*, comments (*, replies (*))`)
+      .select(`*, comments (*)`)
       .eq("id,", id);
     if (data !== null) {
       setFeedbackDetail(data[0]);
@@ -70,7 +55,7 @@ export default function FeedbackDetailPage() {
         key={comment.id}
         id={comment.id}
         content={comment.content}
-        productRequestId={id}
+        productRequestId={id!}
       />
     ));
 
@@ -85,13 +70,6 @@ export default function FeedbackDetailPage() {
     console.log(data, error);
     location.reload();
   };
-
-  const allReplies = comments.map((comment) => comment.replies);
-  const allRepliesLength = allReplies.map((replies) => replies.length);
-  let allRepliesSum = 0;
-  for (let i = 0; i < allRepliesLength.length; i++) {
-    allRepliesSum += allRepliesLength[i];
-  }
 
   return (
     <div className="feedback-detail-page">
@@ -118,9 +96,6 @@ export default function FeedbackDetailPage() {
         <div className="comment-section">
           <h2>{comments.length} Comments</h2>
           {renderedComments}
-          {/* COMMENTS */}
-          {/* <Comment />
-        <Comment /> */}
         </div>
       )}
       <form

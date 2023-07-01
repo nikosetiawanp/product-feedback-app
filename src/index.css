@@ -772,6 +772,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 .feedback-detail-page .reply-comment-form .characters-and-button {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .feedback-detail-page .reply-comment-form .characters-and-button p.characters-count {
   color: #647196;
@@ -783,6 +784,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   font-weight: 700;
   font-size: 14px;
   border-radius: 10px;
+  min-width: 120px;
   height: 45px;
 }
 .feedback-detail-page .reply-comment-form .characters-and-button button.post-comment-button:hover {
@@ -863,6 +865,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 .roadmap a.view-roadmap:hover {
   cursor: pointer;
   color: #8397f8;
+  text-decoration: underline;
 }
 .roadmap .progress-name {
   display: flex;
@@ -1087,6 +1090,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 .roadmap-card .upvotes-and-comments .comments {
   font-weight: 700;
   font-size: 13px;
+  color: #3a4374;
   display: flex;
   align-items: center;
 }
@@ -1287,6 +1291,7 @@ button.button-add-feedback:hover {
 .comment-nested {
   display: flex;
   width: 100%;
+  font-size: 13px;
   gap: 1.5rem;
 }
 .comment img,
@@ -1333,6 +1338,7 @@ button.button-add-feedback:hover {
   font-size: 15px;
   color: #647196;
   line-height: 1.2rem;
+  font-size: 13px;
 }
 .comment .contents,
 .comment-nested .contents {

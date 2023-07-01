@@ -44,7 +44,7 @@ export default function SuggestionsPage() {
   async function fetchProductRequest() {
     const { data, error } = await supabase
       .from("product_requests")
-      .select(`*, comments (*, replies (*))`);
+      .select(`*, comments (*)`);
     if (data !== null) {
       setProductRequests(data);
     } else console.log(error);

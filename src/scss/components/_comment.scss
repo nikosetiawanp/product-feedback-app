@@ -6,7 +6,7 @@
 .comment-nested {
   display: flex;
   width: 100%;
-  // flex-direction: column;
+  font-size: $text-xs;
   gap: 1.5rem;
   img {
     width: 40px;
@@ -51,6 +51,7 @@
     font-size: $text-md;
     color: $text-gray;
     line-height: 1.2rem;
+    font-size: $text-xs;
   }
 
   .contents {
