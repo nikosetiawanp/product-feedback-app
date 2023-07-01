@@ -1,0 +1,79 @@
+.login-register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+
+  form.login-register-container {
+    background: white;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: $radius-sm;
+
+    h1 {
+      font-size: $text-2xl;
+      color: $text-navy;
+      font-weight: $bold;
+      margin-bottom: 2rem;
+    }
+    label {
+      color: $text-navy;
+      font-weight: $semibold;
+      font-size: $text-sm;
+      margin-bottom: 0.6rem;
+    }
+    p {
+      color: $text-gray;
+      font-size: $text-xs;
+      margin-bottom: 0.6rem;
+    }
+
+    input {
+      background: $background-gray;
+      border: 1px solid $background-gray;
+      border-radius: $radius-xs;
+      color: $text-navy;
+      outline: none;
+      height: 40px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      &:focus {
+        border: 1px solid $button-blue;
+      }
+    }
+
+    button {
+      background: $button-purple;
+      color: white;
+      font-weight: $bold;
+      height: 40px;
+      border-radius: $radius-xs;
+      margin: 2rem 0rem;
+
+      &:hover {
+        background: $button-purple-hover;
+        cursor: pointer;
+      }
+    }
+    span {
+      color: $text-gray;
+      text-align: center;
+      width: 100%;
+
+      a {
+        color: $button-blue;
+        font-weight: $semibold;
+        &:hover {
+          text-decoration: underline;
+          color: $button-blue-hover;
+        }
+      }
+    }
+  }
+}

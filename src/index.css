@@ -798,6 +798,80 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   }
 }
 
+.login-register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+}
+.login-register-page form.login-register-container {
+  background: white;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.login-register-page form.login-register-container h1 {
+  font-size: 24px;
+  color: #3a4374;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.login-register-page form.login-register-container label {
+  color: #3a4374;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 0.6rem;
+}
+.login-register-page form.login-register-container p {
+  color: #647196;
+  font-size: 13px;
+  margin-bottom: 0.6rem;
+}
+.login-register-page form.login-register-container input {
+  background: #f7f8fd;
+  border: 1px solid #f7f8fd;
+  border-radius: 5px;
+  color: #3a4374;
+  outline: none;
+  height: 40px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+.login-register-page form.login-register-container input:focus {
+  border: 1px solid #4661e6;
+}
+.login-register-page form.login-register-container button {
+  background: #ad1fea;
+  color: white;
+  font-weight: 700;
+  height: 40px;
+  border-radius: 5px;
+  margin: 2rem 0rem;
+}
+.login-register-page form.login-register-container button:hover {
+  background: #c75af6;
+  cursor: pointer;
+}
+.login-register-page form.login-register-container span {
+  color: #647196;
+  text-align: center;
+  width: 100%;
+}
+.login-register-page form.login-register-container span a {
+  color: #4661e6;
+  font-weight: 600;
+}
+.login-register-page form.login-register-container span a:hover {
+  text-decoration: underline;
+  color: #8397f8;
+}
+
 .category {
   background: white;
   min-height: 175px;

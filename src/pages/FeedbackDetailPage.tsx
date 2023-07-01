@@ -1,10 +1,10 @@
-import SuggestionCard from "../components/SuggestionCard";
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
-import ButtonGoBack from "../components/ButtonGoBack";
-import Comment from "../components/Comment";
 import { supabase } from "../client";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import SuggestionCard from "../components/SuggestionCard";
+import ButtonGoBack from "../components/ButtonGoBack";
+import Comment from "../components/Comment";
 
 export default function FeedbackDetailPage() {
   const { id } = useParams();
