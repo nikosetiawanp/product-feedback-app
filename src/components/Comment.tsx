@@ -17,6 +17,7 @@ export default function Comment(props: {
       content: "",
       id: "",
       product_request_id: "",
+      parent_id: null,
       user: {
         name: "",
         username: "",
@@ -34,7 +35,7 @@ export default function Comment(props: {
   async function fetchReplies() {
     const { data, error } = await supabase
       .from("comments")
-      .select(`*,  user ( * ))`)
+      .select(`*,  user ( * )`)
       .eq("parent_id", props.id);
     if (data !== null) {
       setReplies(data);
@@ -43,6 +44,8 @@ export default function Comment(props: {
   useEffect(() => {
     fetchReplies();
   }, []);
+
+  // console.log(data);
 
   const renderedReplies = replies.map((reply) => (
     <Reply
@@ -55,8 +58,6 @@ export default function Comment(props: {
       image={reply.user.image}
     />
   ));
-
-  console.log(replies);
 
   const handleReplySubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
