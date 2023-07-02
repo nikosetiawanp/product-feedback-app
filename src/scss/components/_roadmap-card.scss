@@ -57,6 +57,9 @@
     font-size: $text-xs;
     font-weight: $bold;
     color: $text-navy;
+    &:hover {
+      color: $button-blue;
+    }
   }
   p.description {
     font-size: $text-xs;
@@ -81,7 +84,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .upvotes {
+    .upvotes,
+    .downvotes {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -96,6 +100,13 @@
       &:hover {
         background: $button-gray-hover;
         cursor: pointer;
+      }
+    }
+    .downvotes {
+      background: $button-blue;
+      color: white;
+      &:hover {
+        background: $button-blue-hover
       }
     }
     .comments {

@@ -11,10 +11,16 @@ export default function RoadmapCard(props: {
   description: string;
   commentsLength: number;
 }) {
-  const handleButton = (e: React.ChangeEvent<unknown>) => {
+  const upvotes = localStorage.getItem("upvotes");
+  const upvote = (e: React.ChangeEvent<unknown>) => {
     e.preventDefault();
     alert(`Upvoted "${props.title}"`);
   };
+  const downvote = (e: React.ChangeEvent<unknown>) => {
+    e.preventDefault();
+    alert(`Downvoted "${props.title}"`);
+  };
+
   return (
     <Link to={`/feedback-detail/${props.id}`}>
       <div className="roadmap-card">
@@ -52,9 +58,18 @@ export default function RoadmapCard(props: {
           {props.category[0].toUpperCase() + props.category.slice(1)}
         </span>
         <div className="upvotes-and-comments">
-          <button className="upvotes" onClick={handleButton}>
-            <img src={IconArrowUp} alt="icon-arrow-up" /> &nbsp; {props.upvotes}
-          </button>
+          {!upvotes?.includes(props.id) ? (
+            <button className="upvotes" onClick={upvote}>
+              <img src={IconArrowUp} alt="icon-arrow-up" /> &nbsp;{" "}
+              {props.upvotes}
+            </button>
+          ) : (
+            <button className="downvotes" onClick={downvote}>
+              <img src={IconArrowUp} alt="icon-arrow-up" /> &nbsp;{" "}
+              {props.upvotes}
+            </button>
+          )}
+
           <span className="comments">
             <img src={IconComments} alt="icon-comments" /> &nbsp;
             {props.commentsLength}

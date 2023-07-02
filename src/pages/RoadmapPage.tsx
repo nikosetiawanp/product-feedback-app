@@ -47,8 +47,6 @@ export default function RoadmapPage() {
     (productRequest) => productRequest.status === "Live"
   );
 
-  console.log(productRequests);
-
   const listPlanned = planned.map((obj) => (
     <RoadmapCard
       id={obj.id}

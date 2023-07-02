@@ -52,6 +52,14 @@
     color: $text-gray;
     line-height: 1.2rem;
     font-size: $text-xs;
+    @include md {
+      font-size: $text-md;
+    }
+
+    b {
+      font-weight: $bold;
+      color: $button-purple;
+    }
   }
 
   .contents {
@@ -112,7 +120,3 @@ form.reply-form {
   padding-left: 3rem;
 }
 
-b {
-  font-weight: $bold;
-  color: $button-purple;
-}

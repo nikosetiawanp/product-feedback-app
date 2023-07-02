@@ -32,14 +32,18 @@ export default function LoginPage() {
 
     const { data, error } = await supabase
       .from("profile")
-      .select("*")
+      .select(`*, upvotes (product_request_id)`)
       .eq("email", emailInput);
     if (error) return error;
-    console.log(data);
+    console.log(data[0]);
     localStorage.setItem("username", data[0].username);
     localStorage.setItem("name", data[0].name);
     localStorage.setItem("image", data[0].image);
     localStorage.setItem("email", data[0].email);
+    localStorage.setItem(
+      "upvotes",
+      data[0].upvotes.map((obj: string) => Object.values(obj))
+    );
   };
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {

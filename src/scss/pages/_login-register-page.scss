@@ -32,6 +32,15 @@
       color: $text-gray;
       font-size: $text-xs;
       margin-bottom: 0.6rem;
+      
+      a {
+        color: $button-blue;
+        font-weight: $semibold;
+        &:hover {
+          text-decoration: underline;
+          color: $button-blue-hover;
+        }
+      }
     }
 
     input {
@@ -66,14 +75,6 @@
       text-align: center;
       width: 100%;
 
-      a {
-        color: $button-blue;
-        font-weight: $semibold;
-        &:hover {
-          text-decoration: underline;
-          color: $button-blue-hover;
-        }
-      }
     }
   }
 }
