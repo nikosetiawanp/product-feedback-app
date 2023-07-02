@@ -1475,4 +1475,9 @@ form.reply-form button.textarea-submit-button:hover {
   padding-left: 3rem;
 }
 
+b {
+  font-weight: 700;
+  color: #ad1fea;
+}
+
 /*# sourceMappingURL=index.css.map */

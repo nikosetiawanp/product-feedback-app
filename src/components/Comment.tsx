@@ -10,6 +10,7 @@ export default function Comment(props: {
   username: string;
   image: string;
 }) {
+  const profileUsername = localStorage.getItem("username");
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
   const [replies, setReplies] = useState([
@@ -18,6 +19,7 @@ export default function Comment(props: {
       id: "",
       product_request_id: "",
       parent_id: null,
+      replying_to: "",
       user: {
         name: "",
         username: "",
@@ -37,6 +39,7 @@ export default function Comment(props: {
       .from("comments")
       .select(`*,  user ( * )`)
       .eq("parent_id", props.id);
+
     if (data !== null) {
       setReplies(data);
     } else console.log(error);
@@ -44,8 +47,6 @@ export default function Comment(props: {
   useEffect(() => {
     fetchReplies();
   }, []);
-
-  // console.log(data);
 
   const renderedReplies = replies.map((reply) => (
     <Reply
@@ -56,6 +57,7 @@ export default function Comment(props: {
       name={reply.user.name}
       username={reply.user.username}
       image={reply.user.image}
+      replyingTo={reply.replying_to}
     />
   ));
 
@@ -64,8 +66,10 @@ export default function Comment(props: {
     const { data, error } = await supabase.from("comments").insert([
       {
         product_request_id: `${props.productRequestId}`,
-        content: `${replyInput}`,
+        content: replyInput,
         parent_id: `${props.id}`,
+        user: profileUsername,
+        replying_to: props.username,
       },
     ]);
     console.log(data, error);
@@ -115,7 +119,7 @@ export default function Comment(props: {
         </div>
       </div>
       <div className="comment-nested-container">
-        {replies.length !== 0 && renderedReplies}
+        {replies.length > 0 && renderedReplies}
       </div>
     </div>
   );

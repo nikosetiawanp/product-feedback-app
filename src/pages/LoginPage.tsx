@@ -17,25 +17,43 @@ export default function LoginPage() {
     []
   );
 
-  const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
+  const getAccessToken = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    // SAVE DATA TO AUTH
-
     const { data, error } = await supabase.auth.signInWithPassword({
       email: emailInput,
       password: passwordInput,
     });
-    if (!error) {
-      localStorage.setItem("access_token", data.session.access_token);
-      localStorage.setItem("user_id", data.user.id);
-      alert("Login successful! Redirecting soon...");
-      window.location.href = "./suggestions";
-    } else console.log(error);
+    if (error) return error;
+    localStorage.setItem("accessToken", data.session.access_token);
+  };
+
+  const getProfileData = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+
+    const { data, error } = await supabase
+      .from("profile")
+      .select("*")
+      .eq("email", emailInput);
+    if (error) return error;
+    console.log(data);
+    localStorage.setItem("username", data[0].username);
+    localStorage.setItem("name", data[0].name);
+    localStorage.setItem("image", data[0].image);
+    localStorage.setItem("email", data[0].email);
+  };
+
+  const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
+    localStorage.clear();
+    await getAccessToken(e);
+    await getProfileData(e);
+    alert("Login successful, redirecting soon...");
+    window.location.href = "./suggestions";
   };
 
   return (
     <div className="login-register-page">
       <form className="login-register-container" onSubmit={handleFormSubmit}>
+        {/* <h1>Login</h1> */}
         <h1>Login</h1>
         {/* EMAIL */}
         <label htmlFor="email">Email</label>
@@ -56,7 +74,7 @@ export default function LoginPage() {
           onChange={handlePasswordInputChange}
         />
         {/* BUTTONS */}
-        <button onClick={handleFormSubmit}>Login</button>
+        <button>Login</button>
         <span>
           Don't have an account? <a href="./register">Register</a>
         </span>

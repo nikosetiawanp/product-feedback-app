@@ -7,7 +7,9 @@ export default function Reply(props: {
   name: string;
   username: string;
   image: string;
+  replyingTo: string;
 }) {
+  const profileUsername = localStorage.getItem("username");
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
   const [replyInput, setReplyInput] = useState("");
   const handleReplyInputChange = useCallback(
@@ -21,8 +23,10 @@ export default function Reply(props: {
     const { data, error } = await supabase.from("comments").insert([
       {
         product_request_id: `${props.productRequestId}`,
-        content: `${replyInput}`,
+        content: replyInput,
         parent_id: `${props.parentId}`,
+        user: profileUsername,
+        replying_to: props.username,
       },
     ]);
     console.log(data, error);
@@ -47,7 +51,10 @@ export default function Reply(props: {
             Reply
           </button>
         </div>
-        <p>{props.content}</p>
+        <p>
+          <b>{props.replyingTo !== null && `@${props.replyingTo}`}</b>{" "}
+          {props.content}
+        </p>
         {replyFormIsActive && (
           <form className="reply-form" action="submit">
             <textarea

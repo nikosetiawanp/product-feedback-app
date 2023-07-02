@@ -8,7 +8,7 @@ import Comment from "../components/Comment";
 
 export default function FeedbackDetailPage() {
   const { id } = useParams();
-
+  const profileUsername = localStorage.getItem("username");
   const [feedbackDetail, setFeedbackDetail] = useState({
     id: "",
     title: "",
@@ -75,6 +75,7 @@ export default function FeedbackDetailPage() {
       {
         content: `${commentInput}`,
         product_request_id: `${id}`,
+        user: profileUsername,
       },
     ]);
     console.log(data, error);
