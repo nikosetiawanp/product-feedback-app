@@ -11,8 +11,8 @@ import NoFeedback from "../components/NoFeedback";
 // icons
 import CloseIcon from "../assets/shared/mobile/icon-close.svg";
 import IconSuggestions from "../assets/suggestions/icon-suggestions.svg";
-import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
-import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
+import IconArrowDownWhite from "../assets/shared/icon-arrow-down-white.svg";
+import IconArrowUpWhite from "../assets/shared/icon-arrow-up-white.svg";
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 
@@ -153,7 +153,7 @@ export default function SuggestionsPage() {
             <button className="sort-by" onClick={toggleSortBy}>
               Sort by : <b>{sortBy}</b> &nbsp;
               <img
-                src={!sortByIsActive ? IconArrowDown : IconArrowUp}
+                src={!sortByIsActive ? IconArrowDownWhite : IconArrowUpWhite}
                 alt="icon-arrow-down"
               />
             </button>

@@ -1234,9 +1234,6 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
 }
-.suggestion-card:hover {
-  cursor: pointer;
-}
 @media (min-width: 768px) {
   .suggestion-card {
     display: flex;
@@ -1263,6 +1260,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   }
 }
 .suggestion-card .suggestion-preview h3:hover {
+  cursor: pointer;
   color: #4661e6;
 }
 .suggestion-card .suggestion-preview p {
@@ -1323,6 +1321,9 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 .suggestion-card .downvote-button {
   background: #4661e6;
   color: white;
+}
+.suggestion-card .downvote-button:hover {
+  background: #8397f8;
 }
 .suggestion-card .comment-count {
   justify-self: flex-end;

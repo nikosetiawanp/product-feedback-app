@@ -8,10 +8,6 @@
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
 
-  &:hover {
-    cursor: pointer;
-  }
-
   @include md {
     display: flex;
     padding: 2rem;
@@ -34,6 +30,7 @@
         font-size: $text-xl;
       }
       &:hover {
+        cursor: pointer;
         color: $button-blue;
       }
     }
@@ -94,11 +91,14 @@
     }
   }
 
-
   .downvote-button {
     background: $button-blue;
     color: white;
+    &:hover {
+      background: $button-blue-hover;
+    }
   }
+  
   .comment-count {
     justify-self: flex-end;
     background: none;
