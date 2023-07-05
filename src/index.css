@@ -124,6 +124,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
+  overflow: scroll;
 }
 
 a,
@@ -321,11 +322,23 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   align-items: center;
   left: 0;
   background: #f7f8fd;
-  position: fixed;
   z-index: 50;
-  width: 100vw;
-  height: 100vh;
+  width: fit-content;
   padding: 1.5rem;
+  overflow-y: scroll;
+}
+.new-feedback-page button.go-back,
+.edit-feedback-page button.go-back {
+  margin-right: auto;
+  margin-bottom: 3.5rem;
+  background: none;
+  color: #647196;
+  font-weight: 700;
+  font-size: 13px;
+}
+.new-feedback-page button.go-back:hover,
+.edit-feedback-page button.go-back:hover {
+  cursor: pointer;
 }
 
 .edit-feedback-page {
@@ -350,19 +363,6 @@ div.suggestions-page section.suggestions-container .suggestions-list {
     padding-top: 4rem;
   }
 }
-.feedback-form button.go-back {
-  align-self: flex-start;
-  background: none;
-  color: #647196;
-  font-weight: 700;
-  font-size: 13px;
-  position: absolute;
-  top: -75px;
-  left: 0;
-}
-.feedback-form button.go-back:hover {
-  cursor: pointer;
-}
 .feedback-form img.icon-new-feedback,
 .feedback-form img.icon-edit-feedback {
   width: 40px;
@@ -380,6 +380,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   color: #3a4374;
   font-size: 18px;
   margin-bottom: 2.4rem;
+  line-height: 2.4rem;
 }
 @media (min-width: 768px) {
   .feedback-form h1 {
@@ -391,10 +392,21 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   font-size: 13px;
   margin-bottom: 0.5rem;
 }
+@media (min-width: 768px) {
+  .feedback-form h2 {
+    font-size: 14px;
+  }
+}
 .feedback-form p {
   color: #647196;
   font-size: 13px;
   margin-bottom: 1.5rem;
+  line-height: 1.2rem;
+}
+@media (min-width: 768px) {
+  .feedback-form p {
+    font-size: 14px;
+  }
 }
 .feedback-form p.empty-message {
   margin-top: -15px;
@@ -1518,12 +1530,14 @@ button.button-add-feedback:hover {
   display: flex;
   width: 100%;
   font-size: 13px;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .comment img,
 .comment-nested img {
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
   border-radius: 100%;
   object-fit: cover;
 }
@@ -1587,13 +1601,20 @@ form.reply-form {
   flex-direction: column;
   gap: 1rem;
   margin-top: 1.5rem;
+  width: 100%;
 }
 @media (min-width: 768px) {
   form.reply-form {
     flex-direction: row;
   }
 }
-form.reply-form .reply-input {
+form.reply-form .reply-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+form.reply-form .reply-input-container .reply-input,
+form.reply-form .reply-input-container .reply-input-error {
   background: #f7f8fd;
   border-radius: 5px;
   outline: none;
@@ -1606,8 +1627,25 @@ form.reply-form .reply-input {
   color: #3a4374;
   border: 1px solid rgba(0, 0, 0, 0);
 }
-form.reply-form .reply-input:focus {
+form.reply-form .reply-input-container .reply-input:focus,
+form.reply-form .reply-input-container .reply-input-error:focus {
   border: 1px solid #4661e6;
+}
+form.reply-form .reply-input-container .reply-input-error {
+  border: 1px solid #d73737;
+}
+form.reply-form .reply-input-container .reply-input-error:focus {
+  border: 1px solid #d73737;
+}
+form.reply-form .reply-input-container .empty-message {
+  color: #d73737;
+  font-size: 13px;
+  margin-top: 5px;
+}
+@media (min-width: 768px) {
+  form.reply-form .reply-input-container .empty-message {
+    font-size: 15px;
+  }
 }
 form.reply-form button.textarea-submit-button {
   background: #ad1fea;

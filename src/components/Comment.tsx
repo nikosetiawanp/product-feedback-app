@@ -13,7 +13,14 @@ export default function Comment(props: {
 }) {
   const profileUsername = localStorage.getItem("username");
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
+  const [replyInputIsEmpty, setReplyInputIsEmpty] = useState(false);
   const [replyInput, setReplyInput] = useState("");
+  const handleReplyInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setReplyInput(event.target.value);
+    },
+    []
+  );
   const [replies, setReplies] = useState([
     {
       content: "",
@@ -28,12 +35,6 @@ export default function Comment(props: {
       },
     },
   ]);
-  const handleReplyInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setReplyInput(event.target.value);
-    },
-    []
-  );
 
   async function fetchReplies() {
     const { data, error } = await supabase
@@ -65,6 +66,11 @@ export default function Comment(props: {
 
   const handleReplySubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+    if (replyInput.trim() === "") {
+      setReplyInputIsEmpty(true);
+      return;
+    }
+
     const { data, error } = await supabase.from("comments").insert([
       {
         product_request_id: `${props.productRequestId}`,
@@ -105,16 +111,24 @@ export default function Comment(props: {
               action="submit"
               onSubmit={handleReplySubmit}
             >
-              <textarea
-                name="reply-input"
-                id="reply-input"
-                className="reply-input"
-                maxLength={250}
-                cols={30}
-                rows={5}
-                contentEditable
-                onChange={handleReplyInputChange}
-              ></textarea>
+              <div className="reply-input-container">
+                <textarea
+                  name="reply-input"
+                  id="reply-input"
+                  className={
+                    !replyInputIsEmpty ? "reply-input" : "reply-input-error"
+                  }
+                  maxLength={250}
+                  cols={30}
+                  rows={5}
+                  contentEditable
+                  onChange={handleReplyInputChange}
+                ></textarea>
+                {replyInputIsEmpty && (
+                  <p className="empty-message">Can't be empty</p>
+                )}
+              </div>
+
               <button className="textarea-submit-button">Post Reply</button>
             </form>
           )}

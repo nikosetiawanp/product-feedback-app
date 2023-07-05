@@ -12,6 +12,7 @@ export default function Reply(props: {
 }) {
   const profileUsername = localStorage.getItem("username");
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
+  const [replyInputIsEmpty, setReplyInputIsEmpty] = useState(false);
   const [replyInput, setReplyInput] = useState("");
   const handleReplyInputChange = useCallback(
     (event: React.ChangeEvent<any>) => {
@@ -21,6 +22,11 @@ export default function Reply(props: {
   );
   const handleReplySubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+    if (replyInput.trim() === "") {
+      setReplyInputIsEmpty(true);
+      return;
+    }
+
     const { data, error } = await supabase.from("comments").insert([
       {
         product_request_id: `${props.productRequestId}`,
@@ -58,15 +64,23 @@ export default function Reply(props: {
         </p>
         {replyFormIsActive && (
           <form className="reply-form" action="submit">
-            <textarea
-              name="reply-input"
-              id="reply-input"
-              className="reply-input"
-              maxLength={50}
-              cols={30}
-              rows={5}
-              onChange={handleReplyInputChange}
-            ></textarea>
+            <div className="reply-input-container">
+              <textarea
+                name="reply-input"
+                id="reply-input"
+                className={
+                  !replyInputIsEmpty ? "reply-input" : "reply-input-error"
+                }
+                maxLength={50}
+                cols={30}
+                rows={5}
+                onChange={handleReplyInputChange}
+              ></textarea>
+              {replyInputIsEmpty && (
+                <p className="empty-message">Can't be empty</p>
+              )}
+            </div>
+
             <button
               className="textarea-submit-button"
               type="button"

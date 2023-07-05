@@ -80,11 +80,11 @@ export default function NewFeedbackPage() {
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
 
-    if (!titleInput) setTitleInputIsEmpty(true);
-    if (titleInput) setTitleInputIsEmpty(false);
-    if (!feedbackDetailInput) setFeedbackDetailInputIsEmpty(true);
-    if (feedbackDetailInput) setFeedbackDetailInputIsEmpty(false);
-    if (!titleInput || !feedbackDetailInput) return;
+    if (titleInput.trim() === "") setTitleInputIsEmpty(true);
+    if (titleInput.trim() !== "") setTitleInputIsEmpty(false);
+    if (feedbackDetailInput.trim() === "") setFeedbackDetailInputIsEmpty(true);
+    if (feedbackDetailInput.trim() !== "") setFeedbackDetailInputIsEmpty(false);
+    if (titleInput.trim() === "" || feedbackDetailInput.trim() === "") return;
 
     const { data, error } = await supabase
       .from("product_requests")
@@ -117,12 +117,12 @@ export default function NewFeedbackPage() {
 
   return (
     <section className="edit-feedback-page">
+      <ButtonGoBack />
       <form
         className="feedback-form"
         action="submit"
         onSubmit={handleFormSubmit}
       >
-        <ButtonGoBack />
         <img
           className="icon-new-feedback"
           src={IconEditFeedback}

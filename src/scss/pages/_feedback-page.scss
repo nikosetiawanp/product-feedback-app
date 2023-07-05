@@ -6,11 +6,23 @@
   align-items: center;
   left: 0;
   background: $background-gray;
-  position: fixed;
   z-index: 50;
-  width: 100vw;
-  height: 100vh;
+  width: fit-content;
   padding: 1.5rem;
+  overflow-y: scroll;
+
+  button.go-back {
+    margin-right: auto;
+    margin-bottom: 3.5rem;
+    background: none;
+    color: $text-gray;
+    font-weight: $bold;
+    font-size: $text-xs;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 .edit-feedback-page {
   padding-top: 5rem;
@@ -33,21 +45,6 @@
     padding-top: 4rem;
   }
 
-  button.go-back {
-    align-self: flex-start;
-    background: none;
-    color: $text-gray;
-    font-weight: $bold;
-    font-size: $text-xs;
-    position: absolute;
-    top: -75px;
-    left: 0;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   img.icon-new-feedback,
   img.icon-edit-feedback {
     width: 40px;
@@ -64,6 +61,7 @@
     color: $text-navy;
     font-size: $text-xl;
     margin-bottom: 2.4rem;
+    line-height: 2.4rem;
     @include md {
       font-size: $text-2xl;
     }
@@ -73,12 +71,19 @@
     color: $text-navy;
     font-size: $text-xs;
     margin-bottom: 0.5rem;
+    @include md {
+      font-size: $text-sm;
+    }
   }
 
   p {
     color: $text-gray;
     font-size: $text-xs;
     margin-bottom: 1.5rem;
+    line-height: 1.2rem;
+    @include md {
+      font-size: $text-sm;
+    }
   }
 
   p.empty-message {
@@ -238,4 +243,5 @@
     }
   }
 }
+
 

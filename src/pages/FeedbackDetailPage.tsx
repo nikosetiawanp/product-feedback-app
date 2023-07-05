@@ -79,7 +79,7 @@ export default function FeedbackDetailPage() {
   const handleCommentSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     setCommentInputIsEmpty(false);
-    if (!commentInput) {
+    if (commentInput.trim() === "") {
       setCommentInputIsEmpty(true);
       return;
     }
