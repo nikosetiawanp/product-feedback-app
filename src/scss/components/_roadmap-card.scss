@@ -57,6 +57,10 @@
     font-size: $text-xs;
     font-weight: $bold;
     color: $text-navy;
+
+    @include lg {
+      font-size: $text-xl;
+    }
     &:hover {
       color: $button-blue;
     }
@@ -64,6 +68,9 @@
   p.description {
     font-size: $text-xs;
     color: $text-gray;
+    @include lg {
+      font-size: $text-lg;
+    }
   }
   span.roadmap-category {
     background: $button-gray;
@@ -86,8 +93,9 @@
     align-items: center;
     .upvotes,
     .downvotes {
+      padding: 1rem;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       font-weight: $bold;
       background: $button-gray;
@@ -114,8 +122,10 @@
       font-size: $text-xs;
       color: $text-navy;
       display: flex;
-      //   justify-content: center;
       align-items: center;
+      @include lg {
+        font-size: $text-lg;
+      }
     }
   }
 }

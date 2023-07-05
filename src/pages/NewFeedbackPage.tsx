@@ -14,6 +14,9 @@ export default function NewFeedbackPage() {
   const [titleInput, setTitleInput] = useState("");
   const [categoryInput, setCategoryInput] = useState("Feature");
   const [feedbackDetailInput, setFeedbackDetailInput] = useState("");
+  const [titleInputIsEmpty, setTitleInputIsEmpty] = useState(false);
+  const [feedbackDetailIsEmpty, setFeedbackDetailIsEmpty] = useState(false);
+
   const handleTitleInputChange = useCallback(
     (event: React.ChangeEvent<any>) => {
       setTitleInput(event.target.value);
@@ -32,6 +35,13 @@ export default function NewFeedbackPage() {
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+
+    if (!titleInput) setTitleInputIsEmpty(true);
+    if (titleInput) setTitleInputIsEmpty(false);
+    if (!feedbackDetailInput) setFeedbackDetailIsEmpty(true);
+    if (feedbackDetailInput) setFeedbackDetailIsEmpty(false);
+    if (!titleInput || !feedbackDetailInput) return;
+
     const { data, error } = await supabase.from("product_requests").insert([
       {
         title: `${titleInput}`,
@@ -39,7 +49,6 @@ export default function NewFeedbackPage() {
         upvotes: 0,
         status: "Suggestion",
         description: `${feedbackDetailInput}`,
-        comments: null,
       },
     ]);
     if (!error) {
@@ -69,9 +78,10 @@ export default function NewFeedbackPage() {
         <p>Add a short, descriptive headline</p>
         <input
           type="text"
-          className="title-input"
+          className={!titleInputIsEmpty ? "title-input" : "title-input-error"}
           onChange={handleTitleInputChange}
         />
+        {titleInputIsEmpty && <p className="empty-message">Can't be empty</p>}
         {/* category input */}
         <h2>Category</h2>
         <p>Choose a category for your feedback</p>
@@ -101,12 +111,18 @@ export default function NewFeedbackPage() {
           Include any specific comments on what should be improved, added, etc.
         </p>
         <textarea
-          className="feedback-detail"
+          className={
+            !feedbackDetailIsEmpty ? "feedback-detail" : "feedback-detail-error"
+          }
           name="feedback-detail"
           maxLength={50}
           rows={5}
           onChange={handleFeedbackDetailInputChange}
         ></textarea>
+        {feedbackDetailIsEmpty && (
+          <p className="empty-message">Can't be empty</p>
+        )}
+
         <div className="buttons">
           <button className="add-feedback">Add Feedback</button>
           <button

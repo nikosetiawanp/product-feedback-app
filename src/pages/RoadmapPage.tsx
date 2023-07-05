@@ -1,6 +1,6 @@
 import RoadmapCard from "../components/RoadmapCard";
 import { useState, useEffect } from "react";
-import IconArrowLeft from "../assets/shared/icon-arrow-left.svg";
+import IconArrowLeftWhite from "../assets/shared/icon-arrow-left-white.svg";
 import ButtonAddFeedback from "../components/ButtonAddFeedback";
 import { supabase } from "../client";
 
@@ -96,7 +96,8 @@ export default function RoadmapPage() {
             type="button"
             onClick={() => history.back()}
           >
-            <img src={IconArrowLeft} alt="icon-arrow-left" /> &nbsp; Go back
+            <img src={IconArrowLeftWhite} alt="icon-arrow-left" /> &nbsp; Go
+            back
           </button>
           <h1>Roadmap</h1>
         </div>

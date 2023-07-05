@@ -34,7 +34,6 @@ export default function SuggestionsPage() {
           id: "",
           content: "",
           product_request_id: "",
-          replies: [],
         },
       ],
     },
@@ -45,8 +44,10 @@ export default function SuggestionsPage() {
     const { data, error } = await supabase
       .from("product_requests")
       .select(`*, comments (*)`);
+
     if (data !== null) {
       setProductRequests(data);
+      console.log(data);
     } else console.log(error);
   }
   useEffect(() => {
@@ -56,11 +57,13 @@ export default function SuggestionsPage() {
   const suggestion = productRequests.filter(
     (productRequest) => productRequest.status === "Suggestion"
   );
+
   const filteredSuggestion = categoryFilter
     ? suggestion.filter(
         (productRequest) => productRequest.category === `${categoryFilter}`
       )
     : suggestion;
+
   const sortedSuggestion = filteredSuggestion.sort((a, b) =>
     sortBy === "Most Upvotes"
       ? b.upvotes - a.upvotes

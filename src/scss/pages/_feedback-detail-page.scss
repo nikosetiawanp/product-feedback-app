@@ -57,6 +57,13 @@
     background: white;
     border-radius: $radius-sm;
 
+    @include md {
+      min-width: 700px;
+    }
+    @include lg {
+      min-width: 730px;
+    }
+
     h2 {
       font-size: $text-xl;
       color: $text-navy;

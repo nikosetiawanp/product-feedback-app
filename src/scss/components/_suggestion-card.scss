@@ -69,8 +69,13 @@
     font-size: $text-xs;
 
     width: fit-content;
+    min-width: 40px;
     padding: 0.6rem 1rem;
     height: 30px;
+
+    @include md {
+      min-height: 65px;
+    }
   }
   .upvote-button,
   .downvote-button {
@@ -106,4 +111,8 @@
       align-self: center;
     }
   }
+}
+
+.spinner {
+  width: 20px;
 }
