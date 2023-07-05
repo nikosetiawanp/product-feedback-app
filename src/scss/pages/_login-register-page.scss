@@ -57,6 +57,15 @@
       }
     }
 
+    input.error {
+      border: 1px solid $button-red;
+    }
+    p.empty-message {
+      margin-top: -15px;
+      color: $button-red;
+      font-size: $text-xs;
+    }
+
     button {
       background: $button-purple;
       color: white;
@@ -64,17 +73,30 @@
       height: 40px;
       border-radius: $radius-xs;
       margin: 2rem 0rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         background: $button-purple-hover;
         cursor: pointer;
+      }
+
+      img {
+        width: 25px;
       }
     }
     span {
       color: $text-gray;
       text-align: center;
       width: 100%;
-
+      a {
+        color: $button-blue;
+        font-weight: $semibold;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

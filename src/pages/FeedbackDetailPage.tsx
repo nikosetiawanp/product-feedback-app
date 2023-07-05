@@ -75,6 +75,7 @@ export default function FeedbackDetailPage() {
 
   const handleCommentSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+
     const { data, error } = await supabase.from("comments").insert([
       {
         content: `${commentInput}`,

@@ -14,8 +14,10 @@ export default function NewFeedbackPage() {
   const [titleInput, setTitleInput] = useState("");
   const [categoryInput, setCategoryInput] = useState("Feature");
   const [feedbackDetailInput, setFeedbackDetailInput] = useState("");
+
   const [titleInputIsEmpty, setTitleInputIsEmpty] = useState(false);
-  const [feedbackDetailIsEmpty, setFeedbackDetailIsEmpty] = useState(false);
+  const [feedbackDetailInputIsEmpty, setFeedbackDetailInputIsEmpty] =
+    useState(false);
 
   const handleTitleInputChange = useCallback(
     (event: React.ChangeEvent<any>) => {
@@ -38,15 +40,14 @@ export default function NewFeedbackPage() {
 
     if (!titleInput) setTitleInputIsEmpty(true);
     if (titleInput) setTitleInputIsEmpty(false);
-    if (!feedbackDetailInput) setFeedbackDetailIsEmpty(true);
-    if (feedbackDetailInput) setFeedbackDetailIsEmpty(false);
+    if (!feedbackDetailInput) setFeedbackDetailInputIsEmpty(true);
+    if (feedbackDetailInput) setFeedbackDetailInputIsEmpty(false);
     if (!titleInput || !feedbackDetailInput) return;
 
     const { data, error } = await supabase.from("product_requests").insert([
       {
         title: `${titleInput}`,
         category: `${categoryInput}`,
-        upvotes: 0,
         status: "Suggestion",
         description: `${feedbackDetailInput}`,
       },
@@ -112,14 +113,16 @@ export default function NewFeedbackPage() {
         </p>
         <textarea
           className={
-            !feedbackDetailIsEmpty ? "feedback-detail" : "feedback-detail-error"
+            !feedbackDetailInputIsEmpty
+              ? "feedback-detail"
+              : "feedback-detail-error"
           }
           name="feedback-detail"
           maxLength={50}
           rows={5}
           onChange={handleFeedbackDetailInputChange}
         ></textarea>
-        {feedbackDetailIsEmpty && (
+        {feedbackDetailInputIsEmpty && (
           <p className="empty-message">Can't be empty</p>
         )}
 

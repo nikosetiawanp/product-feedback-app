@@ -7,8 +7,28 @@ export default function RegisterPage() {
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
+  const [emailInputIsEmpty, setEmailInputIsEmpty] = useState(false);
+  const [nameInputIsEmpty, setNameInputIsEmpty] = useState(false);
+  const [usernameInputIsEmpty, setUsernameInputIsEmpty] = useState(false);
+  const [passwordInputIsEmpty, setPasswordInputIsEmpty] = useState(false);
+
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+
+    if (!emailInput) setEmailInputIsEmpty(true);
+    if (emailInput) setEmailInputIsEmpty(false);
+
+    if (!nameInput) setNameInputIsEmpty(true);
+    if (nameInput) setNameInputIsEmpty(false);
+
+    if (!usernameInput) setUsernameInputIsEmpty(true);
+    if (usernameInput) setUsernameInputIsEmpty(false);
+
+    if (!passwordInput) setPasswordInputIsEmpty(true);
+    if (passwordInput) setPasswordInputIsEmpty(false);
+
+    if (!emailInput || !nameInput || !usernameInput || !passwordInput) return;
+
     const { data, error } = await supabase.auth.signUp({
       email: emailInput,
       password: passwordInput,
@@ -28,7 +48,7 @@ export default function RegisterPage() {
       return;
     }
     console.log(data, profileData);
-    alert("Register Successful! Redirecting soon...");
+    // alert("Register Successful! Redirecting soon...");
     window.location.href = "./login";
   };
 
@@ -70,7 +90,10 @@ export default function RegisterPage() {
           id="email"
           name="email"
           onChange={handleEmailInputChange}
+          className={!emailInputIsEmpty ? "" : "error"}
         />
+        {emailInputIsEmpty && <p className="empty-message">Can't be empty</p>}
+
         {/* NAME */}
         <label htmlFor="name">Name</label>
         <p>Please enter your full name</p>
@@ -79,7 +102,10 @@ export default function RegisterPage() {
           id="name"
           name="name"
           onChange={handleNameInputChange}
+          className={!nameInputIsEmpty ? "" : "error"}
         />
+        {nameInputIsEmpty && <p className="empty-message">Can't be empty</p>}
+
         {/* USERNAME */}
         <label htmlFor="username">Username</label>
         <p>Please enter your username</p>
@@ -88,7 +114,12 @@ export default function RegisterPage() {
           id="username"
           name="username"
           onChange={handleUsernameInputChange}
+          className={!usernameInputIsEmpty ? "" : "error"}
         />
+        {usernameInputIsEmpty && (
+          <p className="empty-message">Can't be empty</p>
+        )}
+
         {/* PASSWORD */}
         <label htmlFor="password">Password</label>
         <p>Please enter your password</p>
@@ -97,7 +128,11 @@ export default function RegisterPage() {
           id="password"
           name="password"
           onChange={handlePasswordInputChange}
+          className={!passwordInputIsEmpty ? "" : "error"}
         />
+        {passwordInputIsEmpty && (
+          <p className="empty-message">Can't be empty</p>
+        )}
 
         {/* BUTTONS */}
         <button onClick={handleFormSubmit}>Register</button>

@@ -478,6 +478,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   margin-bottom: 1.5rem;
   padding: 1rem;
   border: 1px solid #f7f8fd;
+  color: #3a4374;
 }
 .feedback-form textarea.feedback-detail:hover,
 .feedback-form textarea.feedback-detail-error:hover {
@@ -736,6 +737,14 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   gap: 1.5rem;
   width: 100vw;
 }
+@media (min-width: 768px) {
+  .feedback-detail-page {
+    padding: 2rem;
+  }
+}
+.feedback-detail-page .suggestion-card {
+  max-width: 730px;
+}
 .feedback-detail-page .buttons {
   display: flex;
   align-items: center;
@@ -895,6 +904,14 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 .login-register-page form.login-register-container input:focus {
   border: 1px solid #4661e6;
 }
+.login-register-page form.login-register-container input.error {
+  border: 1px solid #d73737;
+}
+.login-register-page form.login-register-container p.empty-message {
+  margin-top: -15px;
+  color: #d73737;
+  font-size: 13px;
+}
 .login-register-page form.login-register-container button {
   background: #ad1fea;
   color: white;
@@ -902,15 +919,28 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   height: 40px;
   border-radius: 5px;
   margin: 2rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .login-register-page form.login-register-container button:hover {
   background: #c75af6;
   cursor: pointer;
 }
+.login-register-page form.login-register-container button img {
+  width: 25px;
+}
 .login-register-page form.login-register-container span {
   color: #647196;
   text-align: center;
   width: 100%;
+}
+.login-register-page form.login-register-container span a {
+  color: #4661e6;
+  font-weight: 600;
+}
+.login-register-page form.login-register-container span a:hover {
+  text-decoration: underline;
 }
 
 .category {
@@ -979,7 +1009,6 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 }
 .roadmap a.view-roadmap:hover {
   cursor: pointer;
-  color: #8397f8;
   text-decoration: underline;
 }
 .roadmap .progress-name {
@@ -1502,7 +1531,6 @@ button.button-add-feedback:hover {
 }
 .comment .user-info-and-reply-button .reply-button:hover,
 .comment-nested .user-info-and-reply-button .reply-button:hover {
-  color: #8397f8;
   cursor: pointer;
   text-decoration: underline;
 }

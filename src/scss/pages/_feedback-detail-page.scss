@@ -8,6 +8,14 @@
   width: 100vw;
   // max-width: 730px;
 
+  @include md {
+    padding: 2rem;
+  }
+
+  .suggestion-card {
+    max-width: 730px;
+  }
+
   .buttons {
     display: flex;
     align-items: center;
