@@ -9,6 +9,7 @@ import Comment from "../components/Comment";
 export default function FeedbackDetailPage() {
   const { id } = useParams();
   const profileUsername = localStorage.getItem("username");
+
   const [isLoading, setIsLoading] = useState(true);
   const [feedbackDetail, setFeedbackDetail] = useState({
     id: "",
@@ -32,6 +33,8 @@ export default function FeedbackDetailPage() {
     },
   ]);
   const [commentInput, setCommentInput] = useState("");
+  const [commentInputIsEmpty, setCommentInputIsEmpty] = useState(false);
+
   const handleCommentInputChange = useCallback(
     (event: React.ChangeEvent<any>) => {
       setCommentInput(event.target.value);
@@ -75,6 +78,11 @@ export default function FeedbackDetailPage() {
 
   const handleCommentSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+    setCommentInputIsEmpty(false);
+    if (!commentInput) {
+      setCommentInputIsEmpty(true);
+      return;
+    }
 
     const { data, error } = await supabase.from("comments").insert([
       {
@@ -127,12 +135,16 @@ export default function FeedbackDetailPage() {
         <textarea
           name="comment-input"
           id="comment-input"
-          className="comment-input"
+          className={
+            !commentInputIsEmpty ? "comment-input" : "comment-input-error"
+          }
           maxLength={250}
           cols={30}
           rows={5}
           onChange={handleCommentInputChange}
         ></textarea>
+        {commentInputIsEmpty && <p className="empty-message">Can't be empty</p>}
+
         <div className="characters-and-button">
           <p className="characters-count">
             {250 - commentInput.length} characters left

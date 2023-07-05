@@ -82,13 +82,14 @@
       font-size: $text-xl;
       color: $text-navy;
     }
-    .comment-input {
+    .comment-input,
+    .comment-input-error {
       background: $background-gray;
       border-radius: $radius-xs;
       outline: none;
       border: none;
       width: 100%;
-      max-width: 650px;
+      // max-width: 650px;
       resize: none;
       padding: 1rem;
       color: $text-navy;
@@ -97,6 +98,26 @@
         border: 1px solid $button-blue;
       }
     }
+
+    .comment-input-error {
+      border: 1px solid $button-red;
+      &:focus {
+        border: 1px solid $button-red;
+
+      }
+    }
+    .empty-message {
+      color: $button-red;
+      margin-top: -15px;
+      font-size: $text-sm;
+
+      @include lg {
+        font-size: $text-md;
+
+      }
+
+    }
+
     .characters-and-button {
       display: flex;
       justify-content: space-between;

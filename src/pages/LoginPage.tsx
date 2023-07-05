@@ -9,6 +9,7 @@ export default function LoginPage() {
 
   const [emailInputIsEmpty, setEmailInputIsEmpty] = useState(false);
   const [passwordInputIsEmpty, setPasswordInputIsEmpty] = useState(false);
+  const [credentialIsWrong, setCredentialIsWrong] = useState(false);
 
   const handleEmailInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,24 +24,9 @@ export default function LoginPage() {
     []
   );
 
-  const getAccessToken = async (e: React.ChangeEvent<any>) => {
-    e.preventDefault();
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: emailInput,
-      password: passwordInput,
-    });
-    console.log(data);
-    if (data.user === null || data.session === null) {
-      setIsLoading(false);
-      return;
-    }
-    if (error) return error;
-    localStorage.setItem("accessToken", data.session.access_token);
-  };
-
+  // GET PROFILE DATA
   const getProfileData = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-
     const { data, error } = await supabase
       .from("profile")
       .select(`*, upvotes (product_request_id)`)
@@ -58,14 +44,38 @@ export default function LoginPage() {
     );
   };
 
+  // GET ACCESS TOKEN
+  const login = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    localStorage.clear();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: emailInput,
+      password: passwordInput,
+    });
+    if (data.user === null || data.session === null) {
+      setIsLoading(false);
+      setCredentialIsWrong(true);
+      return;
+    } else if (error) {
+      setIsLoading(false);
+      return error;
+    }
+
+    localStorage.setItem("accessToken", data.session.access_token);
+    await getProfileData(e);
+    window.location.href = "./suggestions";
+  };
+
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+    setEmailInputIsEmpty(false);
+    setPasswordInputIsEmpty(false);
+    setCredentialIsWrong(false);
+
     setIsLoading(true);
-    localStorage.clear();
 
     if (!emailInput) setEmailInputIsEmpty(true);
     if (emailInput) setEmailInputIsEmpty(false);
-
     if (!passwordInput) setPasswordInputIsEmpty(true);
     if (passwordInput) setPasswordInputIsEmpty(false);
 
@@ -74,9 +84,7 @@ export default function LoginPage() {
       return;
     }
 
-    await getAccessToken(e);
-    await getProfileData(e);
-    // window.location.href = "./suggestions";
+    await login(e);
   };
 
   return (
@@ -92,7 +100,7 @@ export default function LoginPage() {
           id="email"
           name="email"
           onChange={handleEmailInputChange}
-          className={!emailInputIsEmpty ? "" : "error"}
+          className={!emailInputIsEmpty && !credentialIsWrong ? "" : "error"}
         />
         {emailInputIsEmpty && <p className="empty-message">Can't be empty</p>}
 
@@ -104,7 +112,7 @@ export default function LoginPage() {
           id="password"
           name="password"
           onChange={handlePasswordInputChange}
-          className={!passwordInputIsEmpty ? "" : "error"}
+          className={!passwordInputIsEmpty && !credentialIsWrong ? "" : "error"}
         />
         {passwordInputIsEmpty && (
           <p className="empty-message">Can't be empty</p>
@@ -113,6 +121,10 @@ export default function LoginPage() {
         <button>
           {!isLoading ? "Login" : <img src={SpinnerLight} alt="spinner" />}
         </button>
+        {credentialIsWrong && (
+          <p className="wrong-credential">Invalid email / password</p>
+        )}
+
         <span>
           Don't have an account? <a href="./register">Register</a>
         </span>

@@ -14,9 +14,9 @@
     padding: 2rem;
     gap: 2rem;
   }
-  @include lg {
-    max-width: 730px;
-  }
+  // @include lg {
+  //   max-width: 730px;
+  // }
 
   .suggestion-preview {
     display: flex;

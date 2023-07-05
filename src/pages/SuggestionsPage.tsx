@@ -51,7 +51,7 @@ export default function SuggestionsPage() {
   }
   useEffect(() => {
     fetchProductRequest();
-  }, []);
+  }, [productRequests]);
 
   const suggestion = productRequests.filter(
     (productRequest) => productRequest.status === "Suggestion"

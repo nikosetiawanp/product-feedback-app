@@ -804,20 +804,37 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   font-size: 18px;
   color: #3a4374;
 }
-.feedback-detail-page .reply-comment-form .comment-input {
+.feedback-detail-page .reply-comment-form .comment-input,
+.feedback-detail-page .reply-comment-form .comment-input-error {
   background: #f7f8fd;
   border-radius: 5px;
   outline: none;
   border: none;
   width: 100%;
-  max-width: 650px;
   resize: none;
   padding: 1rem;
   color: #3a4374;
   border: 1px solid rgba(0, 0, 0, 0);
 }
-.feedback-detail-page .reply-comment-form .comment-input:focus {
+.feedback-detail-page .reply-comment-form .comment-input:focus,
+.feedback-detail-page .reply-comment-form .comment-input-error:focus {
   border: 1px solid #4661e6;
+}
+.feedback-detail-page .reply-comment-form .comment-input-error {
+  border: 1px solid #d73737;
+}
+.feedback-detail-page .reply-comment-form .comment-input-error:focus {
+  border: 1px solid #d73737;
+}
+.feedback-detail-page .reply-comment-form .empty-message {
+  color: #d73737;
+  margin-top: -15px;
+  font-size: 14px;
+}
+@media (min-width: 1024px) {
+  .feedback-detail-page .reply-comment-form .empty-message {
+    font-size: 15px;
+  }
 }
 .feedback-detail-page .reply-comment-form .characters-and-button {
   display: flex;
@@ -871,6 +888,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   color: #3a4374;
   font-weight: 700;
   margin-bottom: 2rem;
+  text-align: center;
 }
 .login-register-page form.login-register-container label {
   color: #3a4374;
@@ -941,6 +959,17 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 }
 .login-register-page form.login-register-container span a:hover {
   text-decoration: underline;
+}
+.login-register-page form.login-register-container p.wrong-credential {
+  color: #d73737;
+  font-size: 13px;
+  text-align: center;
+  margin-top: -15px;
+}
+@media (min-width: 768px) {
+  .login-register-page form.login-register-container p.wrong-credential {
+    font-size: 15px;
+  }
 }
 
 .category {
@@ -1328,11 +1357,6 @@ div.suggestions-page section.suggestions-container .suggestions-list {
     gap: 2rem;
   }
 }
-@media (min-width: 1024px) {
-  .suggestion-card {
-    max-width: 730px;
-  }
-}
 .suggestion-card .suggestion-preview {
   display: flex;
   flex-direction: column;
@@ -1501,6 +1525,7 @@ button.button-add-feedback:hover {
   width: 40px;
   height: 40px;
   border-radius: 100%;
+  object-fit: cover;
 }
 .comment .user-info-and-reply-button,
 .comment-nested .user-info-and-reply-button {

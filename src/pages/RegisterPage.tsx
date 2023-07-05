@@ -1,7 +1,10 @@
 import { supabase } from "../client";
 import { useState, useCallback } from "react";
+import SpinnerLight from "../assets/shared/spinner-light.svg";
 
 export default function RegisterPage() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [emailInput, setEmailInput] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
@@ -11,9 +14,11 @@ export default function RegisterPage() {
   const [nameInputIsEmpty, setNameInputIsEmpty] = useState(false);
   const [usernameInputIsEmpty, setUsernameInputIsEmpty] = useState(false);
   const [passwordInputIsEmpty, setPasswordInputIsEmpty] = useState(false);
+  const [credentialIsWrong, setCredentialIsWrong] = useState(false);
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+    setIsLoading(true);
 
     if (!emailInput) setEmailInputIsEmpty(true);
     if (emailInput) setEmailInputIsEmpty(false);
@@ -27,7 +32,10 @@ export default function RegisterPage() {
     if (!passwordInput) setPasswordInputIsEmpty(true);
     if (passwordInput) setPasswordInputIsEmpty(false);
 
-    if (!emailInput || !nameInput || !usernameInput || !passwordInput) return;
+    if (!emailInput || !nameInput || !usernameInput || !passwordInput) {
+      setIsLoading(false);
+      return;
+    }
 
     const { data, error } = await supabase.auth.signUp({
       email: emailInput,
@@ -43,12 +51,14 @@ export default function RegisterPage() {
           username: usernameInput,
         },
       ]);
-    if (error || profileError) {
-      console.log(error, profileError);
+    if (error || (profileError && profileError.code == "23505")) {
+      setCredentialIsWrong(true);
+      setIsLoading(false);
       return;
     }
+
     console.log(data, profileData);
-    // alert("Register Successful! Redirecting soon...");
+    setIsLoading(false);
     window.location.href = "./login";
   };
 
@@ -90,7 +100,7 @@ export default function RegisterPage() {
           id="email"
           name="email"
           onChange={handleEmailInputChange}
-          className={!emailInputIsEmpty ? "" : "error"}
+          className={!emailInputIsEmpty && !credentialIsWrong ? "" : "error"}
         />
         {emailInputIsEmpty && <p className="empty-message">Can't be empty</p>}
 
@@ -114,7 +124,7 @@ export default function RegisterPage() {
           id="username"
           name="username"
           onChange={handleUsernameInputChange}
-          className={!usernameInputIsEmpty ? "" : "error"}
+          className={!usernameInputIsEmpty && !credentialIsWrong ? "" : "error"}
         />
         {usernameInputIsEmpty && (
           <p className="empty-message">Can't be empty</p>
@@ -135,7 +145,14 @@ export default function RegisterPage() {
         )}
 
         {/* BUTTONS */}
-        <button onClick={handleFormSubmit}>Register</button>
+        <button onClick={handleFormSubmit}>
+          {!isLoading ? "Register" : <img src={SpinnerLight} alt="spinner" />}
+        </button>
+        {credentialIsWrong && (
+          <p className="wrong-credential">
+            Email {emailInput} / Username {usernameInput} already exist.
+          </p>
+        )}
         <span>
           Already have an account? <a href="./login">Login</a>
         </span>
