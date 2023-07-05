@@ -730,16 +730,18 @@ div.suggestions-page section.suggestions-container .suggestions-list {
 .feedback-detail-page {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: auto;
   padding: 1.5rem;
   gap: 1.5rem;
   width: 100vw;
-  max-width: 730px;
 }
 .feedback-detail-page .buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 730px;
 }
 .feedback-detail-page .buttons button.button-edit-feedback {
   display: flex;
@@ -766,7 +768,8 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   padding: 2rem;
   border-radius: 10px;
   gap: 2rem;
-  width: auto;
+  width: 100%;
+  max-width: 730px;
 }
 .feedback-detail-page .comment-section h2 {
   color: #3a4374;
@@ -780,11 +783,8 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   gap: 2rem;
   background: white;
   border-radius: 10px;
-}
-@media (min-width: 768px) {
-  .feedback-detail-page .reply-comment-form {
-    min-width: 700px;
-  }
+  width: 100%;
+  max-width: 730px;
 }
 @media (min-width: 1024px) {
   .feedback-detail-page .reply-comment-form {
@@ -1290,14 +1290,18 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
-  width: auto;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .suggestion-card {
     display: flex;
     padding: 2rem;
     gap: 2rem;
-    min-width: 700px;
+  }
+}
+@media (min-width: 1024px) {
+  .suggestion-card {
+    max-width: 730px;
   }
 }
 .suggestion-card .suggestion-preview {
@@ -1362,7 +1366,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   .suggestion-card .upvote-button,
   .suggestion-card .downvote-button,
   .suggestion-card .comment-count {
-    min-height: 65px;
+    min-height: px;
   }
 }
 .suggestion-card .upvote-button,

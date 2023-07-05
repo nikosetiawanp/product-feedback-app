@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "../client";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -10,7 +10,6 @@ export default function FeedbackDetailPage() {
   const { id } = useParams();
   const profileUsername = localStorage.getItem("username");
   const [isLoading, setIsLoading] = useState(true);
-  // const [upvoteCount, setUpvoteCount] = useState(0);
   const [feedbackDetail, setFeedbackDetail] = useState({
     id: "",
     title: "Loading...",
@@ -57,8 +56,6 @@ export default function FeedbackDetailPage() {
     fetchFeedbackDetail();
   }, []);
 
-  // console.log(comments);
-
   const renderedComments =
     !isLoading &&
     comments
@@ -72,6 +69,7 @@ export default function FeedbackDetailPage() {
           name={comment.user.name}
           username={comment.user.username}
           image={comment.user.image}
+          isLoading={isLoading}
         />
       ));
 

@@ -11,7 +11,7 @@ export default function RoadmapPage() {
       id: "",
       title: "",
       category: "",
-      upvotes: 0,
+      upvotes: [],
       status: "",
       description: "",
       comments: [
@@ -28,7 +28,8 @@ export default function RoadmapPage() {
   async function fetchProductRequest() {
     const { data, error } = await supabase
       .from("product_requests")
-      .select(`*, comments (*)`);
+      .select(`*, comments (*), upvotes (*)`);
+
     if (data !== null) {
       setProductRequests(data);
     } else console.log(error);
@@ -53,7 +54,7 @@ export default function RoadmapPage() {
       key={obj.id}
       title={obj.title}
       category={obj.category}
-      upvotes={obj.upvotes}
+      upvotes={obj.upvotes.length}
       status={obj.status}
       description={obj.description}
       commentsLength={obj.comments.length}
@@ -65,7 +66,7 @@ export default function RoadmapPage() {
       key={obj.id}
       title={obj.title}
       category={obj.category}
-      upvotes={obj.upvotes}
+      upvotes={obj.upvotes.length}
       status={obj.status}
       description={obj.description}
       commentsLength={obj.comments.length}
@@ -78,7 +79,7 @@ export default function RoadmapPage() {
       key={obj.id}
       title={obj.title}
       category={obj.category}
-      upvotes={obj.upvotes}
+      upvotes={obj.upvotes.length}
       status={obj.status}
       description={obj.description}
       commentsLength={obj.comments.length}

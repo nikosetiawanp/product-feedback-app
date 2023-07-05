@@ -1,17 +1,19 @@
 .feedback-detail-page {
   display: flex;
   flex-direction: column;
-  // background: red;
+  align-items: center;
   height: auto;
   padding: 1.5rem;
   gap: 1.5rem;
   width: 100vw;
-  max-width: 730px;
+  // max-width: 730px;
 
   .buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    max-width: 730px;
 
     button.button-edit-feedback {
       display: flex;
@@ -42,7 +44,8 @@
     padding: 2rem;
     border-radius: $radius-sm;
     gap: 2rem;
-    width: auto;
+    width: 100%;
+    max-width: 730px;
 
     h2 {
       color: $text-navy;
@@ -58,10 +61,11 @@
     gap: 2rem;
     background: white;
     border-radius: $radius-sm;
+    width: 100%;
+    max-width: 730px;
 
-    @include md {
-      min-width: 700px;
-    }
+
+    
     @include lg {
       min-width: 730px;
     }

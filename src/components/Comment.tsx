@@ -9,6 +9,7 @@ export default function Comment(props: {
   name: string;
   username: string;
   image: string;
+  isLoading: boolean;
 }) {
   const profileUsername = localStorage.getItem("username");
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
@@ -58,6 +59,7 @@ export default function Comment(props: {
       username={reply.user.username}
       image={reply.user.image}
       replyingTo={reply.replying_to}
+      isLoading={props.isLoading}
     />
   ));
 
@@ -83,8 +85,8 @@ export default function Comment(props: {
         <div className="contents">
           <div className="user-info-and-reply-button">
             <div className="user-info">
-              <h3>{props.name}</h3>
-              <h4>@{props.username}</h4>
+              <h3>{!props.isLoading ? props.name : "Loading..."}</h3>
+              {!props.isLoading ? <h4>@{props.username}</h4> : "Loading..."}
             </div>
             <button
               className="reply-button"
@@ -95,7 +97,7 @@ export default function Comment(props: {
               Reply
             </button>
           </div>
-          <p>{props.content}</p>
+          <p>{!props.isLoading ? props.content : "Loading..."}</p>
 
           {replyFormIsActive && (
             <form
@@ -119,7 +121,7 @@ export default function Comment(props: {
         </div>
       </div>
       <div className="comment-nested-container">
-        {replies.length > 0 && renderedReplies}
+        {!props.isLoading && replies.length > 0 && renderedReplies}
       </div>
     </div>
   );

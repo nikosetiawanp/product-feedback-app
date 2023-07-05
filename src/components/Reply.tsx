@@ -8,6 +8,7 @@ export default function Reply(props: {
   username: string;
   image: string;
   replyingTo: string;
+  isLoading: boolean;
 }) {
   const profileUsername = localStorage.getItem("username");
   const [replyFormIsActive, setReplyFormIsActive] = useState(false);
@@ -39,8 +40,8 @@ export default function Reply(props: {
       <div className="contents">
         <div className="user-info-and-reply-button">
           <div className="user-info">
-            <h3>{props.name}</h3>
-            <h4>@{props.username}</h4>
+            <h3>{!props.isLoading ? props.name : "Loading..."}</h3>
+            {!props.isLoading ? <h4>@{props.username}</h4> : "Loading..."}
           </div>
           <button
             className="reply-button"

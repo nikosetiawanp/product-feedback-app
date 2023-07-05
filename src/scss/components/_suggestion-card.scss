@@ -2,17 +2,20 @@
   background: white;
   border-radius: $radius-sm;
   padding: 1.5rem;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
-  width: auto;
+  width: 100%;
 
   @include md {
     display: flex;
     padding: 2rem;
     gap: 2rem;
-    min-width: 700px;
+  }
+  @include lg {
+    max-width: 730px;
   }
 
   .suggestion-preview {
@@ -75,7 +78,7 @@
     height: 30px;
 
     @include md {
-      min-height: 65px;
+      min-height: px;
     }
   }
   .upvote-button,
