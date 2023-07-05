@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../client";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -9,24 +9,26 @@ import Comment from "../components/Comment";
 export default function FeedbackDetailPage() {
   const { id } = useParams();
   const profileUsername = localStorage.getItem("username");
+  const [isLoading, setIsLoading] = useState(true);
+  // const [upvoteCount, setUpvoteCount] = useState(0);
   const [feedbackDetail, setFeedbackDetail] = useState({
     id: "",
-    title: "",
-    category: "",
-    description: "",
-    status: "",
-    upvotes: 0,
+    title: "Loading...",
+    category: "Loading...",
+    description: "Loading...",
+    status: "Loading...",
+    upvotes: [],
   });
   const [comments, setComments] = useState([
     {
-      content: "",
+      content: "Loading...",
       id: "",
       product_request_id: "",
       parent_id: null,
       user: {
-        name: "",
-        username: "",
-        image: "",
+        name: "Loading...",
+        username: "Loading...",
+        image: "Loading...",
       },
     },
   ]);
@@ -42,11 +44,13 @@ export default function FeedbackDetailPage() {
   async function fetchFeedbackDetail() {
     const { data, error } = await supabase
       .from("product_requests")
-      .select(`*, comments (*, user ( * ))`)
+      .select(`*, comments (*, user ( * )), upvotes (*)`)
       .eq("id,", id);
     if (data !== null) {
       setFeedbackDetail(data[0]);
       setComments(data[0].comments);
+      // setUpvoteCount(data[0].upvotes.length);
+      setIsLoading(false);
     } else console.log(error);
   }
   useEffect(() => {
@@ -55,19 +59,21 @@ export default function FeedbackDetailPage() {
 
   // console.log(comments);
 
-  const renderedComments = comments
-    .filter((comment) => comment.parent_id == null)
-    .map((comment) => (
-      <Comment
-        key={comment.id}
-        id={comment.id}
-        content={comment.content}
-        productRequestId={id!}
-        name={comment.user.name}
-        username={comment.user.username}
-        image={comment.user.image}
-      />
-    ));
+  const renderedComments =
+    !isLoading &&
+    comments
+      .filter((comment) => comment.parent_id == null)
+      .map((comment) => (
+        <Comment
+          key={comment.id}
+          id={comment.id}
+          content={comment.content}
+          productRequestId={id!}
+          name={comment.user.name}
+          username={comment.user.username}
+          image={comment.user.image}
+        />
+      ));
 
   const handleCommentSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
@@ -97,7 +103,7 @@ export default function FeedbackDetailPage() {
         key={feedbackDetail.id}
         title={feedbackDetail.title}
         category={feedbackDetail.category}
-        upvotes={feedbackDetail.upvotes}
+        upvotes={feedbackDetail.upvotes.length}
         status={feedbackDetail.status}
         description={feedbackDetail.description}
         commentsLength={comments.length}
@@ -105,7 +111,11 @@ export default function FeedbackDetailPage() {
 
       {comments.length > 0 && (
         <div className="comment-section">
-          <h2>{comments.length} Comments</h2>
+          {isLoading ? (
+            <h2>Loading...</h2>
+          ) : (
+            <h2>{comments.length} Comments</h2>
+          )}
           {renderedComments}
         </div>
       )}

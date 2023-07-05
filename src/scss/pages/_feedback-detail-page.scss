@@ -5,6 +5,7 @@
   height: auto;
   padding: 1.5rem;
   gap: 1.5rem;
+  width: 100vw;
   max-width: 730px;
 
   .buttons {
@@ -41,6 +42,7 @@
     padding: 2rem;
     border-radius: $radius-sm;
     gap: 2rem;
+    width: auto;
 
     h2 {
       color: $text-navy;

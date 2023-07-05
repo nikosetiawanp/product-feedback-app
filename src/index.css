@@ -733,6 +733,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   height: auto;
   padding: 1.5rem;
   gap: 1.5rem;
+  width: 100vw;
   max-width: 730px;
 }
 .feedback-detail-page .buttons {
@@ -765,6 +766,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   padding: 2rem;
   border-radius: 10px;
   gap: 2rem;
+  width: auto;
 }
 .feedback-detail-page .comment-section h2 {
   color: #3a4374;
@@ -1288,12 +1290,14 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
+  width: auto;
 }
 @media (min-width: 768px) {
   .suggestion-card {
     display: flex;
     padding: 2rem;
     gap: 2rem;
+    min-width: 700px;
   }
 }
 .suggestion-card .suggestion-preview {

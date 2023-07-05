@@ -1,7 +1,6 @@
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconArrowUpWhite from "../assets/shared/icon-arrow-up-white.svg";
 import IconComments from "../assets/shared/icon-comments.svg";
-import SpinnerDark from "../assets/shared/spinner-dark.svg";
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -17,11 +16,10 @@ export default function SuggestionCard(props: {
   commentsLength: number;
 }) {
   const username = localStorage.getItem("username");
-  const [upvotes, setUpvotes] = useState([]);
-  const [upvoteCount, setUpvoteCount] = useState(0);
+  const [upvoteCount, setUpvoteCount] = useState(props.upvotes);
   const [isUpvoted, setIsUpvoted] = useState(false);
 
-  const getUpvotes = async () => {
+  const getMyUpvotes = async () => {
     const { data, error } = await supabase
       .from("upvotes")
       .select(`*`)
@@ -31,19 +29,10 @@ export default function SuggestionCard(props: {
     if (data.length > 0) setIsUpvoted(true);
   };
 
-  const getUpvoteCount = async () => {
-    const { data, error } = await supabase
-      .from("upvotes")
-      .select("*")
-      .eq("product_request_id", props.id);
-    if (error) return error;
-    setUpvoteCount(data.length);
-  };
-
   useEffect(() => {
-    getUpvoteCount();
-    getUpvotes();
-  }, [upvotes.includes(props.id)]);
+    getMyUpvotes();
+    setUpvoteCount(props.upvotes);
+  }, []);
 
   // UPVOTE FUNCTION
   const upvote = async (e: React.ChangeEvent<unknown>) => {

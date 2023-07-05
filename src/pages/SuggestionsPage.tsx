@@ -26,7 +26,7 @@ export default function SuggestionsPage() {
       id: "",
       title: "",
       category: "",
-      upvotes: 0,
+      upvotes: [],
       status: "",
       description: "",
       comments: [
@@ -43,11 +43,10 @@ export default function SuggestionsPage() {
   async function fetchProductRequest() {
     const { data, error } = await supabase
       .from("product_requests")
-      .select(`*, comments (*)`);
+      .select(`*, comments (*), upvotes (*)`);
 
     if (data !== null) {
       setProductRequests(data);
-      console.log(data);
     } else console.log(error);
   }
   useEffect(() => {
@@ -66,9 +65,9 @@ export default function SuggestionsPage() {
 
   const sortedSuggestion = filteredSuggestion.sort((a, b) =>
     sortBy === "Most Upvotes"
-      ? b.upvotes - a.upvotes
+      ? b.upvotes.length - a.upvotes.length
       : sortBy === "Least Upvotes"
-      ? a.upvotes - b.upvotes
+      ? a.upvotes.length - b.upvotes.length
       : sortBy === "Most Comments"
       ? b.comments.length - a.comments.length
       : a.comments.length - b.comments.length
@@ -80,7 +79,7 @@ export default function SuggestionsPage() {
       key={obj.id}
       title={obj.title}
       category={obj.category}
-      upvotes={obj.upvotes}
+      upvotes={obj.upvotes.length}
       status={obj.status}
       description={obj.description}
       commentsLength={obj.comments.length}

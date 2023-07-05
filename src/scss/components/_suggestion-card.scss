@@ -2,16 +2,17 @@
   background: white;
   border-radius: $radius-sm;
   padding: 1.5rem;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   row-gap: 1.2rem;
+  width: auto;
 
   @include md {
     display: flex;
     padding: 2rem;
     gap: 2rem;
+    min-width: 700px;
   }
 
   .suggestion-preview {
