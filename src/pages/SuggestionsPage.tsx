@@ -17,6 +17,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "../client";
 
 export default function SuggestionsPage() {
+  const fullName = localStorage.getItem("name");
+  const username = localStorage.getItem("username");
   const [mobileSidebarIsActive, setMobileSidebarIsActive] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortByIsActive, setSortByIsActive] = useState(false);
@@ -109,8 +111,8 @@ export default function SuggestionsPage() {
       <header className="suggestions-header">
         <div className="rainbow-card">
           <div className="headline-subheadline">
-            <h1>Frontend Mentor</h1>
-            <h2>Feedback Board</h2>
+            <h1>{fullName}</h1>
+            <h2>@{username}</h2>
           </div>
           <button>
             <img
