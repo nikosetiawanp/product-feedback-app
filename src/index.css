@@ -877,15 +877,18 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   }
 }
 
-.login-register-page {
+.login-page,
+.register-page {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
+  min-height: fit-content;
   height: 100vh;
   padding: 2rem;
 }
-.login-register-page form.login-register-container {
+.login-page form.login-register-container,
+.register-page form.login-register-container {
   background: white;
   padding: 2rem;
   width: 100%;
@@ -895,33 +898,39 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   flex-direction: column;
   border-radius: 10px;
 }
-.login-register-page form.login-register-container h1 {
+.login-page form.login-register-container h1,
+.register-page form.login-register-container h1 {
   font-size: 24px;
   color: #3a4374;
   font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
 }
-.login-register-page form.login-register-container label {
+.login-page form.login-register-container label,
+.register-page form.login-register-container label {
   color: #3a4374;
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 0.6rem;
 }
-.login-register-page form.login-register-container p {
+.login-page form.login-register-container p,
+.register-page form.login-register-container p {
   color: #647196;
   font-size: 13px;
   margin-bottom: 0.6rem;
 }
-.login-register-page form.login-register-container p a {
+.login-page form.login-register-container p a,
+.register-page form.login-register-container p a {
   color: #4661e6;
   font-weight: 600;
 }
-.login-register-page form.login-register-container p a:hover {
+.login-page form.login-register-container p a:hover,
+.register-page form.login-register-container p a:hover {
   text-decoration: underline;
   color: #8397f8;
 }
-.login-register-page form.login-register-container input {
+.login-page form.login-register-container input,
+.register-page form.login-register-container input {
   background: #f7f8fd;
   border: 1px solid #f7f8fd;
   border-radius: 5px;
@@ -931,18 +940,22 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   margin-bottom: 1rem;
   padding: 1rem;
 }
-.login-register-page form.login-register-container input:focus {
+.login-page form.login-register-container input:focus,
+.register-page form.login-register-container input:focus {
   border: 1px solid #4661e6;
 }
-.login-register-page form.login-register-container input.error {
+.login-page form.login-register-container input.error,
+.register-page form.login-register-container input.error {
   border: 1px solid #d73737;
 }
-.login-register-page form.login-register-container p.empty-message {
+.login-page form.login-register-container p.empty-message,
+.register-page form.login-register-container p.empty-message {
   margin-top: -15px;
   color: #d73737;
   font-size: 13px;
 }
-.login-register-page form.login-register-container button {
+.login-page form.login-register-container button,
+.register-page form.login-register-container button {
   background: #ad1fea;
   color: white;
   font-weight: 700;
@@ -953,35 +966,46 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   justify-content: center;
   align-items: center;
 }
-.login-register-page form.login-register-container button:hover {
+.login-page form.login-register-container button:hover,
+.register-page form.login-register-container button:hover {
   background: #c75af6;
   cursor: pointer;
 }
-.login-register-page form.login-register-container button img {
+.login-page form.login-register-container button img,
+.register-page form.login-register-container button img {
   width: 25px;
 }
-.login-register-page form.login-register-container span {
+.login-page form.login-register-container span,
+.register-page form.login-register-container span {
   color: #647196;
   text-align: center;
   width: 100%;
 }
-.login-register-page form.login-register-container span a {
+.login-page form.login-register-container span a,
+.register-page form.login-register-container span a {
   color: #4661e6;
   font-weight: 600;
 }
-.login-register-page form.login-register-container span a:hover {
+.login-page form.login-register-container span a:hover,
+.register-page form.login-register-container span a:hover {
   text-decoration: underline;
 }
-.login-register-page form.login-register-container p.wrong-credential {
+.login-page form.login-register-container p.wrong-credential,
+.register-page form.login-register-container p.wrong-credential {
   color: #d73737;
   font-size: 13px;
   text-align: center;
   margin-top: -15px;
 }
 @media (min-width: 768px) {
-  .login-register-page form.login-register-container p.wrong-credential {
+  .login-page form.login-register-container p.wrong-credential,
+  .register-page form.login-register-container p.wrong-credential {
     font-size: 15px;
   }
+}
+
+.register-page {
+  height: fit-content;
 }
 
 .category {

@@ -88,7 +88,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="login-register-page">
+    <div className="login-page">
       <form className="login-register-container" onSubmit={handleFormSubmit}>
         {/* <h1>Login</h1> */}
         <h1>Login</h1>

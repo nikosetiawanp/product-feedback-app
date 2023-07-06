@@ -8,11 +8,14 @@ export default function RegisterPage() {
   const [emailInput, setEmailInput] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
+  const [profileImageInput, setProfileImageInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
   const [emailInputIsEmpty, setEmailInputIsEmpty] = useState(false);
   const [nameInputIsEmpty, setNameInputIsEmpty] = useState(false);
   const [usernameInputIsEmpty, setUsernameInputIsEmpty] = useState(false);
+  const [profileImageInputIsEmpty, setProfileImageInputIsEmpty] =
+    useState(false);
   const [passwordInputIsEmpty, setPasswordInputIsEmpty] = useState(false);
   const [credentialIsWrong, setCredentialIsWrong] = useState(false);
 
@@ -29,10 +32,19 @@ export default function RegisterPage() {
     if (!usernameInput) setUsernameInputIsEmpty(true);
     if (usernameInput) setUsernameInputIsEmpty(false);
 
+    if (!profileImageInput) setProfileImageInputIsEmpty(true);
+    if (profileImageInput) setProfileImageInputIsEmpty(false);
+
     if (!passwordInput) setPasswordInputIsEmpty(true);
     if (passwordInput) setPasswordInputIsEmpty(false);
 
-    if (!emailInput || !nameInput || !usernameInput || !passwordInput) {
+    if (
+      !emailInput ||
+      !nameInput ||
+      !usernameInput ||
+      !profileImageInput ||
+      !passwordInput
+    ) {
       setIsLoading(false);
       return;
     }
@@ -46,7 +58,7 @@ export default function RegisterPage() {
       .insert([
         {
           email: emailInput,
-          image: null,
+          image: profileImageInput,
           name: nameInput,
           username: usernameInput,
         },
@@ -81,6 +93,13 @@ export default function RegisterPage() {
     []
   );
 
+  const handleProfileImageInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setProfileImageInput(event.target.value);
+    },
+    []
+  );
+
   const handlePasswordInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setPasswordInput(event.target.value);
@@ -89,7 +108,7 @@ export default function RegisterPage() {
   );
 
   return (
-    <div className="login-register-page">
+    <div className="register-page">
       <form className="login-register-container" onSubmit={handleFormSubmit}>
         <h1>Register</h1>
         {/* EMAIL */}
@@ -127,6 +146,22 @@ export default function RegisterPage() {
           className={!usernameInputIsEmpty && !credentialIsWrong ? "" : "error"}
         />
         {usernameInputIsEmpty && (
+          <p className="empty-message">Can't be empty</p>
+        )}
+
+        {/* PROFILE IMAGE */}
+        <label htmlFor="profile-image">Profile Image</label>
+        <p>Please enter profile image URL</p>
+        <input
+          type="text"
+          id="profile-image"
+          name="profile-image"
+          onChange={handleProfileImageInputChange}
+          className={
+            !profileImageInputIsEmpty && !credentialIsWrong ? "" : "error"
+          }
+        />
+        {profileImageInputIsEmpty && (
           <p className="empty-message">Can't be empty</p>
         )}
 

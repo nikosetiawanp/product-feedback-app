@@ -1,8 +1,10 @@
-.login-register-page {
+.login-page,
+.register-page {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
+  min-height: fit-content;
   height: 100vh;
   padding: 2rem;
 
@@ -110,4 +112,8 @@
       }
     }
   }
+}
+
+.register-page {
+  height: fit-content;
 }
