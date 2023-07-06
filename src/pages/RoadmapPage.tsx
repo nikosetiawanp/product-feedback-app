@@ -95,7 +95,7 @@ export default function RoadmapPage() {
           <button
             className="go-back-roadmap"
             type="button"
-            onClick={() => history.back()}
+            onClick={() => (window.location.href = "../suggestions/")}
           >
             <img src={IconArrowLeftWhite} alt="icon-arrow-left" /> &nbsp; Go
             back

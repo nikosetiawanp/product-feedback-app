@@ -18,6 +18,7 @@ export default function FeedbackDetailPage() {
     description: "Loading...",
     status: "Loading...",
     upvotes: [],
+    created_by: "Loading...",
   });
   const [comments, setComments] = useState([
     {
@@ -51,7 +52,6 @@ export default function FeedbackDetailPage() {
     if (data !== null) {
       setFeedbackDetail(data[0]);
       setComments(data[0].comments);
-      // setUpvoteCount(data[0].upvotes.length);
       setIsLoading(false);
     } else console.log(error);
   }
@@ -100,8 +100,11 @@ export default function FeedbackDetailPage() {
       {/* BUTTONS */}
       <div className="buttons">
         <ButtonGoBack />
+
         <Link to={`../edit-feedback/${id}`}>
-          <button className="button-edit-feedback">Edit Feedback</button>
+          {profileUsername === feedbackDetail.created_by && (
+            <button className="button-edit-feedback">Edit Feedback</button>
+          )}
         </Link>
       </div>
       {/* FEEDBACK */}

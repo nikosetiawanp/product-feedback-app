@@ -764,7 +764,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   width: 100%;
   max-width: 730px;
 }
-.feedback-detail-page .buttons button.button-edit-feedback {
+.feedback-detail-page .buttons .button-edit-feedback {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -778,7 +778,7 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   border-radius: 10px;
   height: 40px;
 }
-.feedback-detail-page .buttons button.button-edit-feedback:hover {
+.feedback-detail-page .buttons .button-edit-feedback:hover {
   cursor: pointer;
   background: #8397f8;
 }

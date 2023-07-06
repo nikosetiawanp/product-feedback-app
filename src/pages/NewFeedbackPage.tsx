@@ -9,6 +9,7 @@ import CategoryDropdown from "../components/CategoryDropdown";
 import ButtonGoBack from "../components/ButtonGoBack";
 
 export default function NewFeedbackPage() {
+  const profileUsername = localStorage.getItem("username");
   const [categoryDropdownIsActive, setCategoryDropdownIsActive] =
     useState(false);
   const [titleInput, setTitleInput] = useState("");
@@ -50,6 +51,7 @@ export default function NewFeedbackPage() {
         category: `${categoryInput}`,
         status: "Suggestion",
         description: `${feedbackDetailInput}`,
+        created_by: profileUsername,
       },
     ]);
     if (!error) {
