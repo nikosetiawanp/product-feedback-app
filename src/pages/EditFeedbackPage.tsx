@@ -3,6 +3,7 @@ import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
 import IconEditFeedback from "../assets/shared/icon-edit-feedback.svg";
 import { useParams } from "react-router-dom";
+import SpinnerLight from "../assets/shared/spinner-light.svg";
 
 import CategoryDropdown from "../components/CategoryDropdown";
 import StatusDropdown from "../components/StatusDropdown";
@@ -11,6 +12,7 @@ import { supabase } from "../client";
 
 export default function NewFeedbackPage() {
   const { id } = useParams();
+  const [buttonStatus, setButtonStatus] = useState("idle");
 
   const [titleInput, setTitleInput] = useState("");
   const [categoryInput, setCategoryInput] = useState("");
@@ -79,12 +81,16 @@ export default function NewFeedbackPage() {
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+    setButtonStatus("loading");
 
     if (titleInput.trim() === "") setTitleInputIsEmpty(true);
     if (titleInput.trim() !== "") setTitleInputIsEmpty(false);
     if (feedbackDetailInput.trim() === "") setFeedbackDetailInputIsEmpty(true);
     if (feedbackDetailInput.trim() !== "") setFeedbackDetailInputIsEmpty(false);
-    if (titleInput.trim() === "" || feedbackDetailInput.trim() === "") return;
+    if (titleInput.trim() === "" || feedbackDetailInput.trim() === "") {
+      setButtonStatus("idle");
+      return;
+    }
 
     const { data, error } = await supabase
       .from("product_requests")
@@ -96,9 +102,7 @@ export default function NewFeedbackPage() {
       })
       .eq("id", feedbackDetail.id);
     console.log(data, error);
-
-    alert("Update successful");
-    window.location.href = `../feedback-detail/${id}`;
+    setButtonStatus("done");
   };
 
   const deleteFeedback = async (e: React.ChangeEvent<any>) => {
@@ -210,7 +214,17 @@ export default function NewFeedbackPage() {
           <p className="empty-message">Can't be empty</p>
         )}
         <div className="buttons">
-          <button className="save-changes">Save Changes</button>
+          {buttonStatus === "done" ? (
+            <button className="add-feedback" disabled>
+              Saved
+            </button>
+          ) : buttonStatus === "loading" ? (
+            <button className="add-feedback">
+              <img className="spinner" src={SpinnerLight} alt="spinner" />{" "}
+            </button>
+          ) : (
+            <button className="add-feedback">Save Changes</button>
+          )}
           <button
             type="button"
             className="cancel"

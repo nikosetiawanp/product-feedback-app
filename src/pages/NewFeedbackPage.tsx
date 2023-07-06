@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { supabase } from "../client";
+import SpinnerLight from "../assets/shared/spinner-light.svg";
 
 import IconArrowDown from "../assets/shared/icon-arrow-down.svg";
 import IconArrowUp from "../assets/shared/icon-arrow-up.svg";
@@ -10,6 +11,7 @@ import ButtonGoBack from "../components/ButtonGoBack";
 
 export default function NewFeedbackPage() {
   const profileUsername = localStorage.getItem("username");
+  const [buttonStatus, setButtonStatus] = useState("idle");
   const [categoryDropdownIsActive, setCategoryDropdownIsActive] =
     useState(false);
   const [titleInput, setTitleInput] = useState("");
@@ -38,13 +40,15 @@ export default function NewFeedbackPage() {
 
   const handleFormSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-
+    setButtonStatus("loading");
     if (titleInput.trim() === "") setTitleInputIsEmpty(true);
     if (titleInput.trim() !== "") setTitleInputIsEmpty(false);
     if (feedbackDetailInput.trim() === "") setFeedbackDetailInputIsEmpty(true);
     if (feedbackDetailInput.trim() !== "") setFeedbackDetailInputIsEmpty(false);
-    if (titleInput.trim() === "" || feedbackDetailInput.trim() === "") return;
-
+    if (titleInput.trim() === "" || feedbackDetailInput.trim() === "") {
+      setButtonStatus("idle");
+      return;
+    }
     const { data, error } = await supabase.from("product_requests").insert([
       {
         title: `${titleInput}`,
@@ -56,8 +60,7 @@ export default function NewFeedbackPage() {
     ]);
     if (!error) {
       console.log(data);
-      alert("Successfully created data");
-      window.location.href = "../suggestions";
+      setButtonStatus("done");
     } else console.log(error);
   };
 
@@ -128,7 +131,18 @@ export default function NewFeedbackPage() {
         )}
 
         <div className="buttons">
-          <button className="add-feedback">Add Feedback</button>
+          {buttonStatus === "done" ? (
+            <button className="add-feedback" disabled>
+              Added
+            </button>
+          ) : buttonStatus === "loading" ? (
+            <button className="add-feedback">
+              <img className="spinner" src={SpinnerLight} alt="spinner" />{" "}
+            </button>
+          ) : (
+            <button className="add-feedback">Add Feedback</button>
+          )}
+
           <button
             type="button"
             className="cancel"

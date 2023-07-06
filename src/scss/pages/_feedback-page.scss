@@ -216,6 +216,14 @@
       width: auto;
       padding: 0.8rem;
       border-radius: $radius-sm;
+      &:disabled {
+        background: $button-gray;
+        color: $text-navy-hover;
+        &:hover {
+          background: $button-gray;
+          color: $text-navy-hover; 
+          cursor: default;       }
+      }
       &:hover {
         background: $button-purple-hover;
         cursor: pointer;

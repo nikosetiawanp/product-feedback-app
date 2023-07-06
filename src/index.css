@@ -535,6 +535,21 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   padding: 0.8rem;
   border-radius: 10px;
 }
+.feedback-form .buttons button.add-feedback:disabled,
+.feedback-form .buttons button.save-changes:disabled,
+.feedback-form .buttons button.cancel:disabled,
+.feedback-form .buttons button.delete:disabled {
+  background: #f2f4ff;
+  color: #656ea3;
+}
+.feedback-form .buttons button.add-feedback:disabled:hover,
+.feedback-form .buttons button.save-changes:disabled:hover,
+.feedback-form .buttons button.cancel:disabled:hover,
+.feedback-form .buttons button.delete:disabled:hover {
+  background: #f2f4ff;
+  color: #656ea3;
+  cursor: default;
+}
 .feedback-form .buttons button.add-feedback:hover,
 .feedback-form .buttons button.save-changes:hover,
 .feedback-form .buttons button.cancel:hover,
