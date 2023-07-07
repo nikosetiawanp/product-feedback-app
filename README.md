@@ -1,4 +1,4 @@
-# Frontend Mentor - Product Feedback App
+# Product Feedback App
 
 This is personal project about product feedback app, design by Frontend Mentor.
 
