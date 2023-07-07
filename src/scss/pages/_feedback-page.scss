@@ -8,8 +8,8 @@
   background: $background-gray;
   z-index: 50;
   width: fit-content;
+  margin-top: 2rem;
   padding: 1.5rem;
-  overflow-y: scroll;
 
   button.go-back {
     margin-right: auto;
@@ -221,8 +221,9 @@
         color: $text-navy-hover;
         &:hover {
           background: $button-gray;
-          color: $text-navy-hover; 
-          cursor: default;       }
+          color: $text-navy-hover;
+          cursor: default;
+        }
       }
       &:hover {
         background: $button-purple-hover;
@@ -251,5 +252,3 @@
     }
   }
 }
-
-

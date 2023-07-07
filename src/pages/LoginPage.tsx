@@ -126,7 +126,7 @@ export default function LoginPage() {
         )}
 
         <span>
-          Don't have an account? <a href="./register">Register</a>
+          Don't have an account? <a href="../register">Register</a>
         </span>
       </form>
     </div>

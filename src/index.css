@@ -324,8 +324,8 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   background: #f7f8fd;
   z-index: 50;
   width: fit-content;
+  margin-top: 2rem;
   padding: 1.5rem;
-  overflow-y: scroll;
 }
 .new-feedback-page button.go-back,
 .edit-feedback-page button.go-back {
@@ -1017,10 +1017,6 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   .register-page form.login-register-container p.wrong-credential {
     font-size: 15px;
   }
-}
-
-.register-page {
-  height: fit-content;
 }
 
 .category {
