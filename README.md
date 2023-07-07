@@ -3,9 +3,14 @@
 This is personal project about product feedback app, design by Frontend Mentor.
 
 ## Overview
+### Built with
+[![My Skills](https://skillicons.dev/icons?i=html,sass,ts,react,supabase,postgres&perline=6)](https://skillicons.dev)
 
+### Screenshots
 ![screenshot](https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/rcsvedsumulyaalzlzsv.jpg)
 ![screenshot](https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/sbiwekkqi9l5ulqsnzba.jpg)
+
+
 
 ### Features
 
@@ -20,9 +25,7 @@ This is personal project about product feedback app, design by Frontend Mentor.
 - Keep track of any changes, even after refreshing the browser.
   -Private routing using react router dom.
 
-### Built with
 
-[![My Skills](https://skillicons.dev/icons?i=html,sass,ts,react,supabase,postgres&perline=6)](https://skillicons.dev)
 
 ### What I learned
 
