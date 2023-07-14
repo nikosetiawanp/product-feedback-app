@@ -1,4 +1,5 @@
 import "./App.css";
+import RedirectToLogin from "./pages/RedirectToLogin";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import SuggestionsPage from "./pages/SuggestionsPage";
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<RedirectToLogin />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route element={<PrivateRoutes />}>
