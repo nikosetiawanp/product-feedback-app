@@ -1,6 +1,5 @@
 # Product Feedback App
 
-This is personal project about product feedback app, design by Frontend Mentor.
 
 To login into the app, please use below account :
 - email : nikosetiawanp@gmail.com
@@ -14,7 +13,7 @@ Project demo : https://product-feedback-app-rho.vercel.app
 https://github.com/nikosetiawanp/product-feedback-app/assets/119645228/62035c82-ec35-4376-a024-9f42cd1e9043
 
 ## Overview
-<img src='https://res.cloudinary.com/dz209s6jk/image/upload/v1624621619/Challenges/vnx44muoxqyn886oi5sb.jpg' alt='image' />
+This is personal project about product feedback app, design by Frontend Mentor.
 
 ### Built with
 [![My Skills](https://skillicons.dev/icons?i=html,sass,ts,react,supabase,postgres&perline=6)](https://skillicons.dev)
@@ -45,6 +44,12 @@ Since this is my first project using supabase, I learned a lot about Backend as 
 
 - [react.dev/learn](https://react.dev/learn) - This helped me when I need to search something about react
 - [supabasee.com/docs](https://supabase.com/docs/reference/javascript/initializing) - This helped me when I need to search something about supabase
+
+### Screenshots
+<img src='https://res.cloudinary.com/dz209s6jk/image/upload/v1624621619/Challenges/vnx44muoxqyn886oi5sb.jpg' alt='image' />
+<img src='https://res.cloudinary.com/dz209s6jk/image/upload/v1624621706/Challenges/uf4zb5ufaresipumy7jb.jpg' alt='image' />
+<img src='https://res.cloudinary.com/dz209s6jk/image/upload/v1624621762/Challenges/tsaibconxg9gus3xvdpj.jpg' alt='image' />
+<img src='https://res.cloudinary.com/dz209s6jk/image/upload/v1624621821/Challenges/hxbzjlkmxctyumxih5ct.jpg' alt='image' />
 
 ## Acknowledgments
 
