@@ -1019,6 +1019,18 @@ div.suggestions-page section.suggestions-container .suggestions-list {
   }
 }
 
+.redirect-to-login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redirect-to-login-page img {
+  width: 100px;
+  height: 100px;
+}
+
 .category {
   background: white;
   min-height: 175px;

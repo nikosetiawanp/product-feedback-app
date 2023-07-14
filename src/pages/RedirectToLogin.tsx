@@ -1,4 +1,10 @@
+import SpinnerDark from "../assets/shared/spinner-dark.svg";
+
 export default function RedirectToLogin() {
-  window.location.href = "./login";
-  return <h1>Redirecting...</h1>;
+  //   window.location.href = "./login";
+  return (
+    <div className="redirect-to-login-page">
+      <img src={SpinnerDark} alt="spinner-dark" />
+    </div>
+  );
 }
