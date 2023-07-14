@@ -3,11 +3,10 @@ export default function RoadmapStatus(props: {
   inProgressLength: number;
   liveLength: number;
 }) {
-  const url = "product-feedback-app-rho.vercel.app/";
   return (
     <div className="roadmap">
       <h1>Roadmap</h1>
-      <a className="view-roadmap" href={url + "roadmap"}>
+      <a className="view-roadmap" href="./roadmap">
         View
       </a>
 
