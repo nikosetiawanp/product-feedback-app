@@ -2,7 +2,16 @@
 
 This is personal project about product feedback app, design by Frontend Mentor.
 
+To login into the app, please use below account :
+- email : nikosetiawanp@gmail.com
+- password : nikosetiawanp
+- Alternatively, you can register your own account, but please use valid email for verification.
+
 Project demo : https://product-feedback-app-rho.vercel.app
+
+## Demo Video
+
+https://github.com/nikosetiawanp/product-feedback-app/assets/119645228/62035c82-ec35-4376-a024-9f42cd1e9043
 
 ## Overview
 <img src='https://res.cloudinary.com/dz209s6jk/image/upload/v1624621619/Challenges/vnx44muoxqyn886oi5sb.jpg' alt='image' />
